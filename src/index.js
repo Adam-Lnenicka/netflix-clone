@@ -1,6 +1,10 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import App from './App.js'
+import React from "react";
+import ReactDOM from "react-dom";
+import { applyMiddleware } from "redux";
+import App from "./App.js";
 
-ReactDOM.render(<App/>, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById("app"));
 
+// applyMiddleware.listen(3000, () => {
+//   console.log("app is running in mode: ", process.env.NODE_ENV);
+// });
