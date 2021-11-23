@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import "./index.scss";
 
-const App = () =>{
-    return (
-        <h1>Netflix Clone</h1>
-    )
-}
+const App = () => {
+  return <h1>Netflix Clone</h1>;
+};
 
-export default App
+export default App;
