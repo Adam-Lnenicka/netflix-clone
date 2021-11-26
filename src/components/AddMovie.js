@@ -113,8 +113,8 @@ const AddMovie = () => {
           setValue={handleRuntimeChange}
         />
 
-        <button>reset</button>
-        <button>submit</button>
+        <button className="button-main">reset</button>
+        <button className="button-secondary">submit</button>
       </form>
     </>
   );
