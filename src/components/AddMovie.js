@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+const [submitted, setSubmitted] = useState(false);
 const AddMovie = () => {
   const [values, setValues] = useState({
     title: "",
@@ -9,6 +10,18 @@ const AddMovie = () => {
     overview: "",
     runtime: "",
   });
+
+  const resetForm = () => {
+    setValues((values) => ({
+      ...values,
+      title: "",
+      releaseDate: "",
+      movieUrl: "",
+      genre: "",
+      overview: "",
+      runtime: "",
+    }));
+  };
 
   const handleTitleChange = (event) => {
     event.persist();
@@ -61,7 +74,7 @@ const AddMovie = () => {
   return (
     <>
       <h1>Add Movie</h1>
-      <form>
+      <form onSubmit={setSubmitted(true)}>
         <label>title</label>
         <input
           type="text"
@@ -113,7 +126,9 @@ const AddMovie = () => {
           setValue={handleRuntimeChange}
         />
 
-        <button className="button-main">reset</button>
+        <button className="button-main" onClick={resetForm}>
+          reset
+        </button>
         <button className="button-secondary">submit</button>
       </form>
     </>

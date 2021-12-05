@@ -1,23 +1,7 @@
-* {
-  margin: 0;
-}
-
-$red: #f65261;
-
-h1 {
-  font-weight: 300;
-}
-
-p {
-  font-size: 14px;
-}
-
-body {
-  background-color: #232323;
-  color: white;
-  margin: 0px;
-  font-family: "Montserrat", sans-serif;
-}
+@import "global/colors.scss";
+@import "global/buttons.scss";
+@import "global/layout.scss";
+@import "../components/ContactForm.scss";
 
 .button-main {
   background-color: $red;
@@ -29,7 +13,7 @@ body {
 }
 
 .button-secondary {
-  background-color: none;
+  background-color: $light-black;
   color: $red;
   border: 1px solid $red;
   padding: 0.9em 4.4em;
@@ -60,7 +44,7 @@ body {
 
   button {
     color: white;
-    background-color: #232323;
+    background-color: $light-black;
     border-radius: 4px;
     border: 0.1px solid white;
     margin-left: 3em;
@@ -76,7 +60,7 @@ body {
   padding: 8em 0;
 
   input {
-    background-color: #424242;
+    background-color: $medium-grey;
     padding: 0.9em 0.9em;
     border-radius: 5px;
     border: none;
@@ -96,12 +80,12 @@ body {
 }
 
 footer {
-  background-color: #555555;
+  background-color: $medium-grey;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 2em 0;
-  color: #f65261;
+  color: $red;
   font-weight: 700;
 
   span {
@@ -119,4 +103,46 @@ footer {
   .card-layout {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+
+.hide {
+  display: none;
+}
+
+.movie-details {
+  background-color: rgb(29, 23, 23);
+
+  &__container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  img {
+    width: 30%;
+    height: 60vh;
+    min-height: 300px;
+    object-fit: cover;
+    margin-right: 4rem;
+  }
+
+  span {
+    border: 1px white solid;
+    color: $green;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    margin-left: 3rem;
+  }
+}
+
+.flex {
+  display: flex;
+  align-items: center;
 }

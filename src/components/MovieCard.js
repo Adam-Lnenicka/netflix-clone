@@ -1,17 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const MovieCard = ({ image, title, year, description }) => {
+const MovieCard = (props) => {
   return (
     <>
       <div className="card">
-        <img className="card-image" src={image} alt={title} />
+        <img className="card-image" src={props.image} alt={props.title} />
         <div className="card-details">
           <div>
-            <h4>{title}</h4>
-            <p>{description}</p>
+            <h4>{props.title}</h4>
+            <p>{props.description}</p>
           </div>
-          <button>{year}</button>
+          <button>{props.year}</button>
+          <button onClick={() => props.onClick(props.movie)}>test</button>
         </div>
       </div>
     </>
