@@ -2,6 +2,7 @@
 @import "global/buttons.scss";
 @import "global/layout.scss";
 @import "../components/ContactForm.scss";
+@import "../components/Footer.scss";
 
 .button-main {
   background-color: $red;
@@ -19,6 +20,10 @@
   padding: 0.9em 4.4em;
   text-transform: uppercase;
   border-radius: 5px;
+}
+
+.card {
+  cursor: pointer;
 }
 
 .card-layout {
@@ -76,20 +81,6 @@
   form {
     display: flex;
     margin-top: 2em;
-  }
-}
-
-footer {
-  background-color: $medium-grey;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2em 0;
-  color: $red;
-  font-weight: 700;
-
-  span {
-    font-weight: 300;
   }
 }
 

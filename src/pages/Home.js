@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import MovieCard from "../components/MovieCard";
 import Footer from "../components/Footer";
 import ErrorBoundary from "../components/ErrorBoundary";
-import MovieDetailsBanner from "../components/MovieDetailsBanner";
-import ContactForm from "../components/ContactForm";
+import FormikAddMovie from "../components/FormikAddMovie";
+import NewMovie from "../components/NewMovie/NewMovie";
 // import DATA from "../MOCK_DATA.json";
 
 const Home = () => {
@@ -103,47 +103,17 @@ const Home = () => {
     movieApi();
   }, []);
 
-  // const [exampleState, setExampleState] = useState({
-  //   masterField: {
-  //     fieldOne: "a",
-  //   },
-  // });
-
   // const sortedMovieData2 = movieData.sort((a, b) => {
   //   return b.release_date - a.release_date;
   // });
   const [movieSort, setMovieSort] = useState(movieData);
 
-  const array = [1, 1, 2, 3, 4];
-  // const array2 = [
-  //   {
-  //     title: "Titanic",
-  //     release_date: 1993,
-  //   },
-  //   { title: "Pirates", release_date: 1688 },
-  // ];
-  const [numbers, setNumbers] = useState(array);
-  const [movieDetails, setMovieDetails] = useState("");
-  const [input, setInput] = useState("");
-  const [values, setValues] = useState({
-    title: "",
-    release_date: "",
-  });
-  const [banner, setBanner] = useState("");
   const [bannerObject, setBannerObject] = useState({
     title: "",
     poster_path: "",
     overview: "",
     release_date: "",
   });
-
-  // <MovieCard
-  //   key={movie.id}
-  //   poster_path={movie.poster_path}
-  //   title={movie.title}
-  //   overview={movie.overview}
-  //   release_date={movie.release_date}
-  // />
 
   const sortedMovieData = () =>
     setMovieSort(
@@ -162,36 +132,6 @@ const Home = () => {
 
   // const handleSort = () => setMovieSort(sortedMovieData);
 
-  const handleTitleChange = (event) => {
-    event.persist();
-    setValues((values) => ({
-      ...values,
-      title: event.target.value,
-    }));
-  };
-
-  const handleYearChange = (event) => {
-    event.persist();
-    setValues((values) => ({
-      ...values,
-      release_date: event.target.value,
-    }));
-  };
-
-  const newArray = [...array, 8];
-
-  const handleSubmit = () => {
-    setNumbers([...array, input, 6]);
-  };
-
-  // const handleSubmit2 =() =>{
-  //   setValues((values) =>({
-  //     ...values,
-  //     title:
-
-  //   }))
-  // }
-
   const bannerHandle = (movie, id) => {
     console.log(bannerObject);
     setBannerObject((bannerObject) => ({
@@ -207,9 +147,15 @@ const Home = () => {
     }));
   };
 
+  const addMovieHandler = (movie) => {
+    setTestAPI((prevMovies) => {
+      return [movie, ...prevMovies];
+    });
+  };
+
   return (
     <>
-      <ContactForm />
+      <FormikAddMovie />
       <div className={bannerObject.title !== "" ? "hide" : "banner"}>
         <div className="inner-banner">
           <button onClick={sortedMovieData}>sort</button>
@@ -218,38 +164,11 @@ const Home = () => {
             <input type="text" placeholder="What do you want to watch?" />
             <button type="submit">search</button>
           </form>
-          {newArray}
           <br />
-          {numbers}
-          <br />
-          {input}
-          <button onClick={handleSubmit}>prioritybussib</button>
-
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              value={input}
-              onChange={(e) => {
-                setInput(e.target.value);
-              }}
-            />
-
-            <input
-              type="text"
-              value={values.title}
-              onChange={handleTitleChange}
-            />
-
-            <input
-              type="text"
-              value={values.release_date}
-              onChange={handleYearChange}
-            />
-          </form>
-          <button onClick={handleSubmit}>fdsahjiu onChange</button>
         </div>
       </div>
       <div className="movieDetails"></div>
+      {/* <MovieDetailsBanner title={bannerObject.poster_path} /> */}
       <div className={bannerObject.title !== "" ? "movie-details" : null}>
         <div className="movie-details__container">
           <img src={bannerObject.poster_path} />
@@ -267,8 +186,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      Test test test
-      <div className="card-layout">
+      {/* <div className="card-layout">
         {testAPI.map((movie) => (
           <div
             className="card"
@@ -290,46 +208,26 @@ const Home = () => {
               <button>{movie.release_date.slice(0, 4)}</button>
             </div>
           </div>
-          // <MovieCard
-          //   key={movie.id}
-          //   poster_path={movie.poster_path}
-          //   title={movie.title}
-          //   overview={movie.overview}
-          //   release_date={movie.release_date}
-          //   onClick={(movie) => bannerHandle(movie)}
-          // />
         ))}
-      </div>
-      {/* <MovieDetailsBanner title={bannerObject.props.title} /> */}
+      </div> */}
+      <NewMovie onAddMovie={addMovieHandler} />
+
       <ErrorBoundary>
         <div className="card-layout">
-          {movieSort.map((movie) => (
-            <div
-              className="card"
+          {testAPI.map((movie) => (
+            // {movieSort.map((movie) => (
+
+            <MovieCard
               key={movie.id}
-              onClick={() => bannerHandle(movie)}
-            >
-              <img
-                className="card-image"
-                src={movie.poster_path}
-                alt={movie.title}
-              />
-              <div className="card-details">
-                <div>
-                  <h4>{movie.title}</h4>
-                  <p>{movie.genres}</p>
-                </div>
-                <button>{movie.release_date}</button>
-              </div>
-            </div>
-            // <MovieCard
-            //   key={movie.id}
-            //   poster_path={movie.poster_path}
-            //   title={movie.title}
-            //   overview={movie.overview}
-            //   release_date={movie.release_date}
-            //   onClick={(movie) => bannerHandle(movie)}
-            // />
+              poster_path={movie.poster_path}
+              title={movie.title}
+              // genres={movie.genres.map((g) => (
+              //   <span key={g}>{g} /</span>
+              // ))}
+              // release_date={movie.release_date}
+              function={bannerHandle}
+              movie={movie}
+            />
           ))}
         </div>
       </ErrorBoundary>

@@ -14,7 +14,7 @@ const MovieSchema = Yup.object().shape({
     .required("This field is required"),
 });
 
-const ContactForm = () => {
+const FormikAddMovie = () => {
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = () => {
@@ -101,7 +101,7 @@ const ContactForm = () => {
                   placeholder="Overview"
                   className="form__input"
                   type="text"
-                  id=""
+                  id="overview"
                 />
                 {errors.overview && touched.overview ? (
                   <div className="form__error-message">{errors.overview}</div>
@@ -116,10 +116,9 @@ const ContactForm = () => {
                   placeholder="Runtime"
                   className="form__input"
                   type="text"
-                  id=""
+                  id="release_date"
                 />
               </div>
-              <div></div>
             </div>
 
             {errors.notes && touched.notes ? (
@@ -143,4 +142,4 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm;
+export default FormikAddMovie;
