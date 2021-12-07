@@ -1,14 +1,27 @@
 import React from "react";
 
-function ErrorBoundary(props) {
-  const ErrorMessage = () => {
-    return (
-      <div>
-        <p>Sorry, cannot display content at the moment.</p>
-      </div>
-    );
-  };
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
 
-  return <>{props.children ? props.children : <ErrorMessage />}</>;
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    logErrorToMyService(error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      // You can render any custom fallback UI
+      return <h1>Something went wrong.</h1>;
+    }
+
+    return this.props.children;
+  }
 }
+
 export default ErrorBoundary;

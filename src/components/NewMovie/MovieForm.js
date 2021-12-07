@@ -61,7 +61,7 @@ const MovieForm = (props) => {
 
         <form onSubmit={submitHandler} className="form__content">
           <div className="form__contact-field-box">
-            <div className="new-expense__control">
+            <div>
               <label>title</label>
               <br />
 

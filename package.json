@@ -13,10 +13,6 @@
   "author": "Adam Lnenicka",
   "license": "ISC",
   "dependencies": {
-    "eslint-plugin-prettier": "^4.0.0",
-    "formik": "^2.2.9",
-    "node-sass": "^6.0.1",
-    "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
@@ -47,7 +43,11 @@
     "sass-loader": "^12.3.0",
     "webpack": "^5.64.1",
     "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.5.0"
+    "webpack-dev-server": "^4.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "formik": "^2.2.9",
+    "node-sass": "^6.0.1",
+    "prop-types": "^15.7.2"
   },
   "husky": {
     "hooks": {

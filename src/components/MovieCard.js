@@ -3,18 +3,16 @@ import PropTypes from "prop-types";
 
 const MovieCard = (prop) => {
   return (
-    <>
-      <div className="card" onClick={() => prop.function(prop.movie)}>
-        <img className="card-image" src={prop.poster_path} alt={prop.title} />
-        <div className="card-details">
-          <div>
-            <h4>{prop.title}</h4>
-            {/* <p> {prop.genres}</p> */}
-          </div>
-          <button>{prop.release_date.slice(0, 4)}</button>
+    <div className="card" onClick={() => prop.function(prop.movie)}>
+      <img className="card-image" src={prop.poster_path} alt={prop.title} />
+      <div className="card-details">
+        <div>
+          <h4>{prop.title}</h4>
+          <p> {prop.genres}</p>
         </div>
+        <button>{prop.release_date.slice(0, 4)}</button>
       </div>
-    </>
+    </div>
   );
 };
 
