@@ -2,8 +2,8 @@ import React from "react";
 import "./styles/index.scss";
 import Home from "./pages/Home";
 import { Route, Routes, BrowserRouter as Router, Link } from "react-router-dom";
-import EditMovie from "./components/EditMovie";
-import FormikAddMovie from "./components/FormikAddMovie";
+import EditMovie from "./components/FormikMovieForms/EditMovie";
+import FormikAddMovie from "./components/FormikMovieForms/FormikAddMovie";
 
 const App = () => {
   return (

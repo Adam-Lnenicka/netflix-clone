@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const isDevMod = process.env.NODE_ENV === "development";
 
 module.exports = {
   entry: "./src/index.js",
@@ -41,5 +42,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({ template: "./public/index.html" }),
     new MiniCssExtractPlugin(),
+    isDevMod
+      ? new webpack.NamedModulesPlugin()
+      : new webpack.HashedModuleIdsPlugin(),
   ],
 };

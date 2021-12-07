@@ -11,24 +11,24 @@ const MovieForm = (props) => {
   });
 
   const handleTitleChange = (event) => {
-    setUserInput((values) => ({
-      ...values,
+    setUserInput((userInput) => ({
+      ...userInput,
       title: event.target.value,
     }));
   };
 
   const handleReleaseDateChange = (event) => {
-    setUserInput((values) => ({
-      ...values,
+    setUserInput((userInput) => ({
+      ...userInput,
       releaseDate: event.target.value,
     }));
   };
 
   const handleMovieUrlChange = (event) => {
-    setUserInput({
+    setUserInput((userInput) => ({
       ...userInput,
-      poster_path: event.target.value,
-    });
+      releaseDate: event.target.value,
+    }));
   };
 
   const handleOverviewChange = (event) => {
@@ -54,81 +54,84 @@ const MovieForm = (props) => {
   };
 
   return (
-    <div className="form">
-      <h1>Add Movie</h1>
+    <div className="form-container">
+      <div className="form">
+        <button>X</button>
+        <h1>Add Movie</h1>
 
-      <form onSubmit={submitHandler} className="form__content">
-        <div className="form__contact-field-box">
-          <div className="new-expense__control">
-            <label>title</label>
+        <form onSubmit={submitHandler} className="form__content">
+          <div className="form__contact-field-box">
+            <div className="new-expense__control">
+              <label>title</label>
+              <br />
+
+              <input
+                type="text"
+                className="form__input"
+                placeholder="Title"
+                value={userInput.title}
+                onChange={handleTitleChange}
+              />
+            </div>
+
+            <label htmlFor="release_date">Release Date</label>
+            <br />
+
+            <input
+              type="date"
+              name="release-date"
+              id="title"
+              className="form__input"
+              placeholder="Release Date"
+              value={userInput.releaseDate}
+              onChange={handleReleaseDateChange}
+            />
+
+            <label htmlFor="poster_path">Movie URL</label>
+            <br />
+            <input
+              type="text"
+              name="movie-url"
+              className="form__input"
+              placeholder="Movie Url Here"
+              value={userInput.movieUrl}
+              onChange={handleMovieUrlChange}
+            />
+
+            <label htmlFor="overview">Overview</label>
             <br />
 
             <input
               type="text"
+              name="overview"
+              placeholder="Overview"
               className="form__input"
-              placeholder="Title"
-              value={userInput.title}
-              onChange={handleTitleChange}
+              value={userInput.overview}
+              onChange={handleOverviewChange}
             />
+
+            <label htmlFor="runtime">Runtime</label>
+            <br />
+
+            <input
+              type="number"
+              name="runtime"
+              placeholder="Runtime"
+              className="form__input"
+              value={userInput.runtime}
+              onChange={handleRuntimeChange}
+            />
+            <div className="button-area">
+              <button className="button-secondary" onClick={props.onCancel}>
+                reset
+              </button>
+              <button className="button-main" type="submit">
+                Submit
+              </button>
+            </div>
           </div>
-
-          <label htmlFor="release_date">Release Date</label>
-          <br />
-
-          <input
-            type="text"
-            name="release-date"
-            id="title"
-            className="form__input"
-            placeholder="Release Date"
-            value={userInput.releaseDate}
-            setValue={handleReleaseDateChange}
-          />
-
-          <label htmlFor="poster_path">Movie URL</label>
-          <br />
-          <input
-            type="text"
-            name="movie-url"
-            className="form__input"
-            placeholder="Movie Url Here"
-            value={userInput.movieUrl}
-            onChange={handleMovieUrlChange}
-          />
-
-          <label htmlFor="overview">Overview</label>
-          <br />
-
-          <input
-            type="text"
-            name="overview"
-            placeholder="Overview"
-            className="form__input"
-            value={userInput.overview}
-            onChange={handleOverviewChange}
-          />
-
-          <label htmlFor="runtime">Runtime</label>
-          <br />
-
-          <input
-            type="text"
-            name="runtime"
-            placeholder="Runtime"
-            className="form__input"
-            value={userInput.runtime}
-            onChange={handleRuntimeChange}
-          />
-          <div className="button-area">
-            <button className="button-secondary" onClick={props.onCancel}>
-              reset
-            </button>
-            <button className="button-main" type="submit">
-              Submit
-            </button>
-          </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 };

@@ -9,9 +9,9 @@ const MovieCard = (prop) => {
         <div className="card-details">
           <div>
             <h4>{prop.title}</h4>
-            {/* {prop.genres} */}
+            {/* <p> {prop.genres}</p> */}
           </div>
-          {/* <button>{prop.release_date.slice(0, 4)}</button> */}
+          <button>{prop.release_date.slice(0, 4)}</button>
         </div>
       </div>
     </>
