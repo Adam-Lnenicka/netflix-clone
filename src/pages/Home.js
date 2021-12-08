@@ -35,6 +35,7 @@ const Home = () => {
   };
 
   const [testAPI, setTestAPI] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const movieApi = useCallback(async () => {
     const url = "http://localhost:4000/movies";
@@ -83,6 +84,15 @@ const Home = () => {
           <h1>FIND YOUR MOVIE</h1>
           <form>
             <input type="text" placeholder="What do you want to watch?" />
+
+            <input
+              type="text"
+              placeholder="search test"
+              value={searchTerm}
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+              }}
+            />
             <button type="submit" className="button-main">
               search
             </button>
@@ -111,20 +121,31 @@ const Home = () => {
 
       <ErrorBoundary>
         <div className="card-layout">
-          {testAPI.map((movie) => (
-            // {movieSort.map((movie) => (
-            <MovieCard
-              key={movie.id}
-              poster_path={movie.poster_path}
-              title={movie.title}
-              genres={movie.genres.map((g) => (
-                <span key={g}>{g} /</span>
-              ))}
-              release_date={movie.release_date}
-              function={bannerHandle}
-              movie={movie}
-            />
-          ))}
+          {testAPI
+            .filter((data) => {
+              if (searchTerm === "") {
+                return data;
+              } else if (
+                data.name.toLowerCase().includes(searchTerm.toLowerCase())
+              ) {
+                return data;
+              }
+              return null;
+            })
+            .map((movie) => (
+              // {movieSort.map((movie) => (
+              <MovieCard
+                key={movie.id}
+                poster_path={movie.poster_path}
+                title={movie.title}
+                genres={movie.genres.map((g) => (
+                  <span key={g}>{g} /</span>
+                ))}
+                release_date={movie.release_date}
+                function={bannerHandle}
+                movie={movie}
+              />
+            ))}
         </div>
       </ErrorBoundary>
       <Footer />
