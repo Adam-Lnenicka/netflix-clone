@@ -4,8 +4,10 @@
   "description": "Netflix Clone in React",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development --open --hot",
-    "build": "./node_modules/.bin/webpack --mode production",
+    "start": "cross-env NODE_ENV=development  webpack-dev-server --mode development --open --hot",
+    "build": "cross-env NODE_ENV=build ./node_modules/.bin/webpack --mode build",
+    "prod": "cross-env NODE_ENV=production  ./node_modules/.bin/webpack --mode production",
+    "lint": "eslint \"**/*.{js,jsx}\"",
     "prepare": "husky install",
     "code:check": "./node_modules/.bin/eslint '**/*.js'",
     "code:fix": "./node_modules/.bin/eslint '**/*.js' --fix"
