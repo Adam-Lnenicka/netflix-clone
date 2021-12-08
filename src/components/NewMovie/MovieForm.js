@@ -5,7 +5,7 @@ const MovieForm = (props) => {
     title: "",
     release_date: "",
     poster_path: "",
-    genres: "",
+    genres: [],
     overview: "",
     runtime: "",
   });
@@ -83,7 +83,7 @@ const MovieForm = (props) => {
               id="title"
               className="form__input"
               placeholder="Release Date"
-              value={userInput.releaseDate}
+              value={userInput.release_date}
               onChange={handleReleaseDateChange}
             />
 
@@ -94,7 +94,7 @@ const MovieForm = (props) => {
               name="movie-url"
               className="form__input"
               placeholder="Movie Url Here"
-              value={userInput.movieUrl}
+              value={userInput.poster_path}
               onChange={handleMovieUrlChange}
             />
 
