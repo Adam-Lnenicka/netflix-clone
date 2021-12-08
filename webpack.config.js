@@ -2,8 +2,9 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+const isDevMod = process.env.NODE_ENV;
+
 module.exports = {
-  process.env.NODE_ENV === 'development',
   entry: "./src/index.js",
   output: {
     path: path.join(__dirname, "/dist"),
