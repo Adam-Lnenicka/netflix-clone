@@ -53,19 +53,19 @@ const Home = () => {
 
   useEffect(() => {
     movieApi();
-  }, [movieApi]);
+  }, []);
 
   const searchTermHandler = (e) => {
     e.preventDefault();
     setSearchTerm(e.target.value);
   };
 
-  const sortedMovieData = () =>
-    setTestAPI(
-      testAPI.sort((a, b) => {
-        return a.release_date - b.release_date;
-      })
-    );
+  // const sortedMovieData = () =>
+  //   setTestAPI(
+  //     testAPI.sort((a, b) => {
+  //       return a.release_date - b.release_date;
+  //     })
+  //   );
 
   const addMovieHandler = (movie) => {
     setTestAPI((prevMovies) => {
@@ -83,9 +83,9 @@ const Home = () => {
       </div>
       <div className={bannerObject.title !== "" ? "hide" : "banner"}>
         <div className="inner-banner">
-          <button onClick={sortedMovieData} className="button-basic">
+          {/* <button onClick={sortedMovieData} className="button-basic">
             sort
-          </button>
+          </button> */}
           <h1>FIND YOUR MOVIE</h1>
           <form>
             <input type="text" placeholder="What do you want to watch?" />

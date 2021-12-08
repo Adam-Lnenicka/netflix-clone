@@ -78,7 +78,7 @@ const MovieForm = (props) => {
             <br />
 
             <input
-              type="date"
+              type="text"
               name="release-date"
               id="title"
               className="form__input"
