@@ -53,7 +53,12 @@ const Home = () => {
 
   useEffect(() => {
     movieApi();
-  }, []);
+  }, [movieApi]);
+
+  const searchTermHandler = (e) => {
+    e.preventDefault();
+    setSearchTerm(e.target.value);
+  };
 
   const sortedMovieData = () =>
     setTestAPI(
@@ -89,9 +94,7 @@ const Home = () => {
               type="text"
               placeholder="search test"
               value={searchTerm}
-              onChange={(e) => {
-                setSearchTerm(e.target.value);
-              }}
+              onChange={searchTermHandler}
             />
             <button type="submit" className="button-main">
               search
@@ -126,7 +129,7 @@ const Home = () => {
               if (searchTerm === "") {
                 return data;
               } else if (
-                data.name.toLowerCase().includes(searchTerm.toLowerCase())
+                data.title.toLowerCase().includes(searchTerm.toLowerCase())
               ) {
                 return data;
               }
