@@ -10,6 +10,18 @@ const MovieForm = (props) => {
     runtime: "",
   });
 
+  const resetHandle = () => {
+    setUserInput((userInput) => ({
+      ...userInput,
+      title: "",
+      release_date: "",
+      poster_path: "",
+      genres: [],
+      overview: "",
+      runtime: "",
+    }));
+  };
+
   const handleTitleChange = (event) => {
     setUserInput((userInput) => ({
       ...userInput,
@@ -20,14 +32,14 @@ const MovieForm = (props) => {
   const handleReleaseDateChange = (event) => {
     setUserInput((userInput) => ({
       ...userInput,
-      releaseDate: event.target.value,
+      release_date: event.target.value,
     }));
   };
 
   const handleMovieUrlChange = (event) => {
     setUserInput((userInput) => ({
       ...userInput,
-      releaseDate: event.target.value,
+      poster_path: event.target.value,
     }));
   };
 
@@ -56,7 +68,7 @@ const MovieForm = (props) => {
   return (
     <div className="form-container">
       <div className="form">
-        <button>X</button>
+        <button onClick={props.onCancel}>X</button>
         <h1>Add Movie</h1>
 
         <form onSubmit={submitHandler} className="form__content">
@@ -122,7 +134,7 @@ const MovieForm = (props) => {
               onChange={handleRuntimeChange}
             />
             <div className="button-area">
-              <button className="button-secondary" onClick={props.onCancel}>
+              <button className="button-secondary" onClick={resetHandle}>
                 reset
               </button>
               <button className="button-main" type="submit">

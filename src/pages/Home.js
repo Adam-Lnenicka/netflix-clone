@@ -5,7 +5,7 @@ import ErrorBoundary from "../components/ErrorBoundary";
 import NewMovie from "../components/NewMovie/NewMovie";
 
 const Home = () => {
-  // const [movieSort, setMovieSort] = useState(testAPI);
+  // const [movieSort, setMovieSort] = useState(movies);
   const [display, setDisplay] = useState(false);
 
   const handleDisplay = () => {
@@ -23,6 +23,7 @@ const Home = () => {
     console.log(bannerObject);
     setBannerObject((bannerObject) => ({
       ...bannerObject,
+      id: movie.id,
       title: movie.title,
       vote_average: movie.vote_average,
       tagline: movie.tagline,
@@ -34,7 +35,7 @@ const Home = () => {
     }));
   };
 
-  const [testAPI, setTestAPI] = useState([]);
+  const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
   const movieApi = useCallback(async () => {
@@ -44,14 +45,18 @@ const Home = () => {
     const data = await response.json();
 
     try {
-      setTestAPI(data.data);
+      setMovies(data.data);
       console.log(data.data);
     } catch (err) {
       console.error(err);
     }
-  }, [testAPI]);
+  }, [movies]);
 
-  useEffect(() => {
+  async function deletePost(id) {
+    await fetch(`http://localhost:4000/movies/${id}`, { method: "DELETE" });
+  }
+  useEffect((id) => {
+    deletePost(id);
     movieApi();
   }, []);
 
@@ -61,26 +66,22 @@ const Home = () => {
   };
 
   // const sortedMovieData = () =>
-  //   setTestAPI(
-  //     testAPI.sort((a, b) => {
+  //   setMovies(
+  //     movies.sort((a, b) => {
   //       return a.release_date - b.release_date;
   //     })
   //   );
 
   const addMovieHandler = (movie) => {
-    setTestAPI((prevMovies) => {
+    setMovies((prevMovies) => {
       return [movie, ...prevMovies];
     });
   };
 
   return (
     <>
-      <button className="button-main" onClick={handleDisplay}>
-        ADD MOVIE
-      </button>
-      <div className={display === false ? "hide" : null}>
-        <NewMovie onAddMovie={addMovieHandler} close={handleDisplay} />
-      </div>
+      <button>delete movie</button>
+      <NewMovie onAddMovie={addMovieHandler} close={handleDisplay} />
       <div className={bannerObject.title !== "" ? "hide" : "banner"}>
         <div className="inner-banner">
           {/* <button onClick={sortedMovieData} className="button-basic">
@@ -88,11 +89,9 @@ const Home = () => {
           </button> */}
           <h1>FIND YOUR MOVIE</h1>
           <form>
-            <input type="text" placeholder="What do you want to watch?" />
-
             <input
               type="text"
-              placeholder="search test"
+              placeholder="What do you want to watch"
               value={searchTerm}
               onChange={searchTermHandler}
             />
@@ -118,13 +117,16 @@ const Home = () => {
               <p> {bannerObject.runtime}</p>
             </div>
             <p>{bannerObject.overview}</p>
+            <p>{bannerObject.id}</p>
+            {console.log(bannerObject.id)}
+            <button onClick={deletePost(bannerObject.id)}>delete</button>
           </div>
         </div>
       </div>
 
       <ErrorBoundary>
         <div className="card-layout">
-          {testAPI
+          {movies
             .filter((data) => {
               if (searchTerm === "") {
                 return data;
