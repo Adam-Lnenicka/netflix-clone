@@ -1,22 +1,30 @@
 import React from "react";
 
-const MovieDetailsBanner = (prop) => {
+const MovieDetailsBanner = ({
+  title,
+  poster_path,
+  vote_average,
+  tagline,
+  release_date,
+  runtime,
+  overview,
+}) => {
   return (
     <>
-      <div className={prop.title !== "" ? "movie-details" : null}>
+      <div className={title !== "" ? "movie-details" : null}>
         <div className="movie-details__container">
-          <img src={prop.poster_path} />
+          <img src={poster_path} />
           <div>
             <div className="flex">
-              <h2> {prop.title}</h2>
-              <span> {prop.vote_average}</span>
+              <h2> {title}</h2>
+              <span>{vote_average}</span>
             </div>
-            <p>{prop.tagline}</p>
+            <p>{tagline}</p>
             <div className="flex">
-              <p> {prop.release_date.slice(0, 4)} </p>
-              <p> {prop.runtime} min</p>
+              <p> {release_date.slice(0, 4)} </p>
+              <p> {runtime} min</p>
             </div>
-            <p>{prop.overview}</p>
+            <p>{overview}</p>
           </div>
         </div>
       </div>
