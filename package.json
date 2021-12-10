@@ -4,18 +4,16 @@
   "description": "Netflix Clone in React",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development --open --hot",
-    "build": "./node_modules/.bin/webpack --mode production",
-    "prepare": "husky install",
+    "start": "cross-env NODE_ENV=development  webpack-dev-server --mode development --open --hot",
+    "build": "cross-env NODE_ENV=build ./node_modules/.bin/webpack --mode build",
+    "prod": "cross-env NODE_ENV=production  ./node_modules/.bin/webpack --mode production",
+    "lint": "eslint \"**/*.{js,jsx}\"",
     "code:check": "./node_modules/.bin/eslint '**/*.js'",
     "code:fix": "./node_modules/.bin/eslint '**/*.js' --fix"
   },
   "author": "Adam Lnenicka",
   "license": "ISC",
   "dependencies": {
-    "eslint-plugin-prettier": "^4.0.0",
-    "node-sass": "^6.0.1",
-    "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
@@ -44,7 +42,10 @@
     "sass-loader": "^12.3.0",
     "webpack": "^5.64.1",
     "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.5.0"
+    "webpack-dev-server": "^4.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "node-sass": "^6.0.1",
+    "prop-types": "^15.7.2"
   },
   "husky": {
     "hooks": {

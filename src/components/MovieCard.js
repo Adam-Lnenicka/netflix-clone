@@ -3,18 +3,16 @@ import PropTypes from "prop-types";
 
 const MovieCard = ({ image, title, year, description }) => {
   return (
-    <>
-      <div className="card">
-        <img className="card-image" src={image} alt={title} />
-        <div className="card-details">
-          <div>
-            <h4>{title}</h4>
-            <p>{description}</p>
-          </div>
-          <button>{year}</button>
+    <div className="card">
+      <img className="card-image" src={image} alt={title} />
+      <div className="card-details">
+        <div>
+          <h4>{title}</h4>
+          <p>{description}</p>
         </div>
+        <button>{year}</button>
       </div>
-    </>
+    </div>
   );
 };
 
