@@ -1,8 +1,13 @@
 import React from "react";
-import "./index.scss";
+import "./styles/index.scss";
+import Home from "./pages/Home";
 
 const App = () => {
-  return <h1>Netflix Clone</h1>;
+  return (
+    <>
+      <Home />
+    </>
+  );
 };
 
 export default App;
