@@ -22,6 +22,8 @@ const MovieForm = (props) => {
     }));
   };
 
+  const [genre, setGenre] = useState("hello motherfucker");
+
   const handleTitleChange = (event) => {
     setUserInput((userInput) => ({
       ...userInput,
@@ -33,6 +35,13 @@ const MovieForm = (props) => {
     setUserInput((userInput) => ({
       ...userInput,
       release_date: event.target.value,
+    }));
+  };
+
+  const handleGendreChange = (event) => {
+    setUserInput((userInput) => ({
+      ...userInput,
+      genres: event.target.value,
     }));
   };
 
@@ -85,9 +94,26 @@ const MovieForm = (props) => {
                 onChange={handleTitleChange}
               />
             </div>
+            <select onChange={handleGendreChange} value={userInput.genres}>
+              <option></option>
+              <option value={["horror"]}>Horror</option>
+
+              <option value="drama">Drama</option>
+            </select>
+            {console.log(userInput.genres)}
 
             <label htmlFor="release_date">Release Date</label>
             <br />
+
+            <input
+              type="text"
+              name="release-date"
+              id="title"
+              className="form__input"
+              placeholder="Release Date"
+              value={userInput.release_date}
+              onChange={handleReleaseDateChange}
+            />
 
             <input
               type="text"

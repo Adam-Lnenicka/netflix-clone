@@ -3,10 +3,14 @@ import MovieCard from "../components/MovieCard";
 import Footer from "../components/Footer/Footer";
 import ErrorBoundary from "../components/ErrorBoundary";
 import NewMovie from "../components/NewMovie/NewMovie";
+import InnerBanner from "../components/InnerBanner/InnerBanner";
+import MovieBanner from "../components/InnerBanner/MovieBanner";
+import FilterNavigation from "../components/FilterNavigation/FilterNavigation";
 
 const Home = () => {
   // const [movieSort, setMovieSort] = useState(movies);
   const [display, setDisplay] = useState(false);
+  const [filterTerm, setFilterTerm] = useState("");
 
   const handleDisplay = () => {
     setDisplay(!display);
@@ -39,7 +43,7 @@ const Home = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const movieApi = useCallback(async () => {
-    const url = "http://localhost:4000/movies";
+    const url = "http://localhost:4000/movies?limit=100";
 
     const response = await fetch(url);
     const data = await response.json();
@@ -55,8 +59,7 @@ const Home = () => {
   async function deletePost(id) {
     await fetch(`http://localhost:4000/movies/${id}`, { method: "DELETE" });
   }
-  useEffect((id) => {
-    deletePost(id);
+  useEffect(() => {
     movieApi();
   }, []);
 
@@ -83,46 +86,36 @@ const Home = () => {
       <button>delete movie</button>
       <NewMovie onAddMovie={addMovieHandler} close={handleDisplay} />
       <div className={bannerObject.title !== "" ? "hide" : "banner"}>
-        <div className="inner-banner">
-          {/* <button onClick={sortedMovieData} className="button-basic">
-            sort
-          </button> */}
-          <h1>FIND YOUR MOVIE</h1>
-          <form>
-            <input
-              type="text"
-              placeholder="What do you want to watch"
-              value={searchTerm}
-              onChange={searchTermHandler}
-            />
-            <button type="submit" className="button-main">
-              search
-            </button>
-          </form>
-          <br />
-        </div>
+        <InnerBanner
+          searchTerm={searchTerm}
+          searchTermHandler={searchTermHandler}
+        />
       </div>
-      <div className="movieDetails"></div>
+      <div onClick={deletePost(354912)}>test test delete</div>
+
       <div className={bannerObject.title !== "" ? "movie-details" : null}>
-        <div className="movie-details__container">
-          <img src={bannerObject.poster_path} />
-          <div>
-            <div className="flex">
-              <h2> {bannerObject.title}</h2>
-              <span> {bannerObject.vote_average}</span>
-            </div>
-            <p>{bannerObject.tagline}</p>
-            <div className="flex">
-              <p> {bannerObject.release_date.slice(0, 4)} </p>
-              <p> {bannerObject.runtime}</p>
-            </div>
-            <p>{bannerObject.overview}</p>
-            <p>{bannerObject.id}</p>
-            {console.log(bannerObject.id)}
-            <button onClick={deletePost(bannerObject.id)}>delete</button>
-          </div>
-        </div>
+        <MovieBanner
+          title={bannerObject.title}
+          vote_average={bannerObject.vote_average}
+          poster_path={bannerObject.poster_path}
+          tagline={bannerObject.tagline}
+          genres={bannerObject.genres}
+          release_date={bannerObject.release_date.slice(0, 4)}
+          runtime={bannerObject.runtime}
+          overview={bannerObject.overview}
+          id={bannerObject.id}
+          deletePost={deletePost}
+        />
       </div>
+      <FilterNavigation
+        all=""
+        action="Action"
+        fantasy="Fantasy"
+        drama="Drama"
+        crime="Crime"
+        changeFilter={setFilterTerm}
+      />
+      <h1>{movies.length}</h1>
 
       <ErrorBoundary>
         <div className="card-layout">
@@ -137,6 +130,15 @@ const Home = () => {
               }
               return null;
             })
+            .filter((data) => {
+              if (filterTerm === "") {
+                return data;
+              } else if (data.genres.includes(filterTerm)) {
+                return data;
+              }
+              return null;
+            })
+            .filter((data) => data.poster_path.status !== 200)
             .map((movie) => (
               // {movieSort.map((movie) => (
               <MovieCard
@@ -149,6 +151,7 @@ const Home = () => {
                 release_date={movie.release_date}
                 function={bannerHandle}
                 movie={movie}
+                broken={(event) => (event.target.src = "")}
               />
             ))}
         </div>

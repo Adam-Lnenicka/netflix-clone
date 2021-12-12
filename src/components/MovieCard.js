@@ -4,7 +4,13 @@ import PropTypes from "prop-types";
 const MovieCard = (prop) => {
   return (
     <div className="card" onClick={() => prop.function(prop.movie)}>
-      <img className="card-image" src={prop.poster_path} alt={prop.title} />
+      <img
+        className="card-image"
+        src={prop.poster_path}
+        alt={prop.title}
+        // onError={(event) => (event.target.src = "")}
+        onError={() => prop.broken}
+      />
       <div className="card-details">
         <div>
           <h4>{prop.title}</h4>
