@@ -24,7 +24,7 @@ const NewMovie = (props) => {
 
   return (
     <div>
-      <button onClick={startEditingHandler} className="button-main">
+      <button onClick={startEditingHandler} className="button-main add-button">
         add movie
       </button>
       {isEditing && (

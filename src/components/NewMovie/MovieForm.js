@@ -22,8 +22,6 @@ const MovieForm = (props) => {
     }));
   };
 
-  const [genre, setGenre] = useState("hello motherfucker");
-
   const handleTitleChange = (event) => {
     setUserInput((userInput) => ({
       ...userInput,
@@ -94,13 +92,13 @@ const MovieForm = (props) => {
                 onChange={handleTitleChange}
               />
             </div>
-            <select onChange={handleGendreChange} value={userInput.genres}>
+            <select onChange={handleTitleChange} value={userInput.title}>
               <option></option>
               <option value={["horror"]}>Horror</option>
 
               <option value="drama">Drama</option>
             </select>
-            {console.log(userInput.genres)}
+            {console.log(userInput.title)}
 
             <label htmlFor="release_date">Release Date</label>
             <br />

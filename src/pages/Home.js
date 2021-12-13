@@ -2,20 +2,15 @@ import React, { useState, useEffect, useCallback } from "react";
 import MovieCard from "../components/MovieCard";
 import Footer from "../components/Footer/Footer";
 import ErrorBoundary from "../components/ErrorBoundary";
-import NewMovie from "../components/NewMovie/NewMovie";
 import InnerBanner from "../components/InnerBanner/InnerBanner";
 import MovieBanner from "../components/InnerBanner/MovieBanner";
-import FilterNavigation from "../components/FilterNavigation/FilterNavigation";
-import SortFilter from "../components/FilterNavigation/SortFilter";
+import Navigation from "../components/FilterNavigation/Navigation";
 
 const Home = () => {
-  // const [movieSort, setMovieSort] = useState(movies);
   const [display, setDisplay] = useState(false);
   const [filterTerm, setFilterTerm] = useState("");
-
-  const handleDisplay = () => {
-    setDisplay(!display);
-  };
+  const [movies, setMovies] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const [bannerObject, setBannerObject] = useState({
     title: "",
@@ -23,25 +18,6 @@ const Home = () => {
     overview: "",
     release_date: "",
   });
-
-  const bannerHandle = (movie) => {
-    console.log(bannerObject);
-    setBannerObject((bannerObject) => ({
-      ...bannerObject,
-      id: movie.id,
-      title: movie.title,
-      vote_average: movie.vote_average,
-      tagline: movie.tagline,
-      genres: movie.genres,
-      overview: movie.overview,
-      release_date: movie.release_date,
-      runtime: movie.runtime,
-      poster_path: movie.poster_path,
-    }));
-  };
-
-  const [movies, setMovies] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
 
   const movieApi = useCallback(async () => {
     const url = "http://localhost:4000/movies?limit=100";
@@ -67,6 +43,22 @@ const Home = () => {
   const searchTermHandler = (e) => {
     e.preventDefault();
     setSearchTerm(e.target.value);
+  };
+
+  const bannerHandle = (movie) => {
+    console.log(bannerObject);
+    setBannerObject((bannerObject) => ({
+      ...bannerObject,
+      id: movie.id,
+      title: movie.title,
+      vote_average: movie.vote_average,
+      tagline: movie.tagline,
+      genres: movie.genres,
+      overview: movie.overview,
+      release_date: movie.release_date,
+      runtime: movie.runtime,
+      poster_path: movie.poster_path,
+    }));
   };
 
   const sortMovies = (x) => {
@@ -118,34 +110,21 @@ const Home = () => {
     });
   };
 
+  const handleDisplay = () => {
+    setDisplay(!display);
+  };
+
   return (
     <>
-      <FilterNavigation
-        all=""
-        action="Action"
-        fantasy="Fantasy"
-        drama="Drama"
-        crime="Crime"
-        changeFilter={setFilterTerm}
-      />
-      <button>delete movie</button>
-
       <div className={bannerObject.title !== "" ? "hide" : "banner"}>
         <InnerBanner
           searchTerm={searchTerm}
           searchTermHandler={searchTermHandler}
-          all=""
-          action="Action"
-          fantasy="Fantasy"
-          drama="Drama"
-          crime="Crime"
-          changeFilter={setFilterTerm}
-          arrangeMovies={(event) => sortMovies(event.target.value)}
           onAddMovie={addMovieHandler}
           close={handleDisplay}
         />
       </div>
-      <div onClick={deletePost(354912)}>test test delete</div>
+      {/* <div onClick={deletePost(354912)}>test test delete</div> */}
 
       <div className={bannerObject.title !== "" ? "movie-details" : null}>
         <MovieBanner
@@ -159,9 +138,21 @@ const Home = () => {
           overview={bannerObject.overview}
           id={bannerObject.id}
           deletePost={deletePost}
+          broken={(e) =>
+            (e.target.src =
+              "https://images.unsplash.com/photo-1560109947-543149eceb16?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80")
+          }
         />
       </div>
-      <h1>{movies.length}</h1>
+      <Navigation
+        all=""
+        action="Action"
+        fantasy="Fantasy"
+        drama="Drama"
+        crime="Crime"
+        changeFilter={setFilterTerm}
+        arrangeMovies={(event) => sortMovies(event.target.value)}
+      />
 
       <ErrorBoundary>
         <div className="card-layout">
@@ -184,7 +175,7 @@ const Home = () => {
               }
               return null;
             })
-            .filter((data) => data.poster_path.status !== 200)
+            .filter((data) => data.poster_path.includes(""))
             .slice(0, 10)
             .map((movie) => (
               <MovieCard
@@ -197,7 +188,10 @@ const Home = () => {
                 release_date={movie.release_date}
                 function={bannerHandle}
                 movie={movie}
-                broken={(event) => (event.target.src = "")}
+                broken={(e) =>
+                  (e.target.src =
+                    "https://images.unsplash.com/photo-1560109947-543149eceb16?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80")
+                }
               />
             ))}
         </div>

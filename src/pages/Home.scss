@@ -34,10 +34,17 @@
   }
 }
 
+.add-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
 .banner {
   background-image: url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
   background-size: cover;
   background-position: bottom;
+  position: relative;
   padding: 8em 0;
 
   input {
@@ -92,6 +99,13 @@
 
 .movie-details {
   background-color: rgb(29, 23, 23);
+  &__date-runtime {
+    p {
+      color: $red;
+      padding: 1rem 0;
+      padding-left: 1rem;
+    }
+  }
 
   &__container {
     max-width: 1300px;
@@ -126,4 +140,15 @@
 .flex {
   display: flex;
   align-items: center;
+}
+
+.sort-movies {
+  background-color: $light-black;
+  color: white;
+  border: 3px $light-black solid;
+  padding: 1rem;
+  option {
+    background-color: $light-black;
+    text-transform: uppercase;
+  }
 }

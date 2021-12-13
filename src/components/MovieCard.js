@@ -8,8 +8,7 @@ const MovieCard = (prop) => {
         className="card-image"
         src={prop.poster_path}
         alt={prop.title}
-        // onError={(event) => (event.target.src = "")}
-        onError={() => prop.broken}
+        onError={prop.broken}
       />
       <div className="card-details">
         <div>

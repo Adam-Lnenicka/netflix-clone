@@ -1,6 +1,4 @@
 import React from "react";
-import FilterNavigation from "../FilterNavigation/FilterNavigation";
-import SortFilter from "../FilterNavigation/SortFilter";
 import NewMovie from "../NewMovie/NewMovie";
 
 const InnerBanner = (prop) => {
@@ -19,15 +17,6 @@ const InnerBanner = (prop) => {
           search
         </button>
       </form>
-      <FilterNavigation
-        all={prop.all}
-        action={prop.action}
-        fantasy={prop.fantasy}
-        drama={prop.drama}
-        crime={prop.crime}
-        changeFilter={prop.changeFilter}
-      />
-      <SortFilter arrangeMovies={prop.arrangeMovies} />
     </div>
   );
 };

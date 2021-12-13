@@ -8,8 +8,6 @@ import FormikAddMovie from "./components/FormikMovieForms/FormikAddMovie";
 const App = () => {
   return (
     <>
-      {/* <Home /> */}
-
       <Router>
         <nav>
           <ul>

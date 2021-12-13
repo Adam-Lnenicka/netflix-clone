@@ -5,7 +5,7 @@ const MovieBanner = (prop) => {
     <div className="movie-details__container">
       <img
         src={prop.poster_path}
-        // onError={(event) => (prop.event.target.src = "")}
+        alt={prop.title}
         onError={() => prop.broken}
       />
       <div>
@@ -14,14 +14,12 @@ const MovieBanner = (prop) => {
           <span> {prop.vote_average}</span>
         </div>
         <p>{prop.tagline}</p>
-        <div className="flex">
+        <div className="flex movie-details__date-runtime">
           <p> {prop.release_date.slice(0, 4)} </p>
           <p> {prop.runtime}</p>
         </div>
         <p>{prop.overview}</p>
-        <p>{prop.id}</p>
-        {console.log(prop.id)}
-        <button onClick={prop.deletePost(prop.id)}>delete</button>
+        {/* <button onClick={prop.deletePost(prop.id)}>delete</button> */}
       </div>
     </div>
   );
