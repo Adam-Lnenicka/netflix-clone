@@ -1,23 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const MovieCard = ({
-  myFunction,
-  poster_path,
-  title,
-  movie,
-  genres,
-  release_date,
-}) => {
+const MovieCard = (prop) => {
   return (
-    <div className="card" onClick={() => myFunction(movie)}>
-      <img className="card-image" src={poster_path} alt={title} />
+    <div className="card" onClick={() => prop.function(prop.movie)}>
+      <img
+        className="card-image"
+        src={prop.poster_path}
+        alt={prop.title}
+        // onError={(event) => (event.target.src = "")}
+        onError={() => prop.broken}
+      />
       <div className="card-details">
         <div>
-          <h4>{title}</h4>
-          <p> {genres}</p>
+          <h4>{prop.title}</h4>
+          <p> {prop.genres}</p>
         </div>
-        <button>{release_date.slice(0, 4)}</button>
+        <button>{prop.release_date.slice(0, 4)}</button>
       </div>
     </div>
   );

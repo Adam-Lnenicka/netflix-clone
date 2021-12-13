@@ -26,9 +26,15 @@ const MovieDetailsBanner = ({
             </div>
             <p>{overview}</p>
           </div>
+          <p>{prop.tagline}</p>
+          <div className="flex">
+            <p> {prop.release_date.slice(0, 4)} </p>
+            <p> {prop.runtime} min</p>
+          </div>
+          <p>{prop.overview}</p>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

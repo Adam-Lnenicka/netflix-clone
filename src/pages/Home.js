@@ -3,12 +3,15 @@ import MovieCard from "../components/MovieCard";
 import Footer from "../components/Footer/Footer";
 import ErrorBoundary from "../components/ErrorBoundary";
 import NewMovie from "../components/NewMovie/NewMovie";
-import IntroBanner from "../components/IntroBanner/IntroBanner";
-import { ProvidePlugin } from "webpack";
+import InnerBanner from "../components/InnerBanner/InnerBanner";
+import MovieBanner from "../components/InnerBanner/MovieBanner";
+import FilterNavigation from "../components/FilterNavigation/FilterNavigation";
+import SortFilter from "../components/FilterNavigation/SortFilter";
 
 const Home = () => {
   // const [movieSort, setMovieSort] = useState(movies);
   const [display, setDisplay] = useState(false);
+  const [filterTerm, setFilterTerm] = useState("");
 
   const handleDisplay = () => {
     setDisplay(!display);
@@ -41,7 +44,7 @@ const Home = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const movieApi = useCallback(async () => {
-    const url = "http://localhost:4000/movies";
+    const url = "http://localhost:4000/movies?limit=100";
 
     const response = await fetch(url);
     const data = await response.json();
@@ -57,31 +60,7 @@ const Home = () => {
   async function deletePost(id) {
     await fetch(`http://localhost:4000/movies/${id}`, { method: "DELETE" });
   }
-
-  async function postData(url = "http://localhost:4000/movies/", data = {}) {
-    // Default options are marked with *
-    const response = await fetch(url, {
-      method: "POST", // *GET, POST, PUT, DELETE, etc.
-      mode: "cors", // no-cors, *cors, same-origin
-      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: "same-origin", // include, *same-origin, omit
-      headers: {
-        "Content-Type": "application/json",
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      redirect: "follow", // manual, *follow, error
-      referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-      body: JSON.stringify(data), // body data type must match "Content-Type" header
-    });
-    return response.json(); // parses JSON response into native JavaScript objects
-  }
-
-  postData("http://localhost:4000/movies/", { answer: 42 }).then((data) => {
-    console.log(data); // JSON data parsed by `data.json()` call
-  });
-
-  useEffect((id) => {
-    deletePost(id);
+  useEffect(() => {
     movieApi();
   }, []);
 
@@ -90,12 +69,48 @@ const Home = () => {
     setSearchTerm(e.target.value);
   };
 
-  // const sortedMovieData = () =>
-  //   setMovies(
-  //     movies.sort((a, b) => {
-  //       return a.release_date - b.release_date;
-  //     })
-  //   );
+  const sortMovies = (x) => {
+    if (x === "newest-date") {
+      const result = [...movies].sort((a, b) => {
+        const dateA = new Date(a.release_date).getYear();
+        const dateB = new Date(b.release_date).getYear();
+        if (dateA < dateB) {
+          return -1;
+        }
+        if (dateA < dateB) {
+          return 1;
+        }
+        return 0;
+      });
+      setMovies(result);
+    }
+    if (x === "oldest-date") {
+      const result = [...movies].sort((a, b) => {
+        const dateA = new Date(a.release_date).getYear();
+        const dateB = new Date(b.release_date).getYear();
+        if (dateA > dateB) {
+          return -1;
+        }
+        if (dateA > dateB) {
+          return 1;
+        }
+        return 0;
+      });
+      setMovies(result);
+    }
+    if (x === "title") {
+      const result = [...movies].sort((a, b) => {
+        if (a.title < b.title) {
+          return -1;
+        }
+        if (a.title < b.title) {
+          return 1;
+        }
+        return 0;
+      });
+      setMovies(result);
+    }
+  };
 
   const addMovieHandler = (movie) => {
     setMovies((prevMovies) => {
@@ -105,32 +120,48 @@ const Home = () => {
 
   return (
     <>
+      <FilterNavigation
+        all=""
+        action="Action"
+        fantasy="Fantasy"
+        drama="Drama"
+        crime="Crime"
+        changeFilter={setFilterTerm}
+      />
       <button>delete movie</button>
-      <NewMovie onAddMovie={addMovieHandler} close={handleDisplay} />
+
       <div className={bannerObject.title !== "" ? "hide" : "banner"}>
-        <IntroBanner />
+        <InnerBanner
+          searchTerm={searchTerm}
+          searchTermHandler={searchTermHandler}
+          all=""
+          action="Action"
+          fantasy="Fantasy"
+          drama="Drama"
+          crime="Crime"
+          changeFilter={setFilterTerm}
+          arrangeMovies={(event) => sortMovies(event.target.value)}
+          onAddMovie={addMovieHandler}
+          close={handleDisplay}
+        />
       </div>
-      <div className="movieDetails"></div>
+      <div onClick={deletePost(354912)}>test test delete</div>
+
       <div className={bannerObject.title !== "" ? "movie-details" : null}>
-        <div className="movie-details__container">
-          <img src={bannerObject.poster_path} />
-          <div>
-            <div className="flex">
-              <h2> {bannerObject.title}</h2>
-              <span> {bannerObject.vote_average}</span>
-            </div>
-            <p>{bannerObject.tagline}</p>
-            <div className="flex">
-              <p> {bannerObject.release_date.slice(0, 4)} </p>
-              <p> {bannerObject.runtime}</p>
-            </div>
-            <p>{bannerObject.overview}</p>
-            <p>{bannerObject.id}</p>
-            {console.log(bannerObject.id)}
-            <button onClick={deletePost(bannerObject.id)}>delete</button>
-          </div>
-        </div>
+        <MovieBanner
+          title={bannerObject.title}
+          vote_average={bannerObject.vote_average}
+          poster_path={bannerObject.poster_path}
+          tagline={bannerObject.tagline}
+          genres={bannerObject.genres}
+          release_date={bannerObject.release_date.slice(0, 4)}
+          runtime={bannerObject.runtime}
+          overview={bannerObject.overview}
+          id={bannerObject.id}
+          deletePost={deletePost}
+        />
       </div>
+      <h1>{movies.length}</h1>
 
       <ErrorBoundary>
         <div className="card-layout">
@@ -145,8 +176,17 @@ const Home = () => {
               }
               return null;
             })
+            .filter((data) => {
+              if (filterTerm === "") {
+                return data;
+              } else if (data.genres.includes(filterTerm)) {
+                return data;
+              }
+              return null;
+            })
+            .filter((data) => data.poster_path.status !== 200)
+            .slice(0, 10)
             .map((movie) => (
-              // {movieSort.map((movie) => (
               <MovieCard
                 key={movie.id}
                 poster_path={movie.poster_path}
@@ -155,8 +195,9 @@ const Home = () => {
                   <span key={g}>{g} /</span>
                 ))}
                 release_date={movie.release_date}
-                myFunction={bannerHandle}
+                function={bannerHandle}
                 movie={movie}
+                broken={(event) => (event.target.src = "")}
               />
             ))}
         </div>
