@@ -8,7 +8,7 @@ import {
 
 const initialState = {
   count: 0,
-  movieFilter: [],
+  movieFilter: "",
   movieArray: [],
   sortCriteria: [],
   visibility: true,
@@ -24,7 +24,7 @@ const rootReducer = (state = initialState, action) => {
     case FILTER_MOVIE:
       return {
         ...state,
-        movieFilter: [...state.movieFilter, action.payload],
+        movieFilter: action.payload,
       };
     case MOVIE_ARRAY:
       return {

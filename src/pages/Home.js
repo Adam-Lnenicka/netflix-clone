@@ -5,6 +5,7 @@ import ErrorBoundary from "../components/ErrorBoundary";
 import InnerBanner from "../components/InnerBanner/InnerBanner";
 import MovieBanner from "../components/InnerBanner/MovieBanner";
 import Navigation from "../components/FilterNavigation/Navigation";
+import { filterMovie } from "../store/actionCreators";
 import { useDispatch, useSelector } from "react-redux";
 
 const Home = () => {
@@ -20,7 +21,7 @@ const Home = () => {
     release_date: "",
   });
 
-  // const movieGenreFilter =
+  const movieGenreFilter = useSelector((state) => state.filterMovie);
 
   const movieApi = useCallback(async () => {
     const url = "http://localhost:4000/movies?limit=100";
@@ -160,19 +161,21 @@ const Home = () => {
         <div className="card-layout">
           {movies
             .filter((data) => {
-              if (searchTerm === "") {
+              if (movieGenreFilter === "") {
                 return data;
               } else if (
-                data.title.toLowerCase().includes(searchTerm.toLowerCase())
+                data.title
+                  .toLowerCase()
+                  .includes(movieGenreFilter.toLowerCase())
               ) {
                 return data;
               }
               return null;
             })
             .filter((data) => {
-              if (filterTerm === "") {
+              if (movieGenreFilter === "") {
                 return data;
-              } else if (data.genres.includes(filterTerm)) {
+              } else if (data.genres.includes(movieGenreFilter)) {
                 return data;
               }
               return null;
