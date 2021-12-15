@@ -1,4 +1,5 @@
 import {
+  COUNT,
   FILTER_MOVIE,
   MOVIE_ARRAY,
   SORT_CRITERIA,
@@ -6,6 +7,7 @@ import {
 } from "./actionTypes";
 
 const initialState = {
+  count: 0,
   movieFilter: [],
   movieArray: [],
   sortCriteria: [],
@@ -14,6 +16,11 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
+    case COUNT:
+      return {
+        ...state,
+        count: state.count + 1,
+      };
     case FILTER_MOVIE:
       return {
         ...state,

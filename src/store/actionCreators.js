@@ -1,9 +1,16 @@
 import {
+  COUNT,
   FILTER_MOVIE,
   MOVIE_ARRAY,
   SORT_CRITERIA,
   VISIBLE,
-} from "./actionsTypes";
+} from "./actionTypes";
+
+export const count = () => {
+  return {
+    type: COUNT,
+  };
+};
 
 export const filterMovie = (filter) => {
   return {

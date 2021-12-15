@@ -5,6 +5,7 @@ import ErrorBoundary from "../components/ErrorBoundary";
 import InnerBanner from "../components/InnerBanner/InnerBanner";
 import MovieBanner from "../components/InnerBanner/MovieBanner";
 import Navigation from "../components/FilterNavigation/Navigation";
+import { useDispatch, useSelector } from "react-redux";
 
 const Home = () => {
   const [display, setDisplay] = useState(false);
@@ -18,6 +19,8 @@ const Home = () => {
     overview: "",
     release_date: "",
   });
+
+  // const movieGenreFilter =
 
   const movieApi = useCallback(async () => {
     const url = "http://localhost:4000/movies?limit=100";
@@ -150,7 +153,6 @@ const Home = () => {
         fantasy="Fantasy"
         drama="Drama"
         crime="Crime"
-        changeFilter={setFilterTerm}
         arrangeMovies={(event) => sortMovies(event.target.value)}
       />
 

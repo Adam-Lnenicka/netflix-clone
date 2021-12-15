@@ -11,7 +11,6 @@ const Navigation = (prop) => {
         fantasy={prop.fantasy}
         drama={prop.drama}
         crime={prop.crime}
-        changeFilter={prop.changeFilter}
       />
       <SortFilter arrangeMovies={prop.arrangeMovies} />
     </div>

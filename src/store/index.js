@@ -3,17 +3,21 @@ import thunk from "redux-thunk";
 
 import rootReducer from "./reducer.js";
 
-export default (initialState) => {
-  const middleware = [thunk];
+const store = createStore(rootReducer);
 
-  const composeEnhancers =
-    typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-      ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
-      : compose;
+export default store;
 
-  const enhancer = composeEnhancers(applyMiddleware(...middleware));
+// export default (initialState) => {
+//   const middleware = [thunk];
 
-  const store = createStore(rootReducer, initialState || {}, enhancer);
+//   const composeEnhancers =
+//     typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+//       ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
+//       : compose;
 
-  return store;
-};
+//   const enhancer = composeEnhancers(applyMiddleware(...middleware));
+
+//   const store = createStore(rootReducer, initialState || {}, enhancer);
+
+//   return store;
+// };
