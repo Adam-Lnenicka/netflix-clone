@@ -5,15 +5,10 @@ import ErrorBoundary from "../components/ErrorBoundary";
 import InnerBanner from "../components/InnerBanner/InnerBanner";
 import MovieBanner from "../components/InnerBanner/MovieBanner";
 import Navigation from "../components/FilterNavigation/Navigation";
-import {
-  filterMovie,
-  testString,
-  sortCriteria,
-  api,
-  loadMovies,
-} from "../store/actionCreators";
+import { testString } from "../store/actionCreators";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../components/Card";
+import { loadMovies } from "../store/thunk";
 
 const Home = () => {
   const [display, setDisplay] = useState(false);

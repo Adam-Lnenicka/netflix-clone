@@ -32,16 +32,6 @@ export const api = () => async (dispatch) => {
   });
 };
 
-export const loadMovies = () => async (dispatch) => {
-  const apiLink = "http://localhost:4000/movies?limit=100";
-  const apiData = await fetch(apiLink);
-  const moviesData = await apiData.json();
-  dispatch({
-    type: LOAD_MOVIES,
-    payload: moviesData.data,
-  });
-};
-
 // export function api() {
 //   return async (dispatch, getState) => {
 //     // const number = getState();
