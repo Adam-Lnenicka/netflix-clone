@@ -1,21 +1,36 @@
 import {
   COUNT,
+  TEST_STRING,
+  API,
   FILTER_MOVIE,
   MOVIE_ARRAY,
   SORT_CRITERIA,
   VISIBLE,
+  LOAD_MOVIES,
 } from "./actionTypes";
 
 const initialState = {
   count: 0,
-  movieFilter: "",
+  movies: [],
+  filterMovie: "",
+  test: "",
   movieArray: [],
-  sortCriteria: [],
+  sortCriteria: "",
   visibility: true,
 };
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
+    case LOAD_MOVIES:
+      return {
+        ...state,
+        movies: [...state.movies, action.payload],
+      };
+    case API:
+      return {
+        ...state,
+        api: state.api,
+      };
     case COUNT:
       return {
         ...state,
@@ -24,7 +39,17 @@ const rootReducer = (state = initialState, action) => {
     case FILTER_MOVIE:
       return {
         ...state,
-        movieFilter: action.payload,
+        filterMovie: action.payload,
+      };
+    // case API:
+    //   return {
+    //     ...state,
+    //     api: [...state.api, action.payload],
+    //   };
+    case TEST_STRING:
+      return {
+        ...state,
+        test: action.payload,
       };
     case MOVIE_ARRAY:
       return {
@@ -34,7 +59,7 @@ const rootReducer = (state = initialState, action) => {
     case SORT_CRITERIA:
       return {
         ...state,
-        sortCriteria: [...state.sortCriteria, action.payload],
+        sortCriteria: action.payload,
       };
     case VISIBLE:
       return {

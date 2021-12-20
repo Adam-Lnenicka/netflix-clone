@@ -5,14 +5,22 @@ import ErrorBoundary from "../components/ErrorBoundary";
 import InnerBanner from "../components/InnerBanner/InnerBanner";
 import MovieBanner from "../components/InnerBanner/MovieBanner";
 import Navigation from "../components/FilterNavigation/Navigation";
-import { filterMovie } from "../store/actionCreators";
+import {
+  filterMovie,
+  testString,
+  sortCriteria,
+  api,
+  loadMovies,
+} from "../store/actionCreators";
 import { useDispatch, useSelector } from "react-redux";
+import Card from "../components/Card";
 
 const Home = () => {
   const [display, setDisplay] = useState(false);
   const [filterTerm, setFilterTerm] = useState("");
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [submitSearch, setSubmitSearch] = useState("");
 
   const [bannerObject, setBannerObject] = useState({
     title: "",
@@ -22,6 +30,14 @@ const Home = () => {
   });
 
   const movieGenreFilter = useSelector((state) => state.filterMovie);
+  const apiMoviesArray = useSelector((state) => state.movies);
+  const movieSortArray = useSelector((state) => state.sortCriteria);
+
+  // const movieSearchFilter = useSelector((state) => state.filterMovie);
+
+  const myTestString = useSelector((state) => state.test);
+
+  const dispatch = useDispatch();
 
   const movieApi = useCallback(async () => {
     const url = "http://localhost:4000/movies?limit=100";
@@ -31,7 +47,7 @@ const Home = () => {
 
     try {
       setMovies(data.data);
-      console.log(data.data);
+      // console.log(data.data);
     } catch (err) {
       console.error(err);
     }
@@ -42,6 +58,11 @@ const Home = () => {
   }
   useEffect(() => {
     movieApi();
+    // () => {
+    //   dispatch(api());
+    dispatch(loadMovies());
+
+    // };
   }, []);
 
   const searchTermHandler = (e) => {
@@ -118,17 +139,41 @@ const Home = () => {
     setDisplay(!display);
   };
 
+  const handleSubmit = () => {
+    setSubmitSearch(searchTerm);
+  };
+
   return (
     <>
+      {console.log(searchTerm)}
+      {console.log(submitSearch)}
+      {/* {console.log(apiMoviesArray)} */}
+
+      <div>{myTestString}</div>
+      <button onClick={() => dispatch(testString("hello people"))}>
+        greet people
+      </button>
+
+      <form onSubmit={() => dispatch(testString("hello people"))}>
+        <input type="text" />
+        <button type="submit">dispatch</button>
+      </form>
       <div className={bannerObject.title !== "" ? "hide" : "banner"}>
         <InnerBanner
           searchTerm={searchTerm}
           searchTermHandler={searchTermHandler}
           onAddMovie={addMovieHandler}
           close={handleDisplay}
+          submitFunction={handleSubmit}
         />
       </div>
       {/* <div onClick={deletePost(354912)}>test test delete</div> */}
+
+      <div>
+        {apiMoviesArray.map((movie) =>
+          movie.map((m) => <Card key={m.id} title={m.title} />)
+        )}
+      </div>
 
       <div className={bannerObject.title !== "" ? "movie-details" : null}>
         <MovieBanner
@@ -159,14 +204,20 @@ const Home = () => {
 
       <ErrorBoundary>
         <div className="card-layout">
+          {/* {apiMoviesArray.map((movie) => (
+            <div key={movie.id}>
+              <p>{movie.title}</p>
+            </div>
+          ))} */}
+          {console.log(apiMoviesArray)}
+
+          <p>hello</p>
           {movies
             .filter((data) => {
-              if (movieGenreFilter === "") {
+              if (submitSearch === "") {
                 return data;
               } else if (
-                data.title
-                  .toLowerCase()
-                  .includes(movieGenreFilter.toLowerCase())
+                data.title.toLowerCase().includes(submitSearch.toLowerCase())
               ) {
                 return data;
               }

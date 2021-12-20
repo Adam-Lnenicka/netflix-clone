@@ -1,9 +1,12 @@
 import {
   COUNT,
+  TEST_STRING,
+  API,
   FILTER_MOVIE,
   MOVIE_ARRAY,
   SORT_CRITERIA,
   VISIBLE,
+  LOAD_MOVIES,
 } from "./actionTypes";
 
 export const count = () => {
@@ -11,6 +14,62 @@ export const count = () => {
     type: COUNT,
   };
 };
+
+export const testString = (filter) => {
+  return {
+    type: TEST_STRING,
+    payload: filter,
+  };
+};
+
+export const api = () => async (dispatch) => {
+  const url = "http://localhost:4000/movies?limit=100";
+  const apiData = await fetch(url);
+  const moviesData = await apiData.json();
+  dispatch({
+    type: API,
+    payload: moviesData.data,
+  });
+};
+
+export const loadMovies = () => async (dispatch) => {
+  const apiLink = "http://localhost:4000/movies?limit=100";
+  const apiData = await fetch(apiLink);
+  const moviesData = await apiData.json();
+  dispatch({
+    type: LOAD_MOVIES,
+    payload: moviesData.data,
+  });
+};
+
+// export function api() {
+//   return async (dispatch, getState) => {
+//     // const number = getState();
+//     const baseUrl = "http://localhost:4000/movies?limit=100";
+
+//     const response = await fetch(baseUrl);
+//     const data = await response.json();
+
+//     try {
+//       console.log(data.data);
+//       dispatch({
+//         type: API,
+//         payload: data.data,
+//       });
+//     } catch (err) {
+//       console.error(err);
+//     }
+//     // fetch(`${baseUrl}/${number}`)
+//     //   .then((res) => res.json())
+//     //   .then((res) => {
+//     //     console.log(res);
+//     //     dispatch({
+//     //       type: API,
+//     //       payload: res,
+//     //     });
+//     //   });
+//   };
+// }
 
 export const filterMovie = (filter) => {
   return {
