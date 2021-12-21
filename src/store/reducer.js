@@ -38,7 +38,7 @@ const rootReducer = (state = initialState, action) => {
     case SEARCH:
       return {
         ...state,
-        test: action.payload,
+        searchFilter: action.payload,
       };
     case SORT_CRITERIA:
       return {

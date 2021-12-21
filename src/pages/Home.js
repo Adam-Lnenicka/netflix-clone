@@ -26,7 +26,7 @@ const Home = () => {
 
   const movieGenreFilter = useSelector((state) => state.filterMovie);
   const apiMoviesArray = useSelector((state) => state.movies);
-  const movieArraySearch = useSelector((state) => state.test);
+  const movieArraySearch = useSelector((state) => state.searchFilter);
 
   const dispatch = useDispatch();
 
@@ -136,17 +136,6 @@ const Home = () => {
 
   return (
     <>
-      {console.log(searchTerm)}
-      {console.log(submitSearch)}
-      {/* {console.log(apiMoviesArray)} */}
-
-      <div>{movieArraySearch}</div>
-      <button onClick={() => dispatch(searchMovieTitle("hello people"))}>
-        greet people
-      </button>
-
-      {/* <form onSubmit={() => dispatch(searchMovieTitle("hello people"))}> */}
-
       <input
         type="text"
         onChange={(e) => dispatch(searchMovieTitle(e.target.value))}
