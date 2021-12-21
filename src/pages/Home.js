@@ -5,7 +5,7 @@ import ErrorBoundary from "../components/ErrorBoundary";
 import InnerBanner from "../components/InnerBanner/InnerBanner";
 import MovieBanner from "../components/InnerBanner/MovieBanner";
 import Navigation from "../components/FilterNavigation/Navigation";
-import { reduxSearchTerm, testString } from "../store/actionCreators";
+import { reduxSearchTerm, searchMovieTitle } from "../store/actionCreators";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../components/Card";
 import { loadMovies } from "../store/thunk";
@@ -26,7 +26,7 @@ const Home = () => {
 
   const movieGenreFilter = useSelector((state) => state.filterMovie);
   const apiMoviesArray = useSelector((state) => state.movies);
-  const myTestString = useSelector((state) => state.test);
+  const movieArraySearch = useSelector((state) => state.test);
 
   const dispatch = useDispatch();
 
@@ -140,20 +140,20 @@ const Home = () => {
       {console.log(submitSearch)}
       {/* {console.log(apiMoviesArray)} */}
 
-      <div>{myTestString}</div>
-      <button onClick={() => dispatch(testString("hello people"))}>
+      <div>{movieArraySearch}</div>
+      <button onClick={() => dispatch(searchMovieTitle("hello people"))}>
         greet people
       </button>
 
-      {/* <form onSubmit={() => dispatch(testString("hello people"))}> */}
+      {/* <form onSubmit={() => dispatch(searchMovieTitle("hello people"))}> */}
 
       <input
         type="text"
-        onChange={(e) => dispatch(testString(e.target.value))}
+        onChange={(e) => dispatch(searchMovieTitle(e.target.value))}
       />
       <button
         type="submit"
-        onClick={() => dispatch(testString("hello people"))}
+        onClick={() => dispatch(searchMovieTitle("hello people"))}
       >
         dispatch
       </button>
@@ -228,10 +228,12 @@ const Home = () => {
           <p>hello</p>
           {movies
             .filter((data) => {
-              if (myTestString === "") {
+              if (movieArraySearch === "") {
                 return data;
               } else if (
-                data.title.toLowerCase().includes(myTestString.toLowerCase())
+                data.title
+                  .toLowerCase()
+                  .includes(movieArraySearch.toLowerCase())
               ) {
                 return data;
               }

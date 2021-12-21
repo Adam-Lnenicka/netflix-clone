@@ -1,9 +1,7 @@
 import {
   COUNT,
-  TEST_STRING,
-  API,
+  SEARCH,
   FILTER_MOVIE,
-  MOVIE_ARRAY,
   SORT_CRITERIA,
   VISIBLE,
   LOAD_MOVIES,
@@ -27,11 +25,6 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         movies: [...state.movies, action.payload],
       };
-    case API:
-      return {
-        ...state,
-        api: state.api,
-      };
     case COUNT:
       return {
         ...state,
@@ -42,21 +35,10 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         filterMovie: action.payload,
       };
-
-    // case API:
-    //   return {
-    //     ...state,
-    //     api: [...state.api, action.payload],
-    //   };
-    case TEST_STRING:
+    case SEARCH:
       return {
         ...state,
         test: action.payload,
-      };
-    case MOVIE_ARRAY:
-      return {
-        ...state,
-        movieArray: [...state.movieArray, action.payload],
       };
     case SORT_CRITERIA:
       return {
