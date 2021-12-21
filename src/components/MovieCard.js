@@ -1,9 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import { filterId } from "../store/actionCreators";
 
 const MovieCard = (prop) => {
+  const dispatch = useDispatch();
   return (
-    <div className="card" onClick={() => prop.function(prop.movie)}>
+    <div className="card">
       <img
         className="card-image"
         src={prop.poster_path}
@@ -15,8 +18,12 @@ const MovieCard = (prop) => {
           <h4>{prop.title}</h4>
           <p> {prop.genres}</p>
         </div>
+
         <button>{prop.release_date.slice(0, 4)}</button>
       </div>
+      <button onClick={() => dispatch(filterId(prop.title))}>redux</button>
+
+      {/* <button onClick={() => prop.function(prop.movie)}>useState</button> */}
     </div>
   );
 };

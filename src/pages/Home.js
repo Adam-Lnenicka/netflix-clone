@@ -5,7 +5,11 @@ import ErrorBoundary from "../components/ErrorBoundary";
 import InnerBanner from "../components/InnerBanner/InnerBanner";
 import MovieBanner from "../components/InnerBanner/MovieBanner";
 import Navigation from "../components/FilterNavigation/Navigation";
-import { reduxSearchTerm, searchMovieTitle } from "../store/actionCreators";
+import {
+  filterId,
+  reduxSearchTerm,
+  searchMovieTitle,
+} from "../store/actionCreators";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../components/Card";
 import { loadMovies } from "../store/thunk";
@@ -23,6 +27,7 @@ const Home = () => {
     overview: "",
     release_date: "",
   });
+  const FilterIdSelector = useSelector((state) => state.id);
 
   const movieGenreFilterSelector = useSelector((state) => state.filterMovie);
   const apiMoviesArraySelector = useSelector((state) => state.movies);
@@ -136,6 +141,9 @@ const Home = () => {
 
   return (
     <>
+      {FilterIdSelector}
+      <button onClick={() => dispatch(filterId("id"))}>redux</button>
+
       <input
         type="text"
         onChange={(e) => dispatch(searchMovieTitle(e.target.value))}
@@ -185,6 +193,7 @@ const Home = () => {
               .map((m) => (
                 <MovieCard
                   key={m.id}
+                  id={m.id}
                   title={m.title}
                   poster_path={m.poster_path}
                   genres={m.genres.map((g) => (
