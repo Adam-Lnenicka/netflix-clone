@@ -156,27 +156,43 @@ const Home = () => {
       </div>
       {/* <div onClick={deletePost(354912)}>test test delete</div> */}
 
-      {/* <div className="card-layout">
-        {apiMoviesArray.map((movie) =>
-          movie.map((m) => (
-            <MovieCard
-              key={m.id}
-              title={m.title}
-              poster_path={m.poster_path}
-              genres={m.genres.map((g) => (
-                <span key={g}>{g} /</span>
-              ))}
-              release_date={m.release_date}
-              function={bannerHandle}
-              movie={movie}
-              broken={(e) =>
-                (e.target.src =
-                  "https://images.unsplash.com/photo-1560109947-543149eceb16?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80")
-              }
-            />
-          ))
-        )}
-      </div> */}
+      <div>
+        <div className="card-layout">
+          {apiMoviesArray.map((movie) =>
+            movie
+              .filter((data) => {
+                if (movieArraySearch === "") {
+                  return data;
+                } else if (
+                  data.title
+                    .toLowerCase()
+                    .includes(movieArraySearch.toLowerCase())
+                ) {
+                  return data;
+                }
+                return null;
+              })
+              .slice(0, 10)
+              .map((m) => (
+                <MovieCard
+                  key={m.id}
+                  title={m.title}
+                  poster_path={m.poster_path}
+                  genres={m.genres.map((g) => (
+                    <span key={g}>{g} /</span>
+                  ))}
+                  release_date={m.release_date}
+                  function={bannerHandle}
+                  movie={movie}
+                  broken={(e) =>
+                    (e.target.src =
+                      "https://images.unsplash.com/photo-1560109947-543149eceb16?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80")
+                  }
+                />
+              ))
+          )}
+        </div>
+      </div>
 
       <div className={bannerObject.title !== "" ? "movie-details" : null}>
         <MovieBanner
