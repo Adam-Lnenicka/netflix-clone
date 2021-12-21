@@ -152,10 +152,12 @@ const Home = () => {
 
       {/* <form onSubmit={() => dispatch(testString("hello people"))}> */}
       {searchTermFilter}
+
       <input
         type="text"
         onChange={(e) => dispatch(testString(e.target.value))}
       />
+      {console.log(searchTermFilter)}
       <button
         type="submit"
         onClick={() => dispatch(testString("hello people"))}
@@ -172,7 +174,7 @@ const Home = () => {
       </div>
       {/* <div onClick={deletePost(354912)}>test test delete</div> */}
 
-      <div className="card-layout">
+      {/* <div className="card-layout">
         {apiMoviesArray.map((movie) =>
           movie.map((m) => (
             <MovieCard
@@ -192,7 +194,7 @@ const Home = () => {
             />
           ))
         )}
-      </div>
+      </div> */}
 
       <div className={bannerObject.title !== "" ? "movie-details" : null}>
         <MovieBanner
@@ -233,10 +235,10 @@ const Home = () => {
           <p>hello</p>
           {movies
             .filter((data) => {
-              if (submitSearch === "") {
+              if (myTestString === "") {
                 return data;
               } else if (
-                data.title.toLowerCase().includes(submitSearch.toLowerCase())
+                data.title.toLowerCase().includes(myTestString.toLowerCase())
               ) {
                 return data;
               }
