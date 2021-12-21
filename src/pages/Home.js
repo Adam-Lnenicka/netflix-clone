@@ -141,10 +141,6 @@ const Home = () => {
 
   return (
     <>
-      {FilterIdSelector.title}
-      {FilterIdSelector.poster_path}
-      {FilterIdSelector.tagline}
-
       <input
         type="text"
         onChange={(e) => dispatch(searchMovieTitle(e.target.value))}
@@ -165,65 +161,17 @@ const Home = () => {
       </div>
       {/* <div onClick={deletePost(354912)}>test test delete</div> */}
 
-      <div>
-        <div className="card-layout">
-          {apiMoviesArraySelector.map((movie) =>
-            movie
-              .filter((data) => {
-                if (movieArraySearchSelector === "") {
-                  return data;
-                } else if (
-                  data.title
-                    .toLowerCase()
-                    .includes(movieArraySearchSelector.toLowerCase())
-                ) {
-                  return data;
-                }
-                return null;
-              })
-              .filter((data) => {
-                if (movieGenreFilterSelector === "") {
-                  return data;
-                } else if (data.genres.includes(movieGenreFilterSelector)) {
-                  return data;
-                }
-                return null;
-              })
-              .filter((data) => data.poster_path.includes(""))
-              .slice(0, 10)
-              .map((m) => (
-                <MovieCard
-                  key={m.id}
-                  id={m.id}
-                  title={m.title}
-                  poster_path={m.poster_path}
-                  genres={m.genres.map((g) => (
-                    <span key={g}>{g} /</span>
-                  ))}
-                  release_date={m.release_date}
-                  function={bannerHandle}
-                  movie={movie}
-                  broken={(e) =>
-                    (e.target.src =
-                      "https://images.unsplash.com/photo-1560109947-543149eceb16?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80")
-                  }
-                />
-              ))
-          )}
-        </div>
-      </div>
-
-      <div className={bannerObject.title !== "" ? "movie-details" : null}>
+      <div className={FilterIdSelector.title !== "" ? "movie-details" : null}>
         <MovieBanner
-          title={bannerObject.title}
-          vote_average={bannerObject.vote_average}
-          poster_path={bannerObject.poster_path}
-          tagline={bannerObject.tagline}
-          genres={bannerObject.genres}
-          release_date={bannerObject.release_date.slice(0, 4)}
-          runtime={bannerObject.runtime}
-          overview={bannerObject.overview}
-          id={bannerObject.id}
+          title={FilterIdSelector.title}
+          vote_average={FilterIdSelector.vote_average}
+          poster_path={FilterIdSelector.poster_path}
+          tagline={FilterIdSelector.tagline}
+          genres={FilterIdSelector.genres}
+          release_date={FilterIdSelector.release_date.slice(0, 4)}
+          runtime={FilterIdSelector.runtime}
+          overview={FilterIdSelector.overview}
+          id={FilterIdSelector.id}
           deletePost={deletePost}
           broken={(e) =>
             (e.target.src =
@@ -239,6 +187,55 @@ const Home = () => {
         crime="Crime"
         arrangeMovies={(event) => sortMovies(event.target.value)}
       />
+
+      <div className="card-layout">
+        {apiMoviesArraySelector.map((movie) =>
+          movie
+            .filter((data) => {
+              if (movieArraySearchSelector === "") {
+                return data;
+              } else if (
+                data.title
+                  .toLowerCase()
+                  .includes(movieArraySearchSelector.toLowerCase())
+              ) {
+                return data;
+              }
+              return null;
+            })
+            .filter((data) => {
+              if (movieGenreFilterSelector === "") {
+                return data;
+              } else if (data.genres.includes(movieGenreFilterSelector)) {
+                return data;
+              }
+              return null;
+            })
+            .filter((data) => data.poster_path.includes(""))
+            .slice(0, 10)
+            .map((m) => (
+              <MovieCard
+                key={m.id}
+                id={m.id}
+                title={m.title}
+                poster_path={m.poster_path}
+                genres={m.genres.map((g) => (
+                  <span key={g}>{g} /</span>
+                ))}
+                release_date={m.release_date}
+                vote_average={m.vote_average}
+                overview={m.overview}
+                function={bannerHandle}
+                movie={movie}
+                runtime={m.runtime}
+                broken={(e) =>
+                  (e.target.src =
+                    "https://images.unsplash.com/photo-1560109947-543149eceb16?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80")
+                }
+              />
+            ))
+        )}
+      </div>
 
       <ErrorBoundary>
         <div className="card-layout">
