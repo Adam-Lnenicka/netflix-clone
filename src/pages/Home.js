@@ -24,9 +24,9 @@ const Home = () => {
     release_date: "",
   });
 
-  const movieGenreFilter = useSelector((state) => state.filterMovie);
-  const apiMoviesArray = useSelector((state) => state.movies);
-  const movieArraySearch = useSelector((state) => state.searchFilter);
+  const movieGenreFilterSelector = useSelector((state) => state.filterMovie);
+  const apiMoviesArraySelector = useSelector((state) => state.movies);
+  const movieArraySearchSelector = useSelector((state) => state.searchFilter);
 
   const dispatch = useDispatch();
 
@@ -158,20 +158,29 @@ const Home = () => {
 
       <div>
         <div className="card-layout">
-          {apiMoviesArray.map((movie) =>
+          {apiMoviesArraySelector.map((movie) =>
             movie
               .filter((data) => {
-                if (movieArraySearch === "") {
+                if (movieArraySearchSelector === "") {
                   return data;
                 } else if (
                   data.title
                     .toLowerCase()
-                    .includes(movieArraySearch.toLowerCase())
+                    .includes(movieArraySearchSelector.toLowerCase())
                 ) {
                   return data;
                 }
                 return null;
               })
+              .filter((data) => {
+                if (movieGenreFilterSelector === "") {
+                  return data;
+                } else if (data.genres.includes(movieGenreFilterSelector)) {
+                  return data;
+                }
+                return null;
+              })
+              .filter((data) => data.poster_path.includes(""))
               .slice(0, 10)
               .map((m) => (
                 <MovieCard
@@ -223,31 +232,31 @@ const Home = () => {
 
       <ErrorBoundary>
         <div className="card-layout">
-          {/* {apiMoviesArray.map((movie) => (
+          {/* {apiMoviesArraySelector.map((movie) => (
             <div key={movie.id}>
               <p>{movie.title}</p>
             </div>
           ))} */}
-          {console.log(apiMoviesArray)}
+          {console.log(apiMoviesArraySelector)}
 
           <p>hello</p>
           {movies
             .filter((data) => {
-              if (movieArraySearch === "") {
+              if (movieArraySearchSelector === "") {
                 return data;
               } else if (
                 data.title
                   .toLowerCase()
-                  .includes(movieArraySearch.toLowerCase())
+                  .includes(movieArraySearchSelector.toLowerCase())
               ) {
                 return data;
               }
               return null;
             })
             .filter((data) => {
-              if (movieGenreFilter === "") {
+              if (movieGenreFilterSelector === "") {
                 return data;
-              } else if (data.genres.includes(movieGenreFilter)) {
+              } else if (data.genres.includes(movieGenreFilterSelector)) {
                 return data;
               }
               return null;
