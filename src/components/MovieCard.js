@@ -21,7 +21,9 @@ const MovieCard = (prop) => {
 
         <button>{prop.release_date.slice(0, 4)}</button>
       </div>
-      <button onClick={() => dispatch(filterId(prop.title))}>redux</button>
+      <button onClick={() => dispatch(filterId({ title: prop.title }))}>
+        redux
+      </button>
 
       {/* <button onClick={() => prop.function(prop.movie)}>useState</button> */}
     </div>

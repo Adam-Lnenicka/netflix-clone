@@ -141,8 +141,7 @@ const Home = () => {
 
   return (
     <>
-      {FilterIdSelector}
-      <button onClick={() => dispatch(filterId("id"))}>redux</button>
+      {FilterIdSelector.title.title}
 
       <input
         type="text"

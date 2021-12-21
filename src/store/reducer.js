@@ -17,10 +17,10 @@ const initialState = {
   movieArray: [],
   sortCriteria: "",
   visibility: true,
-  id: "",
-  // id: {
-  //   title: "",
-  // },
+  // id: "",
+  id: {
+    title: "",
+  },
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -43,7 +43,9 @@ const rootReducer = (state = initialState, action) => {
     case FILTER_ID:
       return {
         ...state,
-        id: action.payload,
+        id: {
+          title: action.payload,
+        },
       };
     case SEARCH:
       return {
