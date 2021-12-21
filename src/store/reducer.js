@@ -7,11 +7,13 @@ import {
   SORT_CRITERIA,
   VISIBLE,
   LOAD_MOVIES,
+  SEARCH_TERM,
 } from "./actionTypes";
 
 const initialState = {
   count: 0,
   movies: [],
+  searchFilter: "",
   filterMovie: "",
   test: "",
   movieArray: [],
@@ -37,6 +39,12 @@ const rootReducer = (state = initialState, action) => {
         count: state.count + 1,
       };
     case FILTER_MOVIE:
+      return {
+        ...state,
+        filterMovie: action.payload,
+      };
+
+    case SEARCH_TERM:
       return {
         ...state,
         filterMovie: action.payload,

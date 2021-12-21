@@ -5,7 +5,7 @@ import ErrorBoundary from "../components/ErrorBoundary";
 import InnerBanner from "../components/InnerBanner/InnerBanner";
 import MovieBanner from "../components/InnerBanner/MovieBanner";
 import Navigation from "../components/FilterNavigation/Navigation";
-import { testString } from "../store/actionCreators";
+import { reduxSearchTerm, testString } from "../store/actionCreators";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../components/Card";
 import { loadMovies } from "../store/thunk";
@@ -26,6 +26,7 @@ const Home = () => {
 
   const movieGenreFilter = useSelector((state) => state.filterMovie);
   const apiMoviesArray = useSelector((state) => state.movies);
+  const searchTermFilter = useSelector((state) => state.searchFilter);
   const movieSortArray = useSelector((state) => state.sortCriteria);
 
   // const movieSearchFilter = useSelector((state) => state.filterMovie);
@@ -149,17 +150,24 @@ const Home = () => {
         greet people
       </button>
 
-      <form onSubmit={() => dispatch(testString("hello people"))}>
-        <input type="text" />
-        <button type="submit">dispatch</button>
-      </form>
+      {/* <form onSubmit={() => dispatch(testString("hello people"))}> */}
+      {searchTermFilter}
+      <input
+        type="text"
+        onChange={(e) => dispatch(testString(e.target.value))}
+      />
+      <button
+        type="submit"
+        onClick={() => dispatch(testString("hello people"))}
+      >
+        dispatch
+      </button>
+      {/* </form> */}
       <div className={bannerObject.title !== "" ? "hide" : "banner"}>
         <InnerBanner
           searchTerm={searchTerm}
-          searchTermHandler={searchTermHandler}
           onAddMovie={addMovieHandler}
           close={handleDisplay}
-          submitFunction={handleSubmit}
         />
       </div>
       {/* <div onClick={deletePost(354912)}>test test delete</div> */}

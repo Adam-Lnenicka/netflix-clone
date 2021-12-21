@@ -7,6 +7,7 @@ import {
   SORT_CRITERIA,
   VISIBLE,
   LOAD_MOVIES,
+  SEARCH_TERM,
 } from "./actionTypes";
 
 export const count = () => {
@@ -19,6 +20,13 @@ export const testString = (filter) => {
   return {
     type: TEST_STRING,
     payload: filter,
+  };
+};
+
+export const reduxSearchTerm = (value) => {
+  return {
+    type: SEARCH_TERM,
+    payload: value,
   };
 };
 

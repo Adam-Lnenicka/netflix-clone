@@ -6,3 +6,4 @@ export const SORT_CRITERIA = "SORT_CRITERIA";
 export const VISIBLE = "VISIBLE";
 export const API = "API";
 export const LOAD_MOVIES = "LOAD_MOVIES";
+export const SEARCH_TERM = "SEARCH_TERM";
