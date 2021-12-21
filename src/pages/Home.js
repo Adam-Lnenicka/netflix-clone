@@ -26,11 +26,6 @@ const Home = () => {
 
   const movieGenreFilter = useSelector((state) => state.filterMovie);
   const apiMoviesArray = useSelector((state) => state.movies);
-  const searchTermFilter = useSelector((state) => state.searchFilter);
-  const movieSortArray = useSelector((state) => state.sortCriteria);
-
-  // const movieSearchFilter = useSelector((state) => state.filterMovie);
-
   const myTestString = useSelector((state) => state.test);
 
   const dispatch = useDispatch();
@@ -151,13 +146,11 @@ const Home = () => {
       </button>
 
       {/* <form onSubmit={() => dispatch(testString("hello people"))}> */}
-      {searchTermFilter}
 
       <input
         type="text"
         onChange={(e) => dispatch(testString(e.target.value))}
       />
-      {console.log(searchTermFilter)}
       <button
         type="submit"
         onClick={() => dispatch(testString("hello people"))}

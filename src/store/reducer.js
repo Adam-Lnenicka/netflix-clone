@@ -7,7 +7,6 @@ import {
   SORT_CRITERIA,
   VISIBLE,
   LOAD_MOVIES,
-  SEARCH_TERM,
 } from "./actionTypes";
 
 const initialState = {
@@ -44,11 +43,6 @@ const rootReducer = (state = initialState, action) => {
         filterMovie: action.payload,
       };
 
-    case SEARCH_TERM:
-      return {
-        ...state,
-        filterMovie: action.payload,
-      };
     // case API:
     //   return {
     //     ...state,

@@ -23,13 +23,6 @@ export const testString = (filter) => {
   };
 };
 
-export const reduxSearchTerm = (value) => {
-  return {
-    type: SEARCH_TERM,
-    payload: value,
-  };
-};
-
 export const api = () => async (dispatch) => {
   const url = "http://localhost:4000/movies?limit=100";
   const apiData = await fetch(url);
