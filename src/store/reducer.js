@@ -20,6 +20,13 @@ const initialState = {
   // id: "",
   id: {
     title: "",
+    poster_path: "",
+    vote_average: "",
+    tagline: "",
+    genres: "",
+    overview: "",
+    release_date: "",
+    runtime: "",
   },
 };
 
@@ -43,9 +50,7 @@ const rootReducer = (state = initialState, action) => {
     case FILTER_ID:
       return {
         ...state,
-        id: {
-          title: action.payload,
-        },
+        id: action.payload,
       };
     case SEARCH:
       return {

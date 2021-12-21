@@ -141,7 +141,9 @@ const Home = () => {
 
   return (
     <>
-      {FilterIdSelector.title.title}
+      {FilterIdSelector.title}
+      {FilterIdSelector.poster_path}
+      {FilterIdSelector.tagline}
 
       <input
         type="text"
