@@ -13,11 +13,9 @@ const initialState = {
   movies: [],
   searchFilter: "",
   filterMovie: "",
-  test: "",
   movieArray: [],
   sortCriteria: "",
   visibility: true,
-  // id: "",
   id: {
     title: "",
     poster_path: "",

@@ -19,7 +19,6 @@ const MovieBanner = (prop) => {
           <p> {prop.runtime}</p>
         </div>
         <p>{prop.overview}</p>
-        {/* <button onClick={prop.deletePost(prop.id)}>delete</button> */}
       </div>
     </div>
   );
