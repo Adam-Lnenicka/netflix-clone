@@ -42,13 +42,6 @@ export const filterId = (filter) => {
   };
 };
 
-export const sortCriteria = (sort) => {
-  return {
-    type: SORT_CRITERIA,
-    payload: sort,
-  };
-};
-
 export const visibility = () => {
   return {
     type: VISIBLE,

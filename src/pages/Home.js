@@ -5,11 +5,7 @@ import ErrorBoundary from "../components/ErrorBoundary";
 import InnerBanner from "../components/InnerBanner/InnerBanner";
 import MovieBanner from "../components/InnerBanner/MovieBanner";
 import Navigation from "../components/FilterNavigation/Navigation";
-import {
-  moviesSorted,
-  searchMovieTitle,
-  sortCriteria,
-} from "../store/actionCreators";
+import { moviesSorted, searchMovieTitle } from "../store/actionCreators";
 import { useDispatch, useSelector } from "react-redux";
 import { loadMovies } from "../store/thunk";
 
