@@ -5,7 +5,11 @@ import ErrorBoundary from "../components/ErrorBoundary";
 import InnerBanner from "../components/InnerBanner/InnerBanner";
 import MovieBanner from "../components/InnerBanner/MovieBanner";
 import Navigation from "../components/FilterNavigation/Navigation";
-import { searchMovieTitle } from "../store/actionCreators";
+import {
+  moviesSorted,
+  searchMovieTitle,
+  sortCriteria,
+} from "../store/actionCreators";
 import { useDispatch, useSelector } from "react-redux";
 import { loadMovies } from "../store/thunk";
 
@@ -26,7 +30,6 @@ const Home = () => {
     const url = "http://localhost:4000/movies?limit=100";
     const response = await fetch(url);
     const data = await response.json();
-    f;
     try {
       setMovies(data.data);
     } catch (err) {
@@ -55,7 +58,9 @@ const Home = () => {
         }
         return 0;
       });
-      setMovies(result);
+      dispatch(moviesSorted(result));
+      console.log(sortCriteriaSelector);
+      // setMovies(result);
     }
     if (x === "oldest-date") {
       const result = [...movies].sort((a, b) => {
@@ -69,7 +74,10 @@ const Home = () => {
         }
         return 0;
       });
-      setMovies(result);
+      dispatch(moviesSorted(result));
+      console.log(sortCriteriaSelector);
+
+      // setMovies(result);
     }
     if (x === "title") {
       const result = [...movies].sort((a, b) => {
@@ -81,7 +89,9 @@ const Home = () => {
         }
         return 0;
       });
-      setMovies(result);
+      dispatch(moviesSorted(result));
+
+      // setMovies(result);
     }
   };
 
@@ -167,7 +177,6 @@ const Home = () => {
               }
               return null;
             })
-            .filter((data) => data.poster_path.includes(""))
             .slice(0, 10)
             .map((m) => (
               <MovieCard

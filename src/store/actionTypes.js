@@ -7,3 +7,4 @@ export const VISIBLE = "VISIBLE";
 export const API = "API";
 export const LOAD_MOVIES = "LOAD_MOVIES";
 export const FILTER_ID = "FILTER_ID";
+export const MOVIES_SORTED = "MOVIES_SORTED";

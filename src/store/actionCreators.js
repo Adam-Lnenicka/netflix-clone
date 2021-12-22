@@ -5,6 +5,7 @@ import {
   SORT_CRITERIA,
   VISIBLE,
   FILTER_ID,
+  MOVIES_SORTED,
 } from "./actionTypes";
 
 export const count = () => {
@@ -23,6 +24,13 @@ export const searchMovieTitle = (filter) => {
 export const filterMovie = (filter) => {
   return {
     type: FILTER_MOVIE,
+    payload: filter,
+  };
+};
+
+export const moviesSorted = (filter) => {
+  return {
+    type: MOVIES_SORTED,
     payload: filter,
   };
 };

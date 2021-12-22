@@ -6,6 +6,7 @@ import {
   VISIBLE,
   LOAD_MOVIES,
   FILTER_ID,
+  MOVIES_SORTED,
 } from "./actionTypes";
 
 const initialState = {
@@ -30,10 +31,17 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    case LOAD_MOVIES:
+    case MOVIES_SORTED:
       return {
         ...state,
-        movies: [...state.movies, action.payload],
+        movies: [action.payload],
+      };
+    case LOAD_MOVIES:
+      return {
+        // ...state,
+        // movies: [...state.movies, action.payload],
+        ...state,
+        movies: [action.payload],
       };
     case COUNT:
       return {
