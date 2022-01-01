@@ -6,6 +6,9 @@ import {
   LOAD_MOVIES,
   FILTER_ID,
   MOVIES_SORTED,
+  REMOVE_MOVIE,
+  NEW_MOVIE,
+  ADD_MOVIE,
 } from "./actionTypes";
 
 const initialState = {
@@ -16,6 +19,16 @@ const initialState = {
   movieArray: [],
   sortCriteria: "",
   visibility: true,
+  newMovie: {
+    title: "",
+    poster_path: "",
+    vote_average: "",
+    tagline: "",
+    genres: "",
+    overview: "",
+    release_date: "",
+    runtime: "",
+  },
   id: {
     title: "",
     poster_path: "",
@@ -40,11 +53,26 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         movies: [action.payload],
       };
+    case REMOVE_MOVIE:
+      const moviesUpdated = state.movies
+        .slice()
+        .filter((item) => item.id !== action.payload);
+
+      return { ...state, movies: moviesUpdated };
     case COUNT:
       return {
         ...state,
         count: state.count + 1,
       };
+
+    case NEW_MOVIE:
+      return {
+        ...state,
+        newMovie: action.payload,
+      };
+
+    case ADD_MOVIE:
+      return { ...state, movies: [...state.movies, state.newMovie] };
     case FILTER_MOVIE:
       return {
         ...state,

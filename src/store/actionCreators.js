@@ -6,11 +6,27 @@ import {
   VISIBLE,
   FILTER_ID,
   MOVIES_SORTED,
+  REMOVE_MOVIE,
+  ADD_MOVIE,
 } from "./actionTypes";
 
 export const count = () => {
   return {
     type: COUNT,
+  };
+};
+
+export const removeMovie = (movieId) => {
+  return {
+    type: REMOVE_MOVIE,
+    payload: movieId,
+  };
+};
+
+export const addMovie = (movie) => {
+  return {
+    type: ADD_MOVIE,
+    payload: movie,
   };
 };
 

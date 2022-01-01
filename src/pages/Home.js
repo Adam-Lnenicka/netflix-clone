@@ -5,7 +5,11 @@ import ErrorBoundary from "../components/ErrorBoundary";
 import InnerBanner from "../components/InnerBanner/InnerBanner";
 import MovieBanner from "../components/InnerBanner/MovieBanner";
 import Navigation from "../components/FilterNavigation/Navigation";
-import { moviesSorted, searchMovieTitle } from "../store/actionCreators";
+import {
+  moviesSorted,
+  removeMovie,
+  searchMovieTitle,
+} from "../store/actionCreators";
 import { useDispatch, useSelector } from "react-redux";
 import { loadMovies } from "../store/thunk";
 
@@ -41,9 +45,13 @@ const Home = () => {
     dispatch(loadMovies());
   }, []);
 
+  const mySort = () => {
+    return <div></div>;
+  };
+
   const sortMovies = (x) => {
     if (x === "newest-date") {
-      const result = [...movies].sort((a, b) => {
+      const result = [apiMoviesArraySelector].sort((a, b) => {
         const dateA = new Date(a.release_date).getYear();
         const dateB = new Date(b.release_date).getYear();
         if (dateA < dateB) {
@@ -103,6 +111,21 @@ const Home = () => {
 
   return (
     <>
+      {console.log(
+        apiMoviesArraySelector
+        // .sort((a, b) => {
+        //   if (a.title < b.title) {
+        //     return -1;
+        //   }
+        //   if (a.title < b.title) {
+        //     return 1;
+        //   }
+        //   return 0;
+        // })
+      )}
+      <button onClick={() => dispatch(removeMovie(337167))}>
+        remove movie
+      </button>
       <input
         type="text"
         onChange={(e) => dispatch(searchMovieTitle(e.target.value))}
@@ -197,7 +220,7 @@ const Home = () => {
         )}
       </div>
 
-      <ErrorBoundary>
+      {/* <ErrorBoundary>
         <div className="card-layout">
           {console.log(apiMoviesArraySelector)}
 
@@ -241,7 +264,7 @@ const Home = () => {
               />
             ))}
         </div>
-      </ErrorBoundary>
+      </ErrorBoundary> */}
       <Footer />
     </>
   );
