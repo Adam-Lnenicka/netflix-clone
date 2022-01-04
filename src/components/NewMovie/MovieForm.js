@@ -17,42 +17,6 @@ const MovieForm = (props) => {
 
   const dispatch = useDispatch();
 
-  const [userInput, setUserInput] = useState({
-    title: "",
-    release_date: "",
-    poster_path: "",
-    genres: [],
-    overview: "",
-    runtime: "",
-  });
-
-  const resetHandle = () => {
-    setUserInput((userInput) => ({
-      ...userInput,
-      title: "",
-      release_date: "",
-      poster_path: "",
-      genres: [],
-      overview: "",
-      runtime: "",
-    }));
-  };
-
-  const handleTitleChange = (event) => {
-    setUserInput((userInput) => ({
-      ...userInput,
-      title: event.target.value,
-    }));
-  };
-
-  const submitHandler = (event) => {
-    event.preventDefault();
-
-    props.onSaveMovieData(userInput);
-    // setTitle("");
-    // setPosterPath("");
-  };
-
   return (
     <div className="form-container">
       <div className="form">
@@ -146,9 +110,7 @@ const MovieForm = (props) => {
               }
             />
             <div className="button-area">
-              <button className="button-secondary" onClick={resetHandle}>
-                reset
-              </button>
+              <button className="button-secondary">reset</button>
               <button className="button-main" type="submit">
                 Submit
               </button>

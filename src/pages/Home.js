@@ -45,10 +45,6 @@ const Home = () => {
     dispatch(loadMovies());
   }, []);
 
-  const mySort = () => {
-    return <div></div>;
-  };
-
   const sortMovies = (x) => {
     if (x === "newest-date") {
       const result = [apiMoviesArraySelector].sort((a, b) => {
@@ -111,31 +107,11 @@ const Home = () => {
 
   return (
     <>
-      {console.log(
-        apiMoviesArraySelector
-        // .sort((a, b) => {
-        //   if (a.title < b.title) {
-        //     return -1;
-        //   }
-        //   if (a.title < b.title) {
-        //     return 1;
-        //   }
-        //   return 0;
-        // })
-      )}
+      {console.log(apiMoviesArraySelector)}
       <button onClick={() => dispatch(removeMovie(337167))}>
         remove movie
       </button>
-      <input
-        type="text"
-        onChange={(e) => dispatch(searchMovieTitle(e.target.value))}
-      />
-      <button
-        type="submit"
-        onClick={() => dispatch(searchMovieTitle("hello people"))}
-      >
-        dispatch
-      </button>
+
       {/* </form> */}
       <div className={FilterIdSelector.title !== "" ? "hide" : "banner"}>
         <InnerBanner

@@ -6,7 +6,23 @@ import { filterId } from "../store/actionCreators";
 const MovieCard = (prop) => {
   const dispatch = useDispatch();
   return (
-    <div className="card">
+    <div
+      className="card"
+      onClick={() =>
+        dispatch(
+          filterId({
+            title: prop.title,
+            poster_path: prop.poster_path,
+            vote_average: prop.vote_average,
+            tagline: prop.tagline,
+            genres: prop.genres,
+            overview: prop.overview,
+            release_date: prop.release_date,
+            runtime: prop.runtime,
+          })
+        )
+      }
+    >
       <img
         className="card-image"
         src={prop.poster_path}
@@ -21,24 +37,6 @@ const MovieCard = (prop) => {
 
         <button>{prop.release_date.slice(0, 4)}</button>
       </div>
-      <button
-        onClick={() =>
-          dispatch(
-            filterId({
-              title: prop.title,
-              poster_path: prop.poster_path,
-              vote_average: prop.vote_average,
-              tagline: prop.tagline,
-              genres: prop.genres,
-              overview: prop.overview,
-              release_date: prop.release_date,
-              runtime: prop.runtime,
-            })
-          )
-        }
-      >
-        redux
-      </button>
 
       {/* <button onClick={() => prop.function(prop.movie)}>useState</button> */}
     </div>
