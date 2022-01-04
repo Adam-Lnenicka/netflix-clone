@@ -8,6 +8,7 @@ import {
   MOVIES_SORTED,
   REMOVE_MOVIE,
   ADD_MOVIE,
+  NEW_MOVIE,
 } from "./actionTypes";
 
 export const count = () => {
@@ -20,6 +21,13 @@ export const removeMovie = (movieId) => {
   return {
     type: REMOVE_MOVIE,
     payload: movieId,
+  };
+};
+
+export const newMovie = (movie) => {
+  return {
+    type: NEW_MOVIE,
+    payload: movie,
   };
 };
 

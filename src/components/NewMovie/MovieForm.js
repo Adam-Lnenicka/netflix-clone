@@ -1,6 +1,22 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addMovie, newMovie } from "../../store/actionCreators";
 
 const MovieForm = (props) => {
+  const MovieTitleSelector = useSelector((state) => state.newMovie.title);
+  const MovieReleaseDateSelector = useSelector(
+    (state) => state.newMovie.release_date
+  );
+  const MoviePosterPathSelector = useSelector(
+    (state) => state.newMovie.poster_path
+  );
+  const MovieGenresSelector = useSelector((state) => state.newMovie.genres);
+  const MovieRuntimeSelector = useSelector((state) => state.newMovie.runtime);
+
+  const MovieOverviewSelector = useSelector((state) => state.newMovie.overview);
+
+  const dispatch = useDispatch();
+
   const [userInput, setUserInput] = useState({
     title: "",
     release_date: "",
@@ -29,41 +45,6 @@ const MovieForm = (props) => {
     }));
   };
 
-  const handleReleaseDateChange = (event) => {
-    setUserInput((userInput) => ({
-      ...userInput,
-      release_date: event.target.value,
-    }));
-  };
-
-  const handleGendreChange = (event) => {
-    setUserInput((userInput) => ({
-      ...userInput,
-      genres: event.target.value,
-    }));
-  };
-
-  const handleMovieUrlChange = (event) => {
-    setUserInput((userInput) => ({
-      ...userInput,
-      poster_path: event.target.value,
-    }));
-  };
-
-  const handleOverviewChange = (event) => {
-    setUserInput((userInput) => ({
-      ...userInput,
-      overview: event.target.value,
-    }));
-  };
-
-  const handleRuntimeChange = (event) => {
-    setUserInput((userInput) => ({
-      ...userInput,
-      runtime: event.target.value,
-    }));
-  };
-
   const submitHandler = (event) => {
     event.preventDefault();
 
@@ -75,10 +56,11 @@ const MovieForm = (props) => {
   return (
     <div className="form-container">
       <div className="form">
+        {MovieTitleSelector}
         <button onClick={props.onCancel}>X</button>
         <h1>Add Movie</h1>
 
-        <form onSubmit={submitHandler} className="form__content">
+        <form onSubmit={() => dispatch(addMovie())} className="form__content">
           <div className="form__contact-field-box">
             <div>
               <label>title</label>
@@ -88,17 +70,23 @@ const MovieForm = (props) => {
                 type="text"
                 className="form__input"
                 placeholder="Title"
-                value={userInput.title}
-                onChange={handleTitleChange}
+                value={MovieTitleSelector}
+                onChange={(e) =>
+                  dispatch(newMovie({ ...newMovie, title: e.target.value }))
+                }
               />
             </div>
-            <select onChange={handleTitleChange} value={userInput.title}>
+            <select
+              onChange={(e) =>
+                dispatch(newMovie({ ...newMovie, genres: e.target.value }))
+              }
+              value={MovieGenresSelector}
+            >
               <option></option>
               <option value={["horror"]}>Horror</option>
 
               <option value="drama">Drama</option>
             </select>
-            {console.log(userInput.title)}
 
             <label htmlFor="release_date">Release Date</label>
             <br />
@@ -109,18 +97,12 @@ const MovieForm = (props) => {
               id="title"
               className="form__input"
               placeholder="Release Date"
-              value={userInput.release_date}
-              onChange={handleReleaseDateChange}
-            />
-
-            <input
-              type="text"
-              name="release-date"
-              id="title"
-              className="form__input"
-              placeholder="Release Date"
-              value={userInput.release_date}
-              onChange={handleReleaseDateChange}
+              value={MovieReleaseDateSelector}
+              onChange={(e) =>
+                dispatch(
+                  newMovie({ ...newMovie, release_date: e.target.value })
+                )
+              }
             />
 
             <label htmlFor="poster_path">Movie URL</label>
@@ -130,8 +112,10 @@ const MovieForm = (props) => {
               name="movie-url"
               className="form__input"
               placeholder="Movie Url Here"
-              value={userInput.poster_path}
-              onChange={handleMovieUrlChange}
+              value={MoviePosterPathSelector}
+              onChange={(e) =>
+                dispatch(newMovie({ ...newMovie, poster_path: e.target.value }))
+              }
             />
 
             <label htmlFor="overview">Overview</label>
@@ -142,8 +126,10 @@ const MovieForm = (props) => {
               name="overview"
               placeholder="Overview"
               className="form__input"
-              value={userInput.overview}
-              onChange={handleOverviewChange}
+              value={MovieOverviewSelector}
+              onChange={(e) =>
+                dispatch(newMovie({ ...newMovie, overview: e.target.value }))
+              }
             />
 
             <label htmlFor="runtime">Runtime</label>
@@ -154,8 +140,10 @@ const MovieForm = (props) => {
               name="runtime"
               placeholder="Runtime"
               className="form__input"
-              value={userInput.runtime}
-              onChange={handleRuntimeChange}
+              value={MovieRuntimeSelector}
+              onChange={(e) =>
+                dispatch(newMovie({ ...newMovie, runtime: e.target.value }))
+              }
             />
             <div className="button-area">
               <button className="button-secondary" onClick={resetHandle}>
