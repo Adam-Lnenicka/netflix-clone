@@ -11,3 +11,4 @@ export const MOVIES_SORTED = "MOVIES_SORTED";
 export const REMOVE_MOVIE = "REMOVE_MOVIE";
 export const NEW_MOVIE = "NEW_MOVIE";
 export const ADD_MOVIE = "ADD_MOVIE";
+export const RESET = "RESET";

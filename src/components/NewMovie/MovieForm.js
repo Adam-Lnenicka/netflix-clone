@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addMovie, newMovie } from "../../store/actionCreators";
+import { addMovie, newMovie, resetMovie } from "../../store/actionCreators";
 
 const MovieForm = (props) => {
   const MovieTitleSelector = useSelector((state) => state.newMovie.title);
@@ -110,7 +110,14 @@ const MovieForm = (props) => {
               }
             />
             <div className="button-area">
-              <button className="button-secondary">reset</button>
+              <button
+                className="button-secondary"
+                onClick={() => {
+                  dispatch(resetMovie());
+                }}
+              >
+                reset
+              </button>
               <button className="button-main" type="submit">
                 Submit
               </button>

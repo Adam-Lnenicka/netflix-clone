@@ -9,6 +9,7 @@ import {
   REMOVE_MOVIE,
   NEW_MOVIE,
   ADD_MOVIE,
+  RESET,
 } from "./actionTypes";
 
 const initialState = {
@@ -52,6 +53,21 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         movies: [action.payload],
+      };
+    case RESET:
+      return {
+        ...state,
+        newMovie: {
+          ...state.newMovie,
+          title: "",
+          poster_path: "",
+          vote_average: "",
+          tagline: "",
+          genres: "",
+          overview: "",
+          release_date: "",
+          runtime: "",
+        },
       };
     case REMOVE_MOVIE:
       const moviesUpdated = state.movies

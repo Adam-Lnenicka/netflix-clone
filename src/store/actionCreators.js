@@ -2,18 +2,24 @@ import {
   COUNT,
   SEARCH,
   FILTER_MOVIE,
-  SORT_CRITERIA,
   VISIBLE,
   FILTER_ID,
   MOVIES_SORTED,
   REMOVE_MOVIE,
   ADD_MOVIE,
   NEW_MOVIE,
+  RESET,
 } from "./actionTypes";
 
 export const count = () => {
   return {
     type: COUNT,
+  };
+};
+
+export const resetMovie = () => {
+  return {
+    type: RESET,
   };
 };
 
