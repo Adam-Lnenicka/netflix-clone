@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
 import Footer from "../components/Footer/Footer";
 import InnerBanner from "../components/InnerBanner/InnerBanner";
@@ -17,6 +17,8 @@ const Home = () => {
   const sortCriteriaSelector = useSelector((state) => state.sortCriteria);
   const movieGenreFilterSelector = useSelector((state) => state.filterMovie);
   const apiMoviesArraySelector = useSelector((state) => state.movies);
+  const apiMoviesArrayTitleSelector = useSelector((state) => state.movies);
+
   const movieArraySearchSelector = useSelector((state) => state.searchFilter);
 
   const dispatch = useDispatch();
@@ -71,6 +73,23 @@ const Home = () => {
     }
   };
 
+  const magic = (criteria) => {
+    if (criteria === "h0") {
+      useEffect(() => {
+        compare();
+      }, []);
+    }
+  };
+  const compare = (a, b) => {
+    if (a.title < b.title) {
+      return -1;
+    }
+    if (a.title > b.title) {
+      return 1;
+    }
+    return 0;
+  };
+
   const addMovieHandler = (movie) => {
     setMovies((prevMovies) => {
       return [movie, ...prevMovies];
@@ -118,7 +137,7 @@ const Home = () => {
       />
 
       <div className="card-layout">
-        {apiMoviesArraySelector.map((movie) =>
+        {apiMoviesArrayTitleSelector.map((movie) =>
           movie
             .filter((data) => {
               if (movieArraySearchSelector === "") {
@@ -140,6 +159,8 @@ const Home = () => {
               }
               return null;
             })
+            .sort(magic("hi"))
+
             .slice(0, 10)
             .map((m) => (
               <MovieCard

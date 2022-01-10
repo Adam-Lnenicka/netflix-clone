@@ -8,6 +8,7 @@ import {
   ADD_MOVIE,
   NEW_MOVIE,
   RESET,
+  SORT_CRITERIA,
 } from "./actionTypes";
 
 export const resetMovie = (movie) => {
@@ -55,6 +56,13 @@ export const filterMovie = (filter) => {
 export const moviesSorted = (filter) => {
   return {
     type: MOVIES_SORTED,
+    payload: filter,
+  };
+};
+
+export const sortCriteria = (filter) => {
+  return {
+    type: SORT_CRITERIA,
     payload: filter,
   };
 };

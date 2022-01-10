@@ -11,3 +11,4 @@ export const REMOVE_MOVIE = "REMOVE_MOVIE";
 export const NEW_MOVIE = "NEW_MOVIE";
 export const ADD_MOVIE = "ADD_MOVIE";
 export const RESET = "RESET";
+export const LOAD_MOVIES_BY_TITLE = "LOAD_MOVIES_BY_TITLE";

@@ -9,6 +9,8 @@ import {
   NEW_MOVIE,
   ADD_MOVIE,
   RESET,
+  LOAD_MOVIES_BY_TITLE,
+  SORT_CRITERIA,
 } from "./actionTypes";
 
 const initialState = {
@@ -42,12 +44,17 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    case MOVIES_SORTED:
+    case SORT_CRITERIA:
       return {
         ...state,
         sortCriteria: [action.payload],
       };
     case LOAD_MOVIES:
+      return {
+        ...state,
+        movies: [action.payload],
+      };
+    case LOAD_MOVIES_BY_TITLE:
       return {
         ...state,
         movies: [action.payload],
