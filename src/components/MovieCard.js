@@ -39,8 +39,6 @@ const MovieCard = (prop) => {
           remove movie
         </button>{" "}
       </div>
-
-      {/* <button onClick={() => prop.function(prop.movie)}>useState</button> */}
     </div>
   );
 };

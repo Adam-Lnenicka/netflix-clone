@@ -1,5 +1,4 @@
 import {
-  COUNT,
   SEARCH,
   FILTER_MOVIE,
   VISIBLE,
@@ -10,12 +9,6 @@ import {
   NEW_MOVIE,
   RESET,
 } from "./actionTypes";
-
-export const count = () => {
-  return {
-    type: COUNT,
-  };
-};
 
 export const resetMovie = (movie) => {
   return {

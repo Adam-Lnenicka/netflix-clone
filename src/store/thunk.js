@@ -1,5 +1,11 @@
 import { LOAD_MOVIES } from "./actionTypes";
 
+let api = "http://localhost:4000/movies?limit=100";
+
+const sortParameter = (filter) => {
+  if (sort === "title") api = "http://localhost:4000/movies?limit=100";
+};
+
 export const loadMovies = () => async (dispatch) => {
   const apiLink = "http://localhost:4000/movies?limit=100";
   const apiData = await fetch(apiLink);

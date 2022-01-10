@@ -1,5 +1,4 @@
 import {
-  COUNT,
   SEARCH,
   FILTER_MOVIE,
   VISIBLE,
@@ -13,7 +12,6 @@ import {
 } from "./actionTypes";
 
 const initialState = {
-  count: 0,
   movies: [],
   searchFilter: "",
   filterMovie: "",
@@ -47,7 +45,7 @@ const rootReducer = (state = initialState, action) => {
     case MOVIES_SORTED:
       return {
         ...state,
-        movies: [action.payload],
+        sortCriteria: [action.payload],
       };
     case LOAD_MOVIES:
       return {
@@ -66,11 +64,6 @@ const rootReducer = (state = initialState, action) => {
       });
 
       return { ...state, movies: [moviesUpdated] };
-    case COUNT:
-      return {
-        ...state,
-        count: state.count + 1,
-      };
 
     case NEW_MOVIE:
       return {
@@ -93,6 +86,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         id: action.payload,
       };
+
     case SEARCH:
       return {
         ...state,

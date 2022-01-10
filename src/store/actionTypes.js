@@ -1,4 +1,3 @@
-export const COUNT = "COUNT";
 export const SEARCH = "SEARCH";
 export const FILTER_MOVIE = "FILTER_MOVIE";
 export const MOVIE_ARRAY = "MOVIE_ARRAY";

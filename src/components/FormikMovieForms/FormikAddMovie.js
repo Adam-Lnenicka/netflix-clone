@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { addMovie, removeMovie, resetMovie } from "../../store/actionCreators";
 import { loadMovies } from "../../store/thunk";
+import { Link } from "react-router-dom";
 
 const MovieSchema = Yup.object().shape({
   title: Yup.string()
@@ -17,7 +18,7 @@ const MovieSchema = Yup.object().shape({
     .required("This field is required"),
 
   release_date: Yup.string().required("This field is required"),
-  overview: Yup.string().required("This field is required"),
+  genres: Yup.string().required("This field is required"),
   runtime: Yup.number().required("This field is required"),
 });
 
@@ -52,6 +53,8 @@ const FormikAddMovie = () => {
   return (
     <div className="form">
       <h1>Add Movie</h1>
+      <Link to="/">Close</Link>
+
       <Formik
         initialValues={{
           title: "",
@@ -164,7 +167,7 @@ const FormikAddMovie = () => {
             <div className="button-area">
               <button className="button-secondary" type="submit">
                 reset
-              </button>
+              </button>{" "}
               <button className="button-main" type="submit">
                 Submit
               </button>

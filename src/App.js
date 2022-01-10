@@ -15,19 +15,6 @@ const App = () => {
   return (
     <>
       <Router>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/add-movie">Add Movie</Link>
-            </li>
-            <li>
-              <Link to="/edit-movie">Edit Movie</Link>
-            </li>
-          </ul>
-        </nav>
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/add-movie" element={<FormikAddMovie />} />
