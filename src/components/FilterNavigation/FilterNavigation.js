@@ -6,7 +6,6 @@ const FilterNavigation = (prop) => {
   const dispatch = useDispatch();
   return (
     <div className="filter-navigation">
-      REDUX COUNT
       <button onClick={() => dispatch(filterMovie(prop.all))}>All</button>
       <button onClick={() => dispatch(filterMovie(prop.fantasy))}>
         Fantasy

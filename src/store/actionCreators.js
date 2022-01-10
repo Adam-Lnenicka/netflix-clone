@@ -17,9 +17,10 @@ export const count = () => {
   };
 };
 
-export const resetMovie = () => {
+export const resetMovie = (movie) => {
   return {
     type: RESET,
+    payload: movie,
   };
 };
 

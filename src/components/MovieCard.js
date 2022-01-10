@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { filterId } from "../store/actionCreators";
+import { filterId, removeMovie } from "../store/actionCreators";
 
 const MovieCard = (prop) => {
   const dispatch = useDispatch();
@@ -34,8 +34,10 @@ const MovieCard = (prop) => {
           <h4>{prop.title}</h4>
           <p> {prop.genres}</p>
         </div>
-
         <button>{prop.release_date.slice(0, 4)}</button>
+        <button onClick={() => dispatch(removeMovie(prop.id))}>
+          remove movie
+        </button>{" "}
       </div>
 
       {/* <button onClick={() => prop.function(prop.movie)}>useState</button> */}

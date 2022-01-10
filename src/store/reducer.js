@@ -57,24 +57,15 @@ const rootReducer = (state = initialState, action) => {
     case RESET:
       return {
         ...state,
-        newMovie: {
-          ...state.newMovie,
-          title: "",
-          poster_path: "",
-          vote_average: "",
-          tagline: "",
-          genres: "",
-          overview: "",
-          release_date: "",
-          runtime: "",
-        },
+        movies: [[...state.movies[0], (action.payload = {})]],
       };
-    case REMOVE_MOVIE:
-      const moviesUpdated = state.movies
-        .slice()
-        .filter((item) => item.id !== action.payload);
 
-      return { ...state, movies: moviesUpdated };
+    case REMOVE_MOVIE:
+      const moviesUpdated = state.movies[0].filter((movie) => {
+        return movie.id !== action.payload;
+      });
+
+      return { ...state, movies: [moviesUpdated] };
     case COUNT:
       return {
         ...state,
@@ -88,7 +79,10 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case ADD_MOVIE:
-      return { ...state, movies: [...state.movies, state.newMovie] };
+      return {
+        ...state,
+        movies: [[...state.movies[0].unshift(action.payload)]],
+      };
     case FILTER_MOVIE:
       return {
         ...state,

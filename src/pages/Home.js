@@ -1,17 +1,11 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState } from "react";
 import MovieCard from "../components/MovieCard";
 import Footer from "../components/Footer/Footer";
-import ErrorBoundary from "../components/ErrorBoundary";
 import InnerBanner from "../components/InnerBanner/InnerBanner";
 import MovieBanner from "../components/InnerBanner/MovieBanner";
 import Navigation from "../components/FilterNavigation/Navigation";
-import {
-  moviesSorted,
-  removeMovie,
-  searchMovieTitle,
-} from "../store/actionCreators";
+import { moviesSorted, removeMovie } from "../store/actionCreators";
 import { useDispatch, useSelector } from "react-redux";
-import { loadMovies } from "../store/thunk";
 
 const Home = () => {
   const [display, setDisplay] = useState(false);
@@ -25,25 +19,6 @@ const Home = () => {
   const movieArraySearchSelector = useSelector((state) => state.searchFilter);
 
   const dispatch = useDispatch();
-
-  const movieApi = useCallback(async () => {
-    const url = "http://localhost:4000/movies?limit=100";
-    const response = await fetch(url);
-    const data = await response.json();
-    try {
-      setMovies(data.data);
-    } catch (err) {
-      console.error(err);
-    }
-  }, [movies]);
-
-  async function deletePost(id) {
-    await fetch(`http://localhost:4000/movies/${id}`, { method: "DELETE" });
-  }
-  useEffect(() => {
-    movieApi();
-    dispatch(loadMovies());
-  }, []);
 
   const sortMovies = (x) => {
     if (x === "newest-date") {
@@ -107,12 +82,6 @@ const Home = () => {
 
   return (
     <>
-      {console.log(apiMoviesArraySelector)}
-      <button onClick={() => dispatch(removeMovie(337167))}>
-        remove movie
-      </button>
-
-      {/* </form> */}
       <div className={FilterIdSelector.title !== "" ? "hide" : "banner"}>
         <InnerBanner
           searchTerm={searchTerm}
@@ -120,7 +89,6 @@ const Home = () => {
           close={handleDisplay}
         />
       </div>
-      {/* <div onClick={deletePost(354912)}>test test delete</div> */}
 
       <div className={FilterIdSelector.title !== "" ? "movie-details" : null}>
         <MovieBanner
@@ -133,7 +101,6 @@ const Home = () => {
           runtime={FilterIdSelector.runtime}
           overview={FilterIdSelector.overview}
           id={FilterIdSelector.id}
-          deletePost={deletePost}
           broken={(e) =>
             (e.target.src =
               "https://images.unsplash.com/photo-1560109947-543149eceb16?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80")
@@ -196,51 +163,6 @@ const Home = () => {
         )}
       </div>
 
-      {/* <ErrorBoundary>
-        <div className="card-layout">
-          {console.log(apiMoviesArraySelector)}
-
-          {movies
-            .filter((data) => {
-              if (movieArraySearchSelector === "") {
-                return data;
-              } else if (
-                data.title
-                  .toLowerCase()
-                  .includes(movieArraySearchSelector.toLowerCase())
-              ) {
-                return data;
-              }
-              return null;
-            })
-            .filter((data) => {
-              if (movieGenreFilterSelector === "") {
-                return data;
-              } else if (data.genres.includes(movieGenreFilterSelector)) {
-                return data;
-              }
-              return null;
-            })
-            .filter((data) => data.poster_path.includes(""))
-            .slice(0, 10)
-            .map((movie) => (
-              <MovieCard
-                key={movie.id}
-                poster_path={movie.poster_path}
-                title={movie.title}
-                genres={movie.genres.map((g) => (
-                  <span key={g}>{g} /</span>
-                ))}
-                release_date={movie.release_date}
-                movie={movie}
-                broken={(e) =>
-                  (e.target.src =
-                    "https://images.unsplash.com/photo-1560109947-543149eceb16?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80")
-                }
-              />
-            ))}
-        </div>
-      </ErrorBoundary> */}
       <Footer />
     </>
   );

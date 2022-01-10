@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
+import { useDispatch, useSelector } from "react-redux";
+import { addMovie, removeMovie, resetMovie } from "../../store/actionCreators";
+import { loadMovies } from "../../store/thunk";
 
 const MovieSchema = Yup.object().shape({
   title: Yup.string()
@@ -12,13 +15,38 @@ const MovieSchema = Yup.object().shape({
   overview: Yup.string()
     .min(20, "The overview needs to have at least 20 characters")
     .required("This field is required"),
+
+  release_date: Yup.string().required("This field is required"),
+  overview: Yup.string().required("This field is required"),
+  runtime: Yup.number().required("This field is required"),
 });
 
 const FormikAddMovie = () => {
   const [submitted, setSubmitted] = useState(false);
+  const dispatch = useDispatch();
+  const movies = useSelector((state) => state.movies);
 
-  const handleSubmit = () => {
+  const handleSubmit = (values) => {
     setSubmitted(true);
+    values.genres = [values.genres];
+    values.id = Math.random().toString();
+    console.log(values);
+    console.log("before :" + movies);
+
+    dispatch(addMovie(values));
+    console.log("after :" + movies);
+  };
+
+  const handleReset = (values) => {
+    values.genres = [values.genres];
+    values.title = "";
+
+    // values.id = Math.random().toString();
+    // console.log(values);
+    // console.log("before :" + movies);
+
+    // dispatch(addMovie(values));
+    // console.log("after :" + movies);
   };
 
   return (
@@ -29,7 +57,7 @@ const FormikAddMovie = () => {
           title: "",
           release_date: "",
           poster_path: "",
-          genres: "",
+          genres: [],
           overview: "",
           runtime: "",
         }}
@@ -64,6 +92,9 @@ const FormikAddMovie = () => {
                 type="text"
                 id="release_date"
               />
+              {errors.release_date && touched.release_date ? (
+                <div className="form__error-message">{errors.release_date}</div>
+              ) : null}
 
               <div>
                 <label htmlFor="poster_path">Movie URL</label>
@@ -92,6 +123,9 @@ const FormikAddMovie = () => {
                 type="text"
                 id="genres"
               />
+              {errors.genres && touched.genres ? (
+                <div className="form__error-message">{errors.genres}</div>
+              ) : null}
               <div>
                 <label htmlFor="overview">Overview</label>
                 <br />
@@ -112,12 +146,15 @@ const FormikAddMovie = () => {
                 <br />
 
                 <Field
-                  name="release_date"
+                  name="runtime"
                   placeholder="Runtime"
                   className="form__input"
                   type="text"
-                  id="release_date"
+                  id="runtime"
                 />
+                {errors.runtime && touched.runtime ? (
+                  <div className="form__error-message">{errors.runtime}</div>
+                ) : null}
               </div>
             </div>
 
@@ -125,7 +162,9 @@ const FormikAddMovie = () => {
               <div className="form__error-message">{errors.notes}</div>
             ) : null}
             <div className="button-area">
-              <button className="button-secondary">reset</button>
+              <button className="button-secondary" type="submit">
+                reset
+              </button>
               <button className="button-main" type="submit">
                 Submit
               </button>
@@ -135,7 +174,7 @@ const FormikAddMovie = () => {
       </Formik>
       <p>
         {submitted ? (
-          <div className="form__submit-message">Moview will be added</div>
+          <div className="form__submit-message">Movie will be added</div>
         ) : null}
       </p>
     </div>
