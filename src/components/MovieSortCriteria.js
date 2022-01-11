@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import {
   loadMovies,
@@ -7,38 +7,38 @@ import {
   loadMoviesByTitle,
 } from "../store/thunk";
 
-const MovieCategories = () => {
+const MovieSortCriteria = () => {
   const dispatch = useDispatch();
-  const [categories, setCategories] = useState([]);
+  const [sortCriteria, setSortCriteria] = useState([]);
 
-  const changeCategoryCallback = (categoryValue) => {
-    const categoriesUpdated = categories.map((item) => {
-      if (item.name === categoryValue) {
+  const changeSortHandler = (sortValue) => {
+    const sortCriteriaUpdated = sortCriteria.map((item) => {
+      if (item.name === sortValue) {
         return { ...item };
       } else {
         return { ...item };
       }
     });
-    setCategories(categoriesUpdated);
-    if (categoryValue === "title") {
+    setSortCriteria(sortCriteriaUpdated);
+    if (sortValue === "title") {
       dispatch(loadMoviesByTitle());
     }
-    if (categoryValue === "date") {
+    if (sortValue === "date") {
       dispatch(loadMoviesByDate());
     }
 
-    if (categoryValue === "rating") {
+    if (sortValue === "rating") {
       dispatch(loadMoviesByRating());
     }
-    if (categoryValue === "featured") {
+    if (sortValue === "featured") {
       dispatch(loadMovies());
     }
   };
   return (
-    <aside className="movieSection-categories">
+    <aside>
       <select
         onChange={(e) => {
-          changeCategoryCallback(e.target.value);
+          changeSortHandler(e.target.value);
         }}
       >
         <option value="featured">featured</option>
@@ -50,4 +50,4 @@ const MovieCategories = () => {
   );
 };
 
-export default MovieCategories;
+export default MovieSortCriteria;

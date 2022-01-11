@@ -7,7 +7,7 @@ import Navigation from "../components/FilterNavigation/Navigation";
 import { moviesSorted, removeMovie } from "../store/actionCreators";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import MovieCategories from "../components/MovieCategories";
+import MovieCategories from "../components/MovieSortCriteria";
 
 const Home = () => {
   const [display, setDisplay] = useState(false);
