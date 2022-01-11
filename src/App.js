@@ -10,8 +10,8 @@ import { loadMovies, loadMoviesByTitle } from "./store/thunk";
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(loadMovies());
     dispatch(loadMoviesByTitle());
+    dispatch(loadMovies());
   }, []);
   return (
     <>

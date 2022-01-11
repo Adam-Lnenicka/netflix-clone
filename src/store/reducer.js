@@ -11,6 +11,8 @@ import {
   RESET,
   LOAD_MOVIES_BY_TITLE,
   SORT_CRITERIA,
+  LOAD_MOVIES_BY_TITLE_ASC,
+  LOAD_MOVIES_BY_DATE,
 } from "./actionTypes";
 
 const initialState = {
@@ -47,7 +49,7 @@ const rootReducer = (state = initialState, action) => {
     case SORT_CRITERIA:
       return {
         ...state,
-        sortCriteria: [action.payload],
+        sortCriteria: action.payload,
       };
     case LOAD_MOVIES:
       return {
@@ -55,6 +57,17 @@ const rootReducer = (state = initialState, action) => {
         movies: [action.payload],
       };
     case LOAD_MOVIES_BY_TITLE:
+      return {
+        ...state,
+        movies: [action.payload],
+      };
+
+    case LOAD_MOVIES_BY_TITLE_ASC:
+      return {
+        ...state,
+        movies: [action.payload],
+      };
+    case LOAD_MOVIES_BY_DATE:
       return {
         ...state,
         movies: [action.payload],

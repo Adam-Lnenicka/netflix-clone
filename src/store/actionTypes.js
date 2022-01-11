@@ -12,3 +12,5 @@ export const NEW_MOVIE = "NEW_MOVIE";
 export const ADD_MOVIE = "ADD_MOVIE";
 export const RESET = "RESET";
 export const LOAD_MOVIES_BY_TITLE = "LOAD_MOVIES_BY_TITLE";
+export const LOAD_MOVIES_BY_TITLE_ASC = "LOAD_MOVIES_BY_TITLE_ASC";
+export const LOAD_MOVIES_BY_DATE = "LOAD_MOVIES_BY_DATE";

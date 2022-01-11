@@ -7,6 +7,7 @@ import Navigation from "../components/FilterNavigation/Navigation";
 import { moviesSorted, removeMovie } from "../store/actionCreators";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import MovieCategories from "../components/MovieCategories";
 
 const Home = () => {
   const [display, setDisplay] = useState(false);
@@ -18,8 +19,8 @@ const Home = () => {
   const movieGenreFilterSelector = useSelector((state) => state.filterMovie);
   const apiMoviesArraySelector = useSelector((state) => state.movies);
   const apiMoviesArrayTitleSelector = useSelector((state) => state.movies);
-
   const movieArraySearchSelector = useSelector((state) => state.searchFilter);
+  const sortingCriteriaSelector = useSelector((state) => state.sortCriteria);
 
   const dispatch = useDispatch();
 
@@ -100,6 +101,14 @@ const Home = () => {
     setDisplay(!display);
   };
 
+  const criteriaSort = (criteria) => {
+    if (criteria === "titlejjj") {
+      return apiMoviesArrayTitleSelector;
+    } else {
+      return apiMoviesArraySelector;
+    }
+  };
+
   return (
     <>
       <div className={FilterIdSelector.title !== "" ? "hide" : "banner"}>
@@ -109,6 +118,7 @@ const Home = () => {
           close={handleDisplay}
         />
       </div>
+      <MovieCategories />
 
       <div className={FilterIdSelector.title !== "" ? "movie-details" : null}>
         <MovieBanner
@@ -137,7 +147,7 @@ const Home = () => {
       />
 
       <div className="card-layout">
-        {apiMoviesArrayTitleSelector.map((movie) =>
+        {criteriaSort(sortingCriteriaSelector).map((movie) =>
           movie
             .filter((data) => {
               if (movieArraySearchSelector === "") {
