@@ -6,6 +6,7 @@ import EditMovie from "./components/FormikMovieForms/EditMovie";
 import FormikAddMovie from "./components/FormikMovieForms/FormikAddMovie";
 import { useDispatch } from "react-redux";
 import { loadMovies } from "./store/thunk";
+import Error404 from "./components/404/Error404";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,8 @@ const App = () => {
           <Route exact path="/" element={<Home />} />
           <Route path="/add-movie" element={<FormikAddMovie />} />
           <Route path="/edit-movie" element={<EditMovie />} />
+
+          <Route path="*" element={<Error404 />} />
         </Routes>
       </Router>
     </>
