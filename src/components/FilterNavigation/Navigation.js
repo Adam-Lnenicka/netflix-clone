@@ -1,10 +1,13 @@
 import React from "react";
+import MovieSortCriteria from "../MovieSortCriteria";
 import FilterNavigation from "./FilterNavigation";
-import SortFilter from "./SortFilter";
 
 const Navigation = (prop) => {
   return (
-    <div className="flex" style={{ justifyContent: "space-between" }}>
+    <div
+      className="flex navigation"
+      style={{ justifyContent: "space-between" }}
+    >
       <FilterNavigation
         all={prop.all}
         action={prop.action}
@@ -12,7 +15,10 @@ const Navigation = (prop) => {
         drama={prop.drama}
         crime={prop.crime}
       />
-      <SortFilter />
+      <div className="flex">
+        <p>SELECT CRITERIA</p>
+        <MovieSortCriteria />
+      </div>
     </div>
   );
 };
