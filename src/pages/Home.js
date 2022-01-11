@@ -18,9 +18,7 @@ const Home = () => {
   const sortCriteriaSelector = useSelector((state) => state.sortCriteria);
   const movieGenreFilterSelector = useSelector((state) => state.filterMovie);
   const apiMoviesArraySelector = useSelector((state) => state.movies);
-  const apiMoviesArrayTitleSelector = useSelector((state) => state.movies);
   const movieArraySearchSelector = useSelector((state) => state.searchFilter);
-  const sortingCriteriaSelector = useSelector((state) => state.sortCriteria);
 
   const dispatch = useDispatch();
 
@@ -74,23 +72,6 @@ const Home = () => {
     }
   };
 
-  const magic = (criteria) => {
-    if (criteria === "h0") {
-      useEffect(() => {
-        compare();
-      }, []);
-    }
-  };
-  const compare = (a, b) => {
-    if (a.title < b.title) {
-      return -1;
-    }
-    if (a.title > b.title) {
-      return 1;
-    }
-    return 0;
-  };
-
   const addMovieHandler = (movie) => {
     setMovies((prevMovies) => {
       return [movie, ...prevMovies];
@@ -99,14 +80,6 @@ const Home = () => {
 
   const handleDisplay = () => {
     setDisplay(!display);
-  };
-
-  const criteriaSort = (criteria) => {
-    if (criteria === "titlejjj") {
-      return apiMoviesArrayTitleSelector;
-    } else {
-      return apiMoviesArraySelector;
-    }
   };
 
   return (
@@ -146,7 +119,7 @@ const Home = () => {
       />
 
       <div className="card-layout">
-        {criteriaSort(sortingCriteriaSelector).map((movie) =>
+        {apiMoviesArraySelector.map((movie) =>
           movie
             .filter((data) => {
               if (movieArraySearchSelector === "") {
