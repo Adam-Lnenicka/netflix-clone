@@ -143,7 +143,6 @@ const Home = () => {
         fantasy="Fantasy"
         drama="Drama"
         crime="Crime"
-        arrangeMovies={(event) => sortMovies(event.target.value)}
       />
 
       <div className="card-layout">
@@ -169,7 +168,6 @@ const Home = () => {
               }
               return null;
             })
-            .sort(magic("hi"))
 
             .slice(0, 10)
             .map((m) => (

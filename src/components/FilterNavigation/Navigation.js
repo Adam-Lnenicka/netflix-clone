@@ -12,7 +12,7 @@ const Navigation = (prop) => {
         drama={prop.drama}
         crime={prop.crime}
       />
-      <SortFilter arrangeMovies={prop.arrangeMovies} />
+      <SortFilter />
     </div>
   );
 };
