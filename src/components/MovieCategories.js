@@ -3,53 +3,50 @@ import { useDispatch } from "react-redux";
 import {
   loadMovies,
   loadMoviesByDate,
+  loadMoviesByRating,
   loadMoviesByTitle,
-  loadMoviesByTitleDescending,
 } from "../store/thunk";
 
 const MovieCategories = () => {
   const dispatch = useDispatch();
-  const [categories, setCategories] = useState([
-    { name: "All" },
-    { name: "Drama" },
-  ]);
+  const [categories, setCategories] = useState([]);
 
-  const changeCategoryCallback = useCallback(
-    (categoryValue) => {
-      const categoriesUpdated = categories.map((item) => {
-        if (item.name === categoryValue) {
-          return { ...item };
-        } else {
-          return { ...item };
-        }
-      });
-      setCategories(categoriesUpdated);
-
-      if (categoryValue === "title-ascending") {
-        dispatch(loadMoviesByTitle());
-      }
-      if (categoryValue === "title-descending") {
-        dispatch(loadMoviesByTitleDescending());
-      }
-      if (categoryValue === "newest") {
-        dispatch(loadMoviesByDate());
+  const changeCategoryCallback = (categoryValue) => {
+    const categoriesUpdated = categories.map((item) => {
+      if (item.name === categoryValue) {
+        return { ...item };
       } else {
-        dispatch(loadMovies());
+        return { ...item };
       }
-    },
-    [dispatch, categories]
-  );
+    });
+    setCategories(categoriesUpdated);
+    if (categoryValue === "title") {
+      dispatch(loadMoviesByTitle());
+    }
+    if (categoryValue === "date") {
+      dispatch(loadMoviesByDate());
+    }
+
+    if (categoryValue === "rating") {
+      dispatch(loadMoviesByRating());
+    }
+    if (categoryValue === "featured") {
+      dispatch(loadMovies());
+    }
+  };
   return (
-    <select
-      onChange={(e) => {
-        changeCategoryCallback(e.target.value);
-      }}
-    >
-      <option value="default">Featured</option>
-      <option value="title-ascending">title-ascending</option>
-      <option value="title-descending">title-descending</option>
-      <option value="newest">newest</option>
-    </select>
+    <aside className="movieSection-categories">
+      <select
+        onChange={(e) => {
+          changeCategoryCallback(e.target.value);
+        }}
+      >
+        <option value="featured">featured</option>
+        <option value="title">title</option>
+        <option value="date">newest</option>
+        <option value="rating">rating</option>
+      </select>
+    </aside>
   );
 };
 
