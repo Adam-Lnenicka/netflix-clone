@@ -4,14 +4,12 @@ import {
   VISIBLE,
   LOAD_MOVIES,
   FILTER_ID,
-  MOVIES_SORTED,
   REMOVE_MOVIE,
   NEW_MOVIE,
   ADD_MOVIE,
   RESET,
   LOAD_MOVIES_BY_TITLE,
   SORT_CRITERIA,
-  LOAD_MOVIES_BY_TITLE_ASC,
   LOAD_MOVIES_BY_DATE,
   LOAD_MOVIES_BY_RATING,
 } from "./actionTypes";
@@ -63,11 +61,6 @@ const rootReducer = (state = initialState, action) => {
         movies: [action.payload],
       };
 
-    case LOAD_MOVIES_BY_TITLE_ASC:
-      return {
-        ...state,
-        movies: [action.payload],
-      };
     case LOAD_MOVIES_BY_DATE:
       return {
         ...state,

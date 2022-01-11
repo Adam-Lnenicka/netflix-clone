@@ -43,16 +43,6 @@ export const loadMoviesByRating = () => async (dispatch) => {
   });
 };
 
-export const loadMoviesByTitleDescending = () => async (dispatch) => {
-  const apiLink = "http://localhost:4000/movies?sortOrder=asc&sortBy=title";
-  const apiData = await fetch(apiLink);
-  const moviesData = await apiData.json();
-  dispatch({
-    type: LOAD_MOVIES_BY_TITLE_ASC,
-    payload: moviesData.data,
-  });
-};
-
 export const loadMoviesByDate = () => async (dispatch) => {
   const apiLink =
     "http://localhost:4000/movies?sortOrder=desc&sortBy=release_date";

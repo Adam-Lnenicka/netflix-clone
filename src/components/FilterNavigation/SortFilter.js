@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { sortCriteria } from "../../store/actionCreators";
 
-const SortFilter = (prop) => {
+const SortFilter = () => {
   const dispatch = useDispatch();
   return (
     <>
