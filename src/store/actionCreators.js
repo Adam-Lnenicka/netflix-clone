@@ -3,12 +3,10 @@ import {
   FILTER_MOVIE,
   VISIBLE,
   FILTER_ID,
-  MOVIES_SORTED,
   REMOVE_MOVIE,
   ADD_MOVIE,
   NEW_MOVIE,
   RESET,
-  SORT_CRITERIA,
 } from "./actionTypes";
 
 export const resetMovie = (movie) => {
@@ -49,20 +47,6 @@ export const searchMovieTitle = (filter) => {
 export const filterMovie = (filter) => {
   return {
     type: FILTER_MOVIE,
-    payload: filter,
-  };
-};
-
-export const moviesSorted = (filter) => {
-  return {
-    type: MOVIES_SORTED,
-    payload: filter,
-  };
-};
-
-export const sortCriteria = (filter) => {
-  return {
-    type: SORT_CRITERIA,
     payload: filter,
   };
 };

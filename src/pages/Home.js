@@ -5,10 +5,7 @@ import InnerBanner from "../components/InnerBanner/InnerBanner";
 import MovieBanner from "../components/InnerBanner/MovieBanner";
 import Navigation from "../components/FilterNavigation/Navigation";
 import ErrorBoundary from "../components/ErrorBoundary";
-
-import { moviesSorted, removeMovie } from "../store/actionCreators";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import MovieCategories from "../components/MovieSortCriteria";
 
 const Home = () => {

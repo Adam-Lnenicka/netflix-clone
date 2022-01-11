@@ -9,7 +9,6 @@ import {
   ADD_MOVIE,
   RESET,
   LOAD_MOVIES_BY_TITLE,
-  SORT_CRITERIA,
   LOAD_MOVIES_BY_DATE,
   LOAD_MOVIES_BY_RATING,
 } from "./actionTypes";
@@ -19,7 +18,6 @@ const initialState = {
   searchFilter: "",
   filterMovie: "",
   movieArray: [],
-  sortCriteria: "",
   visibility: true,
   newMovie: {
     title: "",
@@ -45,11 +43,6 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SORT_CRITERIA:
-      return {
-        ...state,
-        sortCriteria: action.payload,
-      };
     case LOAD_MOVIES:
       return {
         ...state,

@@ -37,6 +37,7 @@ const MovieSortCriteria = () => {
   return (
     <aside>
       <select
+        className="sort-movies"
         onChange={(e) => {
           changeSortHandler(e.target.value);
         }}
