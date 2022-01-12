@@ -1,48 +1,48 @@
 import {
-  LOAD_MOVIES,
-  LOAD_MOVIES_BY_DATE,
-  LOAD_MOVIES_BY_RATING,
-  LOAD_MOVIES_BY_TITLE,
+  MOVIES_LOADED,
+  MOVIES_LOADED_BY_DATE,
+  MOVIES_LOADED_BY_RATING,
+  MOVIES_LOADED_BY_TITLE,
 } from "./actionTypes";
 
+const api = "http://localhost:4000/movies";
+
 export const loadMoviesThunk = () => async (dispatch) => {
-  const apiLink = "http://localhost:4000/movies?limit=100";
+  const apiLink = `${api}?limit=100`;
   const apiData = await fetch(apiLink);
   const moviesData = await apiData.json();
   dispatch({
-    type: LOAD_MOVIES,
+    type: MOVIES_LOADED,
     payload: moviesData.data,
   });
 };
 
 export const loadMoviesByTitleThunk = () => async (dispatch) => {
-  const apiLink = "http://localhost:4000/movies?sortOrder=desc&sortBy=title";
+  const apiLink = `${api}?sortOrder=desc&sortBy=title`;
   const apiData = await fetch(apiLink);
   const moviesData = await apiData.json();
   dispatch({
-    type: LOAD_MOVIES_BY_TITLE,
+    type: MOVIES_LOADED_BY_TITLE,
     payload: moviesData.data,
   });
 };
 
 export const loadMoviesByRatingThunk = () => async (dispatch) => {
-  const apiLink =
-    "http://localhost:4000/movies?sortOrder=desc&sortBy=vote_average";
+  const apiLink = `${api}?sortOrder=desc&sortBy=vote_average`;
   const apiData = await fetch(apiLink);
   const moviesData = await apiData.json();
   dispatch({
-    type: LOAD_MOVIES_BY_RATING,
+    type: MOVIES_LOADED_BY_RATING,
     payload: moviesData.data,
   });
 };
 
 export const loadMoviesByDateThunk = () => async (dispatch) => {
-  const apiLink =
-    "http://localhost:4000/movies?sortOrder=desc&sortBy=release_date";
+  const apiLink = `${api}?sortOrder=desc&sortBy=release_date`;
   const apiData = await fetch(apiLink);
   const moviesData = await apiData.json();
   dispatch({
-    type: LOAD_MOVIES_BY_DATE,
+    type: MOVIES_LOADED_BY_DATE,
     payload: moviesData.data,
   });
 };

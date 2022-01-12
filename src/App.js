@@ -20,7 +20,6 @@ const App = () => {
           <Route exact path="/" element={<Home />} />
           <Route path="/add-movie" element={<FormikAddMovie />} />
           <Route path="/edit-movie" element={<EditMovie />} />
-
           <Route path="*" element={<Error404 />} />
         </Routes>
       </Router>

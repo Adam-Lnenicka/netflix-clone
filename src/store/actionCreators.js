@@ -1,10 +1,10 @@
 import {
   SEARCH,
-  FILTER_MOVIE,
+  MOVIE_FILTER,
   VISIBLE,
   FILTER_ID,
-  REMOVE_MOVIE,
-  ADD_MOVIE,
+  MOVIE_REMOVED,
+  MOVIE_ADDED,
   NEW_MOVIE,
   RESET,
 } from "./actionTypes";
@@ -18,7 +18,7 @@ export const resetMovie = (movie) => {
 
 export const removeMovie = (movieId) => {
   return {
-    type: REMOVE_MOVIE,
+    type: MOVIE_REMOVED,
     payload: movieId,
   };
 };
@@ -32,7 +32,7 @@ export const newMovie = (movie) => {
 
 export const addMovie = (movie) => {
   return {
-    type: ADD_MOVIE,
+    type: MOVIE_ADDED,
     payload: movie,
   };
 };
@@ -46,7 +46,7 @@ export const searchMovieTitle = (filter) => {
 
 export const filterMovie = (filter) => {
   return {
-    type: FILTER_MOVIE,
+    type: MOVIE_FILTER,
     payload: filter,
   };
 };

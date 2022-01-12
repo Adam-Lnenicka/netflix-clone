@@ -1,16 +1,16 @@
 import {
   SEARCH,
-  FILTER_MOVIE,
+  MOVIE_FILTER,
   VISIBLE,
-  LOAD_MOVIES,
+  MOVIES_LOADED,
   FILTER_ID,
-  REMOVE_MOVIE,
+  MOVIE_REMOVED,
   NEW_MOVIE,
-  ADD_MOVIE,
+  MOVIE_ADDED,
   RESET,
-  LOAD_MOVIES_BY_TITLE,
-  LOAD_MOVIES_BY_DATE,
-  LOAD_MOVIES_BY_RATING,
+  MOVIES_LOADED_BY_TITLE,
+  MOVIES_LOADED_BY_DATE,
+  MOVIES_LOADED_BY_RATING,
 } from "./actionTypes";
 
 const initialState = {
@@ -43,10 +43,10 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    case LOAD_MOVIES:
-    case LOAD_MOVIES_BY_TITLE:
-    case LOAD_MOVIES_BY_DATE:
-    case LOAD_MOVIES_BY_RATING:
+    case MOVIES_LOADED:
+    case MOVIES_LOADED_BY_TITLE:
+    case MOVIES_LOADED_BY_DATE:
+    case MOVIES_LOADED_BY_RATING:
       return {
         ...state,
         movies: [action.payload],
@@ -58,7 +58,7 @@ const rootReducer = (state = initialState, action) => {
         movies: [[...state.movies[0], (action.payload = {})]],
       };
 
-    case REMOVE_MOVIE:
+    case MOVIE_REMOVED:
       const moviesUpdated = state.movies[0].filter((movie) => {
         return movie.id !== action.payload;
       });
@@ -71,12 +71,12 @@ const rootReducer = (state = initialState, action) => {
         newMovie: action.payload,
       };
 
-    case ADD_MOVIE:
+    case MOVIE_ADDED:
       return {
         ...state,
         movies: [[...state.movies[0].unshift(action.payload)]],
       };
-    case FILTER_MOVIE:
+    case MOVIE_FILTER:
       return {
         ...state,
         filterMovie: action.payload,
