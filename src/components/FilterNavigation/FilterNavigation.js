@@ -2,17 +2,15 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { filterMovie } from "../../store/actionCreators";
 
-const FilterNavigation = (prop) => {
+const FilterNavigation = () => {
   const dispatch = useDispatch();
   return (
     <div className="filter-navigation">
-      <button onClick={() => dispatch(filterMovie(prop.all))}>All</button>
-      <button onClick={() => dispatch(filterMovie(prop.fantasy))}>
-        Fantasy
-      </button>
-      <button onClick={() => dispatch(filterMovie(prop.drama))}>Drama</button>
-      <button onClick={() => dispatch(filterMovie(prop.crime))}>Crime</button>
-      <button onClick={() => dispatch(filterMovie(prop.action))}>Action</button>
+      <button onClick={() => dispatch(filterMovie("All"))}>All</button>
+      <button onClick={() => dispatch(filterMovie("Fantasy"))}>Fantasy</button>
+      <button onClick={() => dispatch(filterMovie("Drama"))}>Drama</button>
+      <button onClick={() => dispatch(filterMovie("Comedy"))}>Crime</button>
+      <button onClick={() => dispatch(filterMovie("Action"))}>Action</button>
     </div>
   );
 };

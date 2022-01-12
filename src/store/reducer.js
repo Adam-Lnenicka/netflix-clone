@@ -44,26 +44,14 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_MOVIES:
-      return {
-        ...state,
-        movies: [action.payload],
-      };
     case LOAD_MOVIES_BY_TITLE:
-      return {
-        ...state,
-        movies: [action.payload],
-      };
-
     case LOAD_MOVIES_BY_DATE:
-      return {
-        ...state,
-        movies: [action.payload],
-      };
     case LOAD_MOVIES_BY_RATING:
       return {
         ...state,
         movies: [action.payload],
       };
+
     case RESET:
       return {
         ...state,

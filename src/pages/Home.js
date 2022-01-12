@@ -54,13 +54,7 @@ const Home = () => {
           }
         />
       </div>
-      <Navigation
-        all=""
-        action="Action"
-        fantasy="Fantasy"
-        drama="Drama"
-        crime="Crime"
-      />
+      <Navigation />
       <ErrorBoundary>
         <div className="card-layout">
           {apiMoviesArraySelector.map((movie) =>
