@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchMovieTitle } from "../../store/actionCreators";
 import { Link } from "react-router-dom";
@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const InnerBanner = () => {
   const dispatch = useDispatch();
+  const [searchTerm, setSearchTerm] = useState("");
   return (
     <div className="inner-banner">
       <Link to="/add-movie">
@@ -17,9 +18,20 @@ const InnerBanner = () => {
         <input
           type="text"
           placeholder="What do you want to watch"
-          onChange={(e) => dispatch(searchMovieTitle(e.target.value))}
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+            console.log(searchTerm);
+          }}
+          // onChange={(e) => dispatch(searchMovieTitle(e.target.value))}
         />
-        <button className="button-main">search</button>
+        <button
+          className="button-main"
+          onClick={() => {
+            dispatch(searchMovieTitle(searchTerm));
+          }}
+        >
+          search
+        </button>
       </div>
     </div>
   );

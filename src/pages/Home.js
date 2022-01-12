@@ -86,7 +86,6 @@ const Home = () => {
                 return null;
               })
 
-              .slice(0, 10)
               .map((m) => (
                 <MovieCard
                   key={m.id}
@@ -107,6 +106,7 @@ const Home = () => {
                   }
                 />
               ))
+              .slice(0, 10)
           )}
         </div>
       </ErrorBoundary>
