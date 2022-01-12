@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import {
-  loadMovies,
-  loadMoviesByDate,
-  loadMoviesByRating,
-  loadMoviesByTitle,
+  loadMoviesThunk,
+  loadMoviesByDateThunk,
+  loadMoviesByRatingThunk,
+  loadMoviesByTitleThunk,
 } from "../store/thunk";
 
 const MovieSortCriteria = () => {
@@ -21,17 +21,17 @@ const MovieSortCriteria = () => {
     });
     setSortCriteria(sortCriteriaUpdated);
     if (sortValue === "title") {
-      dispatch(loadMoviesByTitle());
+      dispatch(loadMoviesByTitleThunk());
     }
     if (sortValue === "date") {
-      dispatch(loadMoviesByDate());
+      dispatch(loadMoviesByDateThunk());
     }
 
     if (sortValue === "rating") {
-      dispatch(loadMoviesByRating());
+      dispatch(loadMoviesByRatingThunk());
     }
     if (sortValue === "featured") {
-      dispatch(loadMovies());
+      dispatch(loadMoviesThunk());
     }
   };
   return (
