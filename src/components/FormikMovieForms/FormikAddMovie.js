@@ -52,8 +52,12 @@ const FormikAddMovie = () => {
 
   return (
     <div className="form">
+      <div className="exit">
+        <Link to="/">
+          <button className="exit-button">X</button>
+        </Link>
+      </div>
       <h1>Add Movie</h1>
-      <Link to="/">Close</Link>
 
       <Formik
         initialValues={{

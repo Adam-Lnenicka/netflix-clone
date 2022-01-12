@@ -10,7 +10,7 @@ const InnerBanner = () => {
   return (
     <div className="inner-banner">
       <Link to="/add-movie">
-        <div className="button-main">Add Movie</div>
+        <div className="button-main add-button">Add Movie</div>
       </Link>
 
       <h1>FIND YOUR MOVIE</h1>
