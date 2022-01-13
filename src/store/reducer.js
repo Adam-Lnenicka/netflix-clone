@@ -17,16 +17,6 @@ const initialState = {
   searchFilter: "",
   filterMovie: "",
   movieArray: [],
-  newMovie: {
-    title: "",
-    poster_path: "",
-    vote_average: "",
-    tagline: "",
-    genres: "",
-    overview: "",
-    release_date: "",
-    runtime: "",
-  },
   id: {
     title: "",
     poster_path: "",
@@ -62,12 +52,6 @@ const rootReducer = (state = initialState, action) => {
       });
 
       return { ...state, movies: [moviesUpdated] };
-
-    case NEW_MOVIE:
-      return {
-        ...state,
-        newMovie: action.payload,
-      };
 
     case MOVIE_ADDED:
       return {

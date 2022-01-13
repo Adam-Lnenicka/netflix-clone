@@ -6,7 +6,6 @@ import {
   addMovieActionCreator,
   resetMovieActionCreator,
 } from "../../store/actionCreators";
-import { loadMovies } from "../../store/thunk";
 import { Link } from "react-router-dom";
 
 const MovieSchema = Yup.object().shape({
@@ -44,13 +43,6 @@ const FormikAddMovie = () => {
   const handleReset = (values) => {
     values.genres = [values.genres];
     values.title = "";
-
-    // values.id = Math.random().toString();
-    // console.log(values);
-    // console.log("before :" + movies);
-
-    // dispatch(addMovieActionCreator(values));
-    // console.log("after :" + movies);
   };
 
   return (
