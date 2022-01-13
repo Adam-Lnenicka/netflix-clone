@@ -1,6 +1,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addMovie, newMovie, resetMovie } from "../../store/actionCreators";
+import {
+  addMovie,
+  newMovie,
+  addMovieActionCreator,
+  resetMovieActionCreator,
+} from "../../store/actionCreators";
 
 const MovieForm = (props) => {
   const MovieTitleSelector = useSelector((state) => state.newMovie.title);
@@ -24,7 +29,10 @@ const MovieForm = (props) => {
         <button onClick={props.onCancel}>X</button>
         <h1>Add Movie</h1>
 
-        <form onSubmit={() => dispatch(addMovie())} className="form__content">
+        <form
+          onSubmit={() => dispatch(addMovieActionCreator())}
+          className="form__content"
+        >
           <div className="form__contact-field-box">
             <div>
               <label>title</label>
@@ -113,7 +121,7 @@ const MovieForm = (props) => {
               <button
                 className="button-secondary"
                 onClick={() => {
-                  dispatch(resetMovie());
+                  dispatch(resetMovieActionCreator());
                 }}
               >
                 reset

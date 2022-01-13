@@ -1,8 +1,12 @@
 import React from "react";
+import { useParams } from "react-router";
 
 const MovieBanner = (prop) => {
+  const { id } = useParams();
+
   return (
     <div className="movie-details__container">
+      Movie Banner
       <img
         src={prop.poster_path}
         alt={prop.title}

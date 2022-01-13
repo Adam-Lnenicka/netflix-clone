@@ -9,14 +9,14 @@ import {
   RESET,
 } from "./actionTypes";
 
-export const resetMovie = (movie) => {
+export const resetMovieActionCreator = (movie) => {
   return {
     type: RESET,
     payload: movie,
   };
 };
 
-export const removeMovie = (movieId) => {
+export const removeMovieActionCreator = (movieId) => {
   return {
     type: MOVIE_REMOVED,
     payload: movieId,
@@ -30,14 +30,14 @@ export const newMovie = (movie) => {
   };
 };
 
-export const addMovie = (movie) => {
+export const addMovieActionCreator = (movie) => {
   return {
     type: MOVIE_ADDED,
     payload: movie,
   };
 };
 
-export const searchMovieTitle = (filter) => {
+export const searchMovieTitleCreator = (filter) => {
   return {
     type: SEARCH,
     payload: filter,

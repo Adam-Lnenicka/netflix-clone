@@ -29,6 +29,7 @@ const Home = () => {
 
   return (
     <>
+      <input type="date"></input>
       <div className={FilterIdSelector.title !== "" ? "hide" : "banner"}>
         <InnerBanner
           // searchTerm={searchTerm}

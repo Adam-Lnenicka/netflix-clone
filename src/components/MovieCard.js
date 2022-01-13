@@ -1,10 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { filterId, removeMovie } from "../store/actionCreators";
+import { filterId, removeMovieActionCreator } from "../store/actionCreators";
+import { Link } from "react-router-dom";
 
 const MovieCard = (prop) => {
   const dispatch = useDispatch();
+
   return (
     <div
       className="card"
@@ -35,10 +37,12 @@ const MovieCard = (prop) => {
           <p> {prop.genres}</p>
         </div>
         <button>{prop.release_date.slice(0, 4)}</button>
-        <button onClick={() => dispatch(removeMovie(prop.id))}>
+        <button onClick={() => dispatch(removeMovieActionCreator(prop.id))}>
           remove movie
         </button>{" "}
       </div>
+
+      <Link to={`/movie/${prop.id}`}>Profile Info</Link>
     </div>
   );
 };

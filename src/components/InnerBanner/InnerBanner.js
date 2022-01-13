@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { searchMovieTitle } from "../../store/actionCreators";
+import { searchMovieTitleCreator } from "../../store/actionCreators";
 import { Link } from "react-router-dom";
 // import NewMovie from "../NewMovie/NewMovie";
 
@@ -22,12 +22,12 @@ const InnerBanner = () => {
             setSearchTerm(e.target.value);
             console.log(searchTerm);
           }}
-          // onChange={(e) => dispatch(searchMovieTitle(e.target.value))}
+          // onChange={(e) => dispatch(searchMovieTitleCreator(e.target.value))}
         />
         <button
           className="button-main"
           onClick={() => {
-            dispatch(searchMovieTitle(searchTerm));
+            dispatch(searchMovieTitleCreator(searchTerm));
           }}
         >
           search

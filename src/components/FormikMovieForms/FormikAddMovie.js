@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import { addMovie, removeMovie, resetMovie } from "../../store/actionCreators";
+import {
+  addMovieActionCreator,
+  resetMovieActionCreator,
+} from "../../store/actionCreators";
 import { loadMovies } from "../../store/thunk";
 import { Link } from "react-router-dom";
 
@@ -34,7 +37,7 @@ const FormikAddMovie = () => {
     console.log(values);
     console.log("before :" + movies);
 
-    dispatch(addMovie(values));
+    dispatch(addMovieActionCreator(values));
     console.log("after :" + movies);
   };
 
@@ -46,7 +49,7 @@ const FormikAddMovie = () => {
     // console.log(values);
     // console.log("before :" + movies);
 
-    // dispatch(addMovie(values));
+    // dispatch(addMovieActionCreator(values));
     // console.log("after :" + movies);
   };
 
