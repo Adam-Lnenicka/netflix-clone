@@ -6,7 +6,6 @@ const MovieBanner = (prop) => {
 
   return (
     <div className="movie-details__container">
-      Movie Banner
       <img
         src={prop.poster_path}
         alt={prop.title}

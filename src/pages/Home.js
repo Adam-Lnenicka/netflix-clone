@@ -8,37 +8,18 @@ import ErrorBoundary from "../components/ErrorBoundary";
 import { useSelector } from "react-redux";
 
 const Home = () => {
-  const [display, setDisplay] = useState(false);
-  // const [movies, setMovies] = useState([]);
-  // const [searchTerm, setSearchTerm] = useState("");
-
   const FilterIdSelector = useSelector((state) => state.id);
   const movieGenreFilterSelector = useSelector((state) => state.filterMovie);
   const apiMoviesArraySelector = useSelector((state) => state.movies);
   const movieArraySearchSelector = useSelector((state) => state.searchFilter);
 
-  // const addMovieHandler = (movie) => {
-  //   setMovies((prevMovies) => {
-  //     return [movie, ...prevMovies];
-  //   });
-  // };
-
-  const handleDisplay = () => {
-    setDisplay(!display);
-  };
-
   return (
     <>
-      <input type="date"></input>
-      <div className={FilterIdSelector.title !== "" ? "hide" : "banner"}>
-        <InnerBanner
-          // searchTerm={searchTerm}
-          // onAddMovie={addMovieHandler}
-          close={handleDisplay}
-        />
+      <div className="banner">
+        <InnerBanner />
       </div>
 
-      <div className={FilterIdSelector.title !== "" ? "movie-details" : null}>
+      <div className="movie-details">
         <MovieBanner
           title={FilterIdSelector.title}
           vote_average={FilterIdSelector.vote_average}

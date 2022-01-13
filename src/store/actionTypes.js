@@ -1,7 +1,6 @@
 export const SEARCH = "SEARCH";
 export const MOVIE_FILTER = "MOVIE_FILTER";
 export const MOVIE_ARRAY = "MOVIE_ARRAY";
-export const VISIBLE = "VISIBLE";
 export const MOVIES_LOADED = "MOVIES_LOADED";
 export const FILTER_ID = "FILTER_ID";
 export const MOVIE_REMOVED = "MOVIE_REMOVED";

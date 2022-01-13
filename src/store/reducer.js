@@ -1,7 +1,6 @@
 import {
   SEARCH,
   MOVIE_FILTER,
-  VISIBLE,
   MOVIES_LOADED,
   FILTER_ID,
   MOVIE_REMOVED,
@@ -18,7 +17,6 @@ const initialState = {
   searchFilter: "",
   filterMovie: "",
   movieArray: [],
-  visibility: true,
   newMovie: {
     title: "",
     poster_path: "",
@@ -91,12 +89,6 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         searchFilter: action.payload,
-      };
-
-    case VISIBLE:
-      return {
-        ...state,
-        visibility: !state.visibility,
       };
     default:
       return state;

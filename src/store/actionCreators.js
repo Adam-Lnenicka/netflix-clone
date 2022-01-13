@@ -1,7 +1,6 @@
 import {
   SEARCH,
   MOVIE_FILTER,
-  VISIBLE,
   FILTER_ID,
   MOVIE_REMOVED,
   MOVIE_ADDED,
@@ -55,11 +54,5 @@ export const filterId = (filter) => {
   return {
     type: FILTER_ID,
     payload: filter,
-  };
-};
-
-export const visibility = () => {
-  return {
-    type: VISIBLE,
   };
 };
