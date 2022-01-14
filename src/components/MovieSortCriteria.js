@@ -20,18 +20,18 @@ const MovieSortCriteria = () => {
       }
     });
     setSortCriteria(sortCriteriaUpdated);
-    if (sortValue === "title") {
-      dispatch(loadMoviesByTitleThunk());
-    }
-    if (sortValue === "date") {
-      dispatch(loadMoviesByDateThunk());
-    }
-
-    if (sortValue === "rating") {
-      dispatch(loadMoviesByRatingThunk());
-    }
-    if (sortValue === "featured") {
-      dispatch(loadMoviesThunk());
+    switch (sortValue) {
+      case "title":
+        dispatch(loadMoviesByTitleThunk());
+        break;
+      case "date":
+        dispatch(loadMoviesByDateThunk());
+        break;
+      case "rating":
+        dispatch(loadMoviesByRatingThunk());
+        break;
+      case "featured":
+        dispatch(loadMoviesThunk());
     }
   };
   return (

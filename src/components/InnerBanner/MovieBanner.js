@@ -22,7 +22,9 @@ const MovieBanner = () => {
       />
       <div>
         <div className="flex">
-          <Link to="/">X</Link>
+          <Link to="/" className="exit-button">
+            X
+          </Link>
           <h2> {thismovie.map((m) => m.title)}</h2>
           <span> {thismovie.map((m) => m.vote_average)}</span>
         </div>
