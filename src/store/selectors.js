@@ -1,9 +1,26 @@
 import { useSelector } from "react-redux";
 
-export const movieGenreFilterSelector = useSelector(
+export const useMovieGenreFilterSelector = useSelector(
   (state) => state.filterMovie
 );
-export const apiMoviesArraySelector = useSelector((state) => state.movies);
-export const movieArraySearchSelector = useSelector(
+
+export const useMovieArraySearchSelector = useSelector(
   (state) => state.searchFilter
 );
+
+// const useMovieTitleSelector = () =>
+//   useSelector((state) => state.newMovie.title);
+// const useMovieTitleSelector = () =>
+//   useSelector((state) => state.newMovie.title);
+// const useMovieTitleSelector = () =>
+//   useSelector((state) => state.newMovie.title);
+// const useMovieTitleSelector = () =>
+//   useSelector((state) => state.newMovie.title);
+// const useMovieTitleSelector = () =>
+//   useSelector((state) => state.newMovie.title);
+// const useMovieTitleSelector = () =>
+//   useSelector((state) => state.newMovie.title);
+// const useMovieTitleSelector = () =>
+//   useSelector((state) => state.newMovie.title);
+// const useMovieTitleSelector = () =>
+//   useSelector((state) => state.newMovie.title);

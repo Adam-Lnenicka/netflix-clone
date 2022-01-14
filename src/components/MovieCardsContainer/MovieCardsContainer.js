@@ -6,6 +6,7 @@ const MovieCardsContainer = () => {
   const movieGenreFilterSelector = useSelector((state) => state.filterMovie);
   const apiMoviesArraySelector = useSelector((state) => state.movies);
   const movieArraySearchSelector = useSelector((state) => state.searchFilter);
+
   return (
     <div className="card-layout">
       {apiMoviesArraySelector.map((movie) =>
