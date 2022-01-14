@@ -4,7 +4,6 @@ import {
   FILTER_ID,
   MOVIE_REMOVED,
   MOVIE_ADDED,
-  NEW_MOVIE,
   RESET,
 } from "./actionTypes";
 
@@ -19,13 +18,6 @@ export const removeMovieActionCreator = (movieId) => {
   return {
     type: MOVIE_REMOVED,
     payload: movieId,
-  };
-};
-
-export const newMovie = (movie) => {
-  return {
-    type: NEW_MOVIE,
-    payload: movie,
   };
 };
 

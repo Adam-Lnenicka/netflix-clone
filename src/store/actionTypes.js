@@ -4,7 +4,6 @@ export const MOVIE_ARRAY = "MOVIE_ARRAY";
 export const MOVIES_LOADED = "MOVIES_LOADED";
 export const FILTER_ID = "FILTER_ID";
 export const MOVIE_REMOVED = "MOVIE_REMOVED";
-export const NEW_MOVIE = "NEW_MOVIE";
 export const MOVIE_ADDED = "MOVIE_ADDED";
 export const RESET = "RESET";
 export const MOVIES_LOADED_BY_TITLE = "MOVIES_LOADED_BY_TITLE";
