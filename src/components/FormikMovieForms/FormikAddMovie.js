@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   addMovieActionCreator,
   resetMovieActionCreator,
@@ -27,17 +27,14 @@ const MovieSchema = Yup.object().shape({
 const FormikAddMovie = () => {
   const [submitted, setSubmitted] = useState(false);
   const dispatch = useDispatch();
-  const movies = useSelector((state) => state.movies);
 
   const handleSubmit = (values) => {
     setSubmitted(true);
     values.genres = [values.genres];
     values.id = Math.random().toString();
     console.log(values);
-    console.log("before :" + movies);
 
     dispatch(addMovieActionCreator(values));
-    console.log("after :" + movies);
   };
 
   const handleReset = (values) => {

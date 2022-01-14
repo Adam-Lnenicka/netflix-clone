@@ -1,12 +1,12 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import { useApiMoviesArraySelector } from "../../store/selectors";
 
 const MovieBanner = () => {
   const { movieId } = useParams();
-  const apiMoviesArraySelector = useSelector((state) => state.movies);
-  const thisMovie = apiMoviesArraySelector.map((movie) =>
+  const apiMoviesArray = useApiMoviesArraySelector();
+  const thisMovie = apiMoviesArray.map((movie) =>
     movie.find((movie) => movie.id == movieId)
   );
 
