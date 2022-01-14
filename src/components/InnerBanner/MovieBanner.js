@@ -18,7 +18,7 @@ const moviesData = [
   {
     name: "Weeding",
     price: 50,
-    id: 3,
+    id: 337167,
     description: "Don't let the invaders ruin your yard.",
   },
   {
@@ -33,20 +33,23 @@ const MovieBanner = () => {
   const { movieId } = useParams();
   // const movieId = 3;
 
-  // const thismovie = moviesData.find((movie) => movie.id === movieId);
+  const thismovie = moviesData.find((movie) => movie.id == movieId);
 
-  const apiMoviesArraySelector = useSelector((state) => state.movies);
+  // const apiMoviesArraySelector = useSelector((state) => state.movies);
 
-  const thismovie = apiMoviesArraySelector.map((movie) =>
-    movie.find((movie) => movie.id === movieId)
-  );
+  // const thismovie = apiMoviesArraySelector.map((movie) =>
+  //   movie.find((movie) => movie.id === movieId)
+  // );
 
   return (
     <div className="movie-details__container">
       <p>{thismovie.id}</p>
-      {/* <p>{thismovie.description}</p> */}
+      <p>{thismovie.description}</p>
       {console.log(`movieId ${thismovie}`)}
       bhjbj
+      <br />
+      <br />
+      <br />
       {movieId}
       {/* <h3>{thismovie.id} </h3>
       <h3>{thismovie.poster_path} </h3> */}
