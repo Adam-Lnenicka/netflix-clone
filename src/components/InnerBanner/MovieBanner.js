@@ -13,6 +13,7 @@ const MovieBanner = () => {
   return (
     <div className="movie-details__container">
       <img
+        className="movie-details__image"
         src={thisMovie.map((m) => m.poster_path)}
         alt={thisMovie.map((m) => m.title)}
         onError={(e) =>
@@ -26,7 +27,10 @@ const MovieBanner = () => {
             X
           </Link>
           <h2> {thisMovie.map((m) => m.title)}</h2>
-          <span> {thisMovie.map((m) => m.vote_average)}</span>
+          <span className="movie-details__rating">
+            {" "}
+            {thisMovie.map((m) => m.vote_average)}
+          </span>
         </div>
         <p>{thisMovie.map((m) => m.tagline)}</p>
         <div className="flex movie-details__date-runtime">

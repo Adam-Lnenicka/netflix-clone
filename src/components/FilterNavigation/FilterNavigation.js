@@ -4,24 +4,8 @@ import { filterMovie } from "../../store/actionCreators";
 
 const FilterNavigation = () => {
   const dispatch = useDispatch();
-  const MOVIE_GENRES = ["Fantasy", "Drama", "Comedy", "Action"];
   return (
     <div className="filter-navigation">
-      {/* <button
-        onClick={() =>
-          dispatch(
-            filterMovie(
-              MOVIE_GENRES.map((g) => {
-                g;
-              })
-            )
-          )
-        }
-      >
-        {MOVIE_GENRES.map((g) => {
-          g;
-        })}
-      </button> */}
       <button onClick={() => dispatch(filterMovie("All"))}>All</button>
       <button onClick={() => dispatch(filterMovie("Drama"))}>Drama</button>
       <button onClick={() => dispatch(filterMovie("Fantasy"))}>Fantasy</button>

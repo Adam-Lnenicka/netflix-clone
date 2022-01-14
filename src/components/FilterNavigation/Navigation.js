@@ -4,10 +4,7 @@ import FilterNavigation from "./FilterNavigation";
 
 const Navigation = () => {
   return (
-    <div
-      className="flex navigation"
-      style={{ justifyContent: "space-between" }}
-    >
+    <div className="flex navigation">
       <FilterNavigation />
       <div className="flex">
         <p>SELECT CRITERIA</p>
