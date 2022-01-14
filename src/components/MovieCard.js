@@ -25,24 +25,24 @@ const MovieCard = (prop) => {
         )
       }
     >
-      <img
-        className="card-image"
-        src={prop.poster_path}
-        alt={prop.title}
-        onError={prop.broken}
-      />
-      <div className="card-details">
-        <div>
-          <h4>{prop.title}</h4>
-          <p> {prop.genres}</p>
+      <Link to={`/movie/${prop.id}`}>
+        <img
+          className="card-image"
+          src={prop.poster_path}
+          alt={prop.title}
+          onError={prop.broken}
+        />
+        <div className="card-details">
+          <div>
+            <h4>{prop.title}</h4>
+            <p> {prop.genres}</p>
+          </div>
+          <button>{prop.release_date.slice(0, 4)}</button>
+          <button onClick={() => dispatch(removeMovieActionCreator(prop.id))}>
+            remove movie
+          </button>{" "}
         </div>
-        <button>{prop.release_date.slice(0, 4)}</button>
-        <button onClick={() => dispatch(removeMovieActionCreator(prop.id))}>
-          remove movie
-        </button>{" "}
-      </div>
-
-      <Link to={`/movie/${prop.id}`}>Profile Info</Link>
+      </Link>
     </div>
   );
 };
