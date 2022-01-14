@@ -4,25 +4,32 @@ import { useDispatch } from "react-redux";
 import { removeMovieActionCreator } from "../store/actionCreators";
 import { Link } from "react-router-dom";
 
-const MovieCard = (prop) => {
+const MovieCard = ({
+  id,
+  poster_path,
+  title,
+  broken,
+  release_date,
+  genres,
+}) => {
   const dispatch = useDispatch();
 
   return (
     <div className="card">
-      <Link to={`/movie/${prop.id}`}>
+      <Link to={`/movie/${id}`}>
         <img
           className="card-image"
-          src={prop.poster_path}
-          alt={prop.title}
-          onError={prop.broken}
+          src={poster_path}
+          alt={title}
+          onError={broken}
         />
         <div className="card-details">
           <div>
-            <h4>{prop.title}</h4>
-            <p> {prop.genres}</p>
+            <h4>{title}</h4>
+            <p> {genres}</p>
           </div>
-          <button>{prop.release_date.slice(0, 4)}</button>
-          <button onClick={() => dispatch(removeMovieActionCreator(prop.id))}>
+          <button>{release_date.slice(0, 4)}</button>
+          <button onClick={() => dispatch(removeMovieActionCreator(id))}>
             remove movie
           </button>{" "}
         </div>
