@@ -1,32 +1,35 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import {
+  useApiMoviesArraySelector,
+  useMovieArraySearchSelector,
+  useMovieGenreFilterSelector,
+} from "../../store/selectors";
 import MovieCard from "../MovieCard";
 
 const MovieCardsContainer = () => {
-  const movieGenreFilterSelector = useSelector((state) => state.filterMovie);
-  const apiMoviesArraySelector = useSelector((state) => state.movies);
-  const movieArraySearchSelector = useSelector((state) => state.searchFilter);
+  const apiMoviesArray = useApiMoviesArraySelector();
+  const movieGenreFilter = useMovieGenreFilterSelector();
+  const movieArraySearch = useMovieArraySearchSelector();
 
   return (
     <div className="card-layout">
-      {apiMoviesArraySelector.map((movie) =>
+      {apiMoviesArray.map((movie) =>
         movie
           .filter((data) => {
-            if (movieArraySearchSelector === "") {
+            if (movieArraySearch === "") {
               return data;
             } else if (
-              data.title
-                .toLowerCase()
-                .includes(movieArraySearchSelector.toLowerCase())
+              data.title.toLowerCase().includes(movieArraySearch.toLowerCase())
             ) {
               return data;
             }
             return null;
           })
           .filter((data) => {
-            if (movieGenreFilterSelector === "") {
+            if (movieGenreFilter === "") {
               return data;
-            } else if (data.genres.includes(movieGenreFilterSelector)) {
+            } else if (data.genres.includes(movieGenreFilter)) {
               return data;
             }
             return null;
