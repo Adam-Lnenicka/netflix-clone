@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 
 const MovieBanner = () => {
   const { movieId } = useParams();
@@ -21,6 +22,7 @@ const MovieBanner = () => {
       />
       <div>
         <div className="flex">
+          <Link to="/">X</Link>
           <h2> {thismovie.map((m) => m.title)}</h2>
           <span> {thismovie.map((m) => m.vote_average)}</span>
         </div>
