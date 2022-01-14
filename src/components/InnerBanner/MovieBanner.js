@@ -4,9 +4,7 @@ import { useParams } from "react-router";
 
 const MovieBanner = () => {
   const { movieId } = useParams();
-
   const apiMoviesArraySelector = useSelector((state) => state.movies);
-
   const thismovie = apiMoviesArraySelector.map((movie) =>
     movie.find((movie) => movie.id == movieId)
   );

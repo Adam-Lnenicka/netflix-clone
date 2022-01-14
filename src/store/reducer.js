@@ -2,7 +2,6 @@ import {
   SEARCH,
   MOVIE_FILTER,
   MOVIES_LOADED,
-  FILTER_ID,
   MOVIE_REMOVED,
   MOVIE_ADDED,
   RESET,
@@ -16,16 +15,6 @@ const initialState = {
   searchFilter: "",
   filterMovie: "",
   movieArray: [],
-  id: {
-    title: "",
-    poster_path: "",
-    vote_average: "",
-    tagline: "",
-    genres: "",
-    overview: "",
-    release_date: "",
-    runtime: "",
-  },
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -61,11 +50,6 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         filterMovie: action.payload,
-      };
-    case FILTER_ID:
-      return {
-        ...state,
-        id: action.payload,
       };
 
     case SEARCH:

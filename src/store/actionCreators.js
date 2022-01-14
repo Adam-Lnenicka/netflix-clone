@@ -1,7 +1,6 @@
 import {
   SEARCH,
   MOVIE_FILTER,
-  FILTER_ID,
   MOVIE_REMOVED,
   MOVIE_ADDED,
   RESET,
@@ -38,13 +37,6 @@ export const searchMovieTitleCreator = (filter) => {
 export const filterMovie = (filter) => {
   return {
     type: MOVIE_FILTER,
-    payload: filter,
-  };
-};
-
-export const filterId = (filter) => {
-  return {
-    type: FILTER_ID,
     payload: filter,
   };
 };

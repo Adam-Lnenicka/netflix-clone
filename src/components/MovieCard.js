@@ -1,30 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { filterId, removeMovieActionCreator } from "../store/actionCreators";
+import { removeMovieActionCreator } from "../store/actionCreators";
 import { Link } from "react-router-dom";
 
 const MovieCard = (prop) => {
   const dispatch = useDispatch();
 
   return (
-    <div
-      className="card"
-      onClick={() =>
-        dispatch(
-          filterId({
-            title: prop.title,
-            poster_path: prop.poster_path,
-            vote_average: prop.vote_average,
-            tagline: prop.tagline,
-            genres: prop.genres,
-            overview: prop.overview,
-            release_date: prop.release_date,
-            runtime: prop.runtime,
-          })
-        )
-      }
-    >
+    <div className="card">
       <Link to={`/movie/${prop.id}`}>
         <img
           className="card-image"
