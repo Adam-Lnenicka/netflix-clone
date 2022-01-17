@@ -46,3 +46,24 @@ export const loadMoviesByDateThunk = () => async (dispatch) => {
     payload: moviesData.data,
   });
 };
+
+// export const loadFilteredMoviesThunk = () => async (dispatch) => {
+//   const apiLink = `${api}?filter=${filter}`;
+//   const apiData = await fetch(apiLink);
+//   const moviesData = await apiData.json();
+//   dispatch({
+//     type: MOVIES_LOADED,
+//     payload: moviesData.data,
+//   });
+// };
+
+// export const searchMoviesThunk = () => async (dispatch) => {
+//   const apiLink = `${api}?search=${parameter}&searchBy=title`;
+
+//   const apiData = await fetch(apiLink);
+//   const moviesData = await apiData.json();
+//   dispatch({
+//     type: MOVIES_LOADED_BY_DATE,
+//     payload: moviesData.data,
+//   });
+// };
