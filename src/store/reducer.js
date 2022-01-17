@@ -17,26 +17,26 @@ const initialState = {
   movieArray: [],
 };
 
-const rootReducer = (state = initialState, action) => {
-  switch (action.type) {
+const rootReducer = (state = initialState, { type, payload }) => {
+  switch (type) {
     case MOVIES_LOADED:
     case MOVIES_LOADED_BY_TITLE:
     case MOVIES_LOADED_BY_DATE:
     case MOVIES_LOADED_BY_RATING:
       return {
         ...state,
-        movies: [action.payload],
+        movies: [payload],
       };
 
     case RESET:
       return {
         ...state,
-        movies: [[...state.movies[0], (action.payload = {})]],
+        movies: [[...state.movies[0], (payload = {})]],
       };
 
     case MOVIE_REMOVED:
       const moviesUpdated = state.movies[0].filter((movie) => {
-        return movie.id !== action.payload;
+        return movie.id !== payload;
       });
 
       return { ...state, movies: [moviesUpdated] };
@@ -44,18 +44,18 @@ const rootReducer = (state = initialState, action) => {
     case MOVIE_ADDED:
       return {
         ...state,
-        movies: [[...state.movies[0].unshift(action.payload)]],
+        movies: [[...state.movies[0].unshift(payload)]],
       };
     case MOVIE_FILTER:
       return {
         ...state,
-        filterMovie: action.payload,
+        filterMovie: payload,
       };
 
     case SEARCH:
       return {
         ...state,
-        searchFilter: action.payload,
+        searchFilter: payload,
       };
     default:
       return state;
