@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
+import Shorten from "./Shorten";
+
 import { removeMovieActionCreator } from "../store/actionCreators";
 import { Link } from "react-router-dom";
 
@@ -28,7 +30,7 @@ const MovieCard = ({
             <h4>{title}</h4>
             <p> {genres}</p>
           </div>
-          <button>{release_date.slice(0, 4)}</button>
+          <button>{Shorten(release_date)}</button>
           <button onClick={() => dispatch(removeMovieActionCreator(id))}>
             remove movie
           </button>{" "}

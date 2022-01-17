@@ -1,4 +1,5 @@
 import React from "react";
+import ErrorBoundary from "../../components/ErrorBoundary";
 import Navigation from "../../components/FilterNavigation/Navigation";
 import Footer from "../../components/Footer/Footer";
 import MovieBanner from "../../components/InnerBanner/MovieBanner";
@@ -9,7 +10,10 @@ const MoviePage = () => {
     <>
       <MovieBanner />
       <Navigation />
-      <MovieCardsContainer />
+      <ErrorBoundary>
+        {" "}
+        <MovieCardsContainer />
+      </ErrorBoundary>
       <Footer />
     </>
   );

@@ -3,13 +3,16 @@ import Footer from "../components/Footer/Footer";
 import InnerBanner from "../components/InnerBanner/InnerBanner";
 import Navigation from "../components/FilterNavigation/Navigation";
 import MovieCardsContainer from "../components/MovieCardsContainer/MovieCardsContainer";
+import ErrorBoundary from "../components/ErrorBoundary";
 
 const Home = () => {
   return (
     <>
       <InnerBanner />
       <Navigation />
-      <MovieCardsContainer />
+      <ErrorBoundary>
+        <MovieCardsContainer />
+      </ErrorBoundary>
       <Footer />
     </>
   );

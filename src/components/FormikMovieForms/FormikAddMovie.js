@@ -42,6 +42,34 @@ const FormikAddMovie = () => {
     values.title = "";
   };
 
+  const fieldArray = [
+    { title: "Title", path: "title" },
+    { title: "Release Date", path: "release_date" },
+    { title: "Poster Path", path: "poster_path" },
+    { title: "Genre", path: "genres" },
+    { title: "Overview", path: "overview" },
+    { title: "Runtime", path: "runtime" },
+  ];
+
+  const FormikField = ({ title, path, myErrors, myTouched }) => {
+    return (
+      <div>
+        <div className="form__label">{title}</div>
+        <Field
+          placeholder={title}
+          name={path}
+          type="text"
+          id={path}
+          className="form__input"
+        />
+
+        {myErrors.path && myTouched.path ? (
+          <div className="form__error-message">{myErrors.path}</div>
+        ) : null}
+      </div>
+    );
+  };
+
   return (
     <div className="form">
       <div className="exit">
@@ -66,101 +94,18 @@ const FormikAddMovie = () => {
         {({ errors, touched }) => (
           <Form className="form__content">
             <div className="form__contact-field-box">
-              <div>
-                <label htmlFor="title">Title</label>
-                <br />
-
-                <Field
-                  name="title"
-                  className="form__input"
-                  placeholder="Title"
-                  type="text"
-                  id="title"
-                />
-                {errors.title && touched.title ? (
-                  <div className="form__error-message">{errors.title}</div>
-                ) : null}
-              </div>
-              <label htmlFor="release_date">Release Date</label>
-              <br />
-
-              <Field
-                name="release_date"
-                placeholder="Choose Date"
-                className="form__input"
-                type="text"
-                id="release_date"
-              />
-              {errors.release_date && touched.release_date ? (
-                <div className="form__error-message">{errors.release_date}</div>
-              ) : null}
-
-              <div>
-                <label htmlFor="poster_path">Movie URL</label>
-                <br />
-
-                <Field
-                  name="poster_path"
-                  placeholder="Movie URL here"
-                  className="form__input"
-                  type="text"
-                  id="poster_path"
-                />
-                {errors.poster_path && touched.poster_path ? (
-                  <div className="form__error-message">
-                    {errors.poster_path}
-                  </div>
-                ) : null}
-              </div>
-              <label htmlFor="genres">Genre</label>
-              <br />
-
-              <Field
-                name="genres"
-                placeholder="Genre"
-                className="form__input"
-                type="text"
-                id="genres"
-              />
-              {errors.genres && touched.genres ? (
-                <div className="form__error-message">{errors.genres}</div>
-              ) : null}
-              <div>
-                <label htmlFor="overview">Overview</label>
-                <br />
-
-                <Field
-                  name="overview"
-                  placeholder="Overview"
-                  className="form__input"
-                  type="text"
-                  id="overview"
-                />
-                {errors.overview && touched.overview ? (
-                  <div className="form__error-message">{errors.overview}</div>
-                ) : null}
-              </div>
-              <div>
-                <label htmlFor="runtime">Runtime</label>
-                <br />
-
-                <Field
-                  name="runtime"
-                  placeholder="Runtime"
-                  className="form__input"
-                  type="text"
-                  id="runtime"
-                />
-                {errors.runtime && touched.runtime ? (
-                  <div className="form__error-message">{errors.runtime}</div>
-                ) : null}
-              </div>
-            </div>
-
-            {errors.notes && touched.notes ? (
-              <div className="form__error-message">{errors.notes}</div>
-            ) : null}
-            <div className="button-area">
+              {fieldArray.map((array) => {
+                return (
+                  <FormikField
+                    key={array.title}
+                    title={array.title}
+                    path={array.path}
+                    id={array.path}
+                    myErrors={errors}
+                    myTouched={touched}
+                  />
+                );
+              })}
               <button className="button-secondary" type="submit">
                 reset
               </button>{" "}

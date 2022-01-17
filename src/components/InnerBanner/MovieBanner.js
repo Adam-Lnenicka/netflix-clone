@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { useApiMoviesArraySelector } from "../../store/selectors";
+import Shorten from "../Shorten";
 
 const MovieBanner = () => {
   const { movieId } = useParams();
@@ -34,8 +35,8 @@ const MovieBanner = () => {
         </div>
         <p>{thisMovie.map((m) => m.tagline)}</p>
         <div className="flex movie-details__date-runtime">
-          <p> {thisMovie.map((m) => m.release_date).slice(0, 4)} </p>
-          <p> {thisMovie.map((m) => m.runtime)}</p>
+          <p> {Shorten(thisMovie.map((m) => m.release_date))} </p>
+          <p> {thisMovie.map((m) => m.runtime)} min</p>
         </div>
         <p>{thisMovie.map((m) => m.overview)}</p>
       </div>
