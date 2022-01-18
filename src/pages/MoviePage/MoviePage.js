@@ -1,5 +1,5 @@
 import React from "react";
-import ErrorBoundary from "../../components/ErrorBoundary";
+import ErrorBoundary from "../../components/ErrorBoundary/ErrorBoundary";
 import Navigation from "../../components/FilterNavigation/Navigation";
 import Footer from "../../components/Footer/Footer";
 import MovieBanner from "../../components/InnerBanner/MovieBanner";

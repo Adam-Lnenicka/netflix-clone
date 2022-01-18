@@ -2,22 +2,23 @@ import React from "react";
 
 const ErrorBoundaryComponent = ({ errorName, componentStack }) => {
   return (
-    <div>
-      <h1>Sorry, something went wrong!</h1>
+    <div className="error-boundary">
+      <h2>Sorry, something went wrong!</h2>
       <h3>Here is some info:</h3>
       <div>
-        <span>
-          Error:
-          {errorName}
-        </span>
+        <p>Error Type:</p>
+        <span>{errorName}</span>
       </div>
       <article>
         <p>Stacktrace:</p>
+
         {(componentStack + "")
           .trim()
           .split("\n")
           .map((element, i) => (
-            <p key={i}>{element}</p>
+            <p key={i}>
+              <span>{element}</span>
+            </p>
           ))}
       </article>
     </div>
