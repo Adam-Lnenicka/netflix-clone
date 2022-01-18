@@ -16,7 +16,7 @@ const MovieCardsContainer = () => {
       {apiMoviesArray.map((movie) =>
         movie
           .filter((data) => {
-            if (movieArraySearch === "") {
+            if (movieArraySearchhu === "") {
               return data;
             } else if (
               data.title.toLowerCase().includes(movieArraySearch.toLowerCase())
