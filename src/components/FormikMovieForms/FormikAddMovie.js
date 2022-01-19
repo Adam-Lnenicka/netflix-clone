@@ -63,7 +63,7 @@ const FormikAddMovie = () => {
           className="form__input"
         />
 
-        {myErrors.path && myTouched.path ? (
+        {myErrors[path] && myTouched[path] ? (
           <div className="form__error-message">{myErrors.path}</div>
         ) : null}
       </div>
