@@ -7,11 +7,28 @@ import {
   loadMoviesByTitleThunk,
 } from "../store/thunk";
 
+jest.mock(
+  'react-redux',
+  () =>
+    ({
+      useDispatch: () => (fn) => fn(),
+    })
+);
+
+jest.mock(
+  'react-redux',
+  () =>
+    ({
+      loadMoviesThunk: jest.fn(),
+    })
+);
+
+
 const MovieSortCriteria = () => {
   const dispatch = useDispatch();
   // const [sortCriteria, setSortCriteria] = useState([]);
 
-  const changeSortHandler = (sortValue) => {
+  const changeSortHandler = useCalldack((sortValue) => {
     // const sortCriteriaUpdated = sortCriteria.map((item) => {
     //   if (item.name === sortValue) {
     //     return { ...item };
@@ -33,7 +50,8 @@ const MovieSortCriteria = () => {
       case "featured":
         dispatch(loadMoviesThunk());
     }
-  };
+  });
+
   return (
     <aside>
       <select

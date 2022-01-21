@@ -7,8 +7,8 @@ import {
 
 const api = "http://localhost:4000/movies";
 
-export const loadMoviesThunk = () => async (dispatch) => {
-  const apiLink = `${api}?limit=100`;
+export const loadMoviesThunk = (filters) => async (dispatch) => {
+  const apiLink = `${api}?limit=100${filters}`;
   const apiData = await fetch(apiLink);
   const moviesData = await apiData.json();
   dispatch({
@@ -16,6 +16,23 @@ export const loadMoviesThunk = () => async (dispatch) => {
     payload: moviesData.data,
   });
 };
+
+global.fetch = jest.fn(() =>
+  Promise.resolve({
+    json: () => Promise.resolve({ data: { test: '123' } }),
+  })
+);
+
+describe("Given loadMoviesThunk", () => {
+  it('should call dispatch with correct atr', () => {
+    const mockedDispatch = jest.fn();
+
+    loadMoviesThunk({})(mockedDispatch);
+
+    expect(mockedDispatch).toHaveBeenCalledWith({type: MOVIES_LOADED,
+      payload: { test: '123' } });
+  });
+});
 
 export const loadMoviesByTitleThunk = () => async (dispatch) => {
   const apiLink = `${api}?sortOrder=desc&sortBy=title`;

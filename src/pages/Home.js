@@ -7,6 +7,9 @@ import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 import MoviesLocation from "../MoviesLocation";
 
 const Home = () => {
+  useEffect(() => {
+    dispatch(loadMoviesThunk(location.query));
+  }, []);
   return (
     <>
       <MoviesLocation />
