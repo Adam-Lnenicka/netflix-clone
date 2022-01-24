@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchMovieTitleCreator } from "../../store/actionCreators";
 import { Link } from "react-router-dom";
+import { exact } from "prop-types";
 // import NewMovie from "../NewMovie/NewMovie";
 
 const InnerBanner = () => {
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
+  const [value, setValue] = useState("");
+
   return (
     <div className="banner">
       <div className="inner-banner">
@@ -25,14 +28,16 @@ const InnerBanner = () => {
             }}
             // onChange={(e) => dispatch(searchMovieTitleCreator(e.target.value))}
           />
-          <button
+          <Link
             className="button-main"
-            onClick={() => {
-              dispatch(searchMovieTitleCreator(searchTerm));
-            }}
+            to={`/movies?name=${searchTerm}&ganra=${value}`}
           >
             search
-          </button>
+          </Link>
+          <div className="filter-navigation">
+            {["all", "drama", ...ect].map((ganra) => <button classNmame="" onClick={() => setValue(ganra)}>{ganra}</button>)}
+
+          </div>
         </div>
       </div>
     </div>

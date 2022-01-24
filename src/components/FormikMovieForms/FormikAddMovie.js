@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Formik, Form } from "formik";
+import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import {
@@ -7,8 +7,6 @@ import {
   resetMovieActionCreator,
 } from "../../store/actionCreators";
 import { Link } from "react-router-dom";
-import FormikField from "./FormikField";
-import { fieldArray } from "./fieldArray";
 
 const MovieSchema = Yup.object().shape({
   title: Yup.string()
@@ -42,6 +40,34 @@ const FormikAddMovie = () => {
   const handleReset = (values) => {
     values.genres = [values.genres];
     values.title = "";
+  };
+
+  const fieldArray = [
+    { title: "Title", path: "title" },
+    { title: "Release Date", path: "release_date" },
+    { title: "Poster Path", path: "poster_path" },
+    { title: "Genre", path: "genres" },
+    { title: "Overview", path: "overview" },
+    { title: "Runtime", path: "runtime" },
+  ];
+
+  const FormikField = ({ title, path, myErrors, myTouched }) => {
+    return (
+      <div>
+        <div className="form__label">{title}</div>
+        <Field
+          placeholder={title}
+          name={path}
+          type="text"
+          id={path}
+          className="form__input"
+        />
+
+        {myErrors.path && myTouched.path ? (
+          <div className="form__error-message">{myErrors.path}</div>
+        ) : null}
+      </div>
+    );
   };
 
   return (

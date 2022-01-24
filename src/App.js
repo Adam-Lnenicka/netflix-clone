@@ -11,8 +11,9 @@ import MoviePage from "./pages/MoviePage/MoviePage";
 
 const App = () => {
   const dispatch = useDispatch();
+  
   useEffect(() => {
-    dispatch(loadMoviesThunk());
+    dispatch(loadMoviesThunk(location.query));
   }, []);
   return (
     <>

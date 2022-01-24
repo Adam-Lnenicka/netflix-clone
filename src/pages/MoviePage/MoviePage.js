@@ -11,7 +11,6 @@ const MoviePage = () => {
       <MovieBanner />
       <Navigation />
       <ErrorBoundary>
-        {" "}
         <MovieCardsContainer />
       </ErrorBoundary>
       <Footer />
