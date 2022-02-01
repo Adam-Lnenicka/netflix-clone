@@ -19,17 +19,11 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        include: /src/,
+        test: /\.scss$/,
         use: [
-          isDevMod ? "style-loader" : MiniCssExtractPlugin.loader,
-          {
-            loader: "css-loader",
-            options: {
-              modules: true,
-              localIdentName: "[name]-[hash:5]",
-            },
-          },
+          { loader: MiniCssExtractPlugin.loader },
+          "css-loader",
+          "sass-loader",
         ],
       },
     ],
@@ -41,12 +35,6 @@ module.exports = merge(common, {
         root: path.resolve(__dirname, "../"),
       }),
     isDevMod && new webpack.HotModuleReplacementPlugin(),
-    /**
-     * This plugin extract CSS into separate files.
-     * It creates a CSS file per JS file which contains CSS.
-     * It supports On-Demand-Loading of CSS and SourceMaps.
-     * @link https://webpack.js.org/plugins/mini-css-extract-plugin/#minimizing-for-production
-     */
     new MiniCssExtractPlugin({
       filename: "css/[name].css",
     }),

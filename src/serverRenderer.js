@@ -1,6 +1,8 @@
-import React from 'react';
-import { renderToString } from 'react-dom/server';
-import App from './App';
+import React from "react";
+import { renderToString } from "react-dom/server";
+import { StaticRouter } from "react-router-dom";
+
+import App from "./App";
 
 function renderHTML(html) {
   return `
@@ -9,6 +11,11 @@ function renderHTML(html) {
         <head>
           <meta charset=utf-8>
           <title>React Server Side Rendering</title>
+          ${
+            process.env.NODE_ENV === "development"
+              ? ""
+              : '<link href="/css/main.css" rel="stylesheet" type="text/css">'
+          }
         </head>
         <body>
           <div id="root">${html}</div>
@@ -20,7 +27,22 @@ function renderHTML(html) {
 
 export default function serverRenderer() {
   return (req, res) => {
-    const htmlString = renderToString(<App />);
+    const context = {};
+
+    const root = (
+      <App context={context} location={req.url} Router={StaticRouter} />
+    );
+
+    const htmlString = renderToString(root);
+
+    // context.url will contain the URL to redirect to if a <Redirect> was used
+    if (context.url) {
+      res.writeHead(302, {
+        Location: context.url,
+      });
+      res.end();
+      return;
+    }
 
     res.send(renderHTML(htmlString));
   };
