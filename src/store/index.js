@@ -3,10 +3,10 @@ import thunk from "redux-thunk";
 
 import rootReducer from "./reducer.js";
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
-store.subscribe(() => console.log(store.getState()));
+const configureStore = createStore(rootReducer, applyMiddleware(thunk));
+configureStore.subscribe(() => console.log(configureStore.getState()));
 
-export default store;
+export default configureStore;
 
 // export default (initialState) => {
 //   const middleware = [thunk];

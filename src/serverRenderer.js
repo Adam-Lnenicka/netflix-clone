@@ -1,10 +1,11 @@
 import React from "react";
 import { renderToString } from "react-dom/server";
-import { StaticRouter } from "react-router-dom";
-
+import { StaticRouter, matchPath } from "react-router-dom";
 import App from "./App";
+import routes from "./routes";
+import configureStore from "./store";
 
-function renderHTML(html) {
+function renderHTML(html, preloadedState) {
   return `
       <!doctype html>
       <html>
@@ -19,6 +20,14 @@ function renderHTML(html) {
         </head>
         <body>
           <div id="root">${html}</div>
+          <script>
+            // WARNING: See the following for security issues around embedding JSON in HTML:
+            // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
+            window.PRELOADED_STATE = ${JSON.stringify(preloadedState).replace(
+              /</g,
+              "\\u003c"
+            )}
+          </script>
           <script src="/js/main.js"></script>
         </body>
       </html>
@@ -27,23 +36,49 @@ function renderHTML(html) {
 
 export default function serverRenderer() {
   return (req, res) => {
-    const context = {};
+    const store = configureStore();
+    const promises = routes.reduce((acc, route) => {
+      if (
+        matchPath(req.url, route) &&
+        route.component &&
+        route.component.initialAction
+      ) {
+        acc.push(
+          Promise.resolve(store.dispatch(route.component.initialAction()))
+        );
+      }
+      return acc;
+    }, []);
+    Promise.all(promises)
+      .then(() => {
+        // This context object contains the results of the render
+        const context = {};
 
-    const root = (
-      <App context={context} location={req.url} Router={StaticRouter} />
-    );
+        const renderRoot = () => (
+          <App
+            context={context}
+            location={req.url}
+            Router={StaticRouter}
+            store={store}
+          />
+        );
 
-    const htmlString = renderToString(root);
+        renderToString(renderRoot());
 
-    // context.url will contain the URL to redirect to if a <Redirect> was used
-    if (context.url) {
-      res.writeHead(302, {
-        Location: context.url,
-      });
-      res.end();
-      return;
-    }
+        // context.url will contain the URL to redirect to if a <Redirect> was used
+        if (context.url) {
+          res.writeHead(302, {
+            Location: context.url,
+          });
+          res.end();
+          return;
+        }
 
-    res.send(renderHTML(htmlString));
+        const htmlString = renderToString(renderRoot());
+        const preloadedState = store.getState();
+
+        res.send(renderHTML(htmlString, preloadedState));
+      })
+      .catch((e) => console.error(e));
   };
 }
