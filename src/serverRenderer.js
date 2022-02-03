@@ -1,8 +1,8 @@
 import React from "react";
 import { renderToString } from "react-dom/server";
-import { StaticRouter, matchPath } from "react-router-dom";
+import { StaticRouter } from "react-router-dom";
 import App from "./App";
-import configureStore from "./store";
+import store from "./store";
 
 function renderHTML(html, preloadedState) {
   return `
@@ -35,7 +35,7 @@ function renderHTML(html, preloadedState) {
 
 export default function serverRenderer() {
   return (req, res) => {
-    const store = configureStore();
+    // const store = store();
     const context = {};
     const renderRoot = () => (
       <App
