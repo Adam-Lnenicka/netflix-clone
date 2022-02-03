@@ -1,12 +1,10 @@
 import React from "react";
-import { render } from "@testing-library/react";
-import { describe, test, expect } from "@jest/globals";
+import toJSON from "enzyme-to-json";
+import { shallow } from "enzyme";
+
 import App from "./App";
 
-describe("Navigation", () => {
-  test("Navigation snapshot", () => {
-    const { asFragment } = render(<App />);
-
-    expect(asFragment(<App />)).toMatchSnapshot();
-  });
+test("snapshot", () => {
+  const wrapper = shallow(<App />);
+  expect(toJSON(wrapper)).toMatchSnapshot();
 });
