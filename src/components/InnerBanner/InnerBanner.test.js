@@ -1,9 +1,9 @@
 import React from "react";
-import Navigation from "./Navigation";
 import toJSON from "enzyme-to-json";
 import { shallow } from "enzyme";
+import InnerBanner from "./InnerBanner";
 
-test("snapshot", () => {
-  const wrapper = shallow(<Navigation />);
+test("snapshot of InnerBanner", () => {
+  const wrapper = shallow(<InnerBanner />);
   expect(toJSON(wrapper)).toMatchSnapshot();
 });

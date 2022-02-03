@@ -1,16 +1,9 @@
 import React from "react";
+import toJSON from "enzyme-to-json";
+import { shallow } from "enzyme";
 import MovieCardsContainer from "./MovieCardsContainer";
-import { render } from "@testing-library/react";
-import { describe, test, expect } from "@jest/globals";
 
-/**
- * @jest-environment jsdom
- */
-
-describe("MovieCardsContainer", () => {
-  test("MovieCardsContainer snapshot", () => {
-    const { asFragment } = render(<MovieCardsContainer />);
-
-    expect(asFragment(<MovieCardsContainer />)).toMatchSnapshot();
-  });
+test("snapshot movie container", () => {
+  const wrapper2 = shallow(<MovieCardsContainer />);
+  expect(toJSON(wrapper2)).toMatchSnapshot();
 });
