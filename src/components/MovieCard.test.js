@@ -1,9 +1,17 @@
 import React from "react";
-import toJSON from "enzyme-to-json";
 import { shallow } from "enzyme";
 import MovieCard from "./MovieCard";
 
-test("Movie card snapshot", () => {
-  const wrapper = shallow(<MovieCard />);
-  expect(toJSON(wrapper)).toMatchSnapshot();
+describe("MovieCard", () => {
+  it("snapshot", () => {
+    const props = {
+      title: "Captain Marvel",
+      genres: ["Animation"],
+      release_date: "2016",
+      runtime: 108,
+      poster_path: "https://",
+    };
+    const component = shallow(<MovieCard {...props} />);
+    expect(component).toMatchSnapshot();
+  });
 });

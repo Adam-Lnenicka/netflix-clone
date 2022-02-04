@@ -1,14 +1,11 @@
-import ErrorBoundaryContainer from "./container";
 import React from "react";
 import { shallow } from "enzyme";
+import ErrorBoundary from "./ErrorBoundary";
 
 describe("ErrorBoundary ", () => {
   it("Message in component", () => {
     const component = shallow(
-      <ErrorBoundaryContainer
-        errorName="errorName"
-        componentStack="componentStack"
-      />
+      <ErrorBoundary errorName="errorName" componentStack="componentStack" />
     );
     component.setState({ hasError: true });
     expect(component).toMatchSnapshot();
