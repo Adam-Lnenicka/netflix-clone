@@ -1,5 +1,5 @@
 import React from "react";
-import { shallow } from "enzyme";
+import { mount, shallow } from "enzyme";
 import MovieCard from "./MovieCard";
 
 describe("MovieCard", () => {
@@ -9,9 +9,12 @@ describe("MovieCard", () => {
       genres: ["Animation"],
       release_date: "2016",
       runtime: 108,
+      description: "Movie description",
       poster_path: "https://",
+      year: "2016",
+      image: "movie image",
     };
-    const component = shallow(<MovieCard {...props} />);
+    const component = mount(<MovieCard {...props} />);
     expect(component).toMatchSnapshot();
   });
 });
