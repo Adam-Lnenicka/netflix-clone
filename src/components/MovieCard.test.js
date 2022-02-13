@@ -1,20 +1,28 @@
 import React from "react";
-import { mount, shallow } from "enzyme";
+import { shallow } from "enzyme";
 import MovieCard from "./MovieCard";
+import toJSON from "enzyme-to-json";
+import { Provider } from "react-redux";
+import configureStore from "redux-mock-store";
 
 describe("MovieCard", () => {
-  it("snapshot", () => {
+  const initialState = {};
+  const mockStore = configureStore();
+  it("matches snapshot", () => {
+    const store = mockStore(initialState);
     const props = {
       title: "Captain Marvel",
       genres: ["Animation"],
       release_date: "2016",
-      runtime: 108,
       description: "Movie description",
       poster_path: "https://",
       year: "2016",
-      image: "movie image",
     };
-    const component = mount(<MovieCard {...props} />);
-    expect(component).toMatchSnapshot();
+    const wrapper = shallow(
+      <Provider store={store}>
+        <MovieCard {...props} />{" "}
+      </Provider>
+    );
+    expect(toJSON(wrapper)).toMatchSnapshot();
   });
 });

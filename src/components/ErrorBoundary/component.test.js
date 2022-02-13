@@ -1,6 +1,7 @@
 import ErrorBoundaryComponent from "./component";
 import React from "react";
-import { mount } from "enzyme";
+import { shallow } from "enzyme";
+import toJson from "enzyme-to-json";
 
 describe("ErrorComponent ", () => {
   it("Match Snapshot", () => {
@@ -8,7 +9,7 @@ describe("ErrorComponent ", () => {
       errorName: "errorName",
       componentStack: "componentStack",
     };
-    const component = mount(<ErrorBoundaryComponent {...props} />);
-    expect(component).toMatchSnapshot();
+    const wrapper = shallow(<ErrorBoundaryComponent {...props} />);
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

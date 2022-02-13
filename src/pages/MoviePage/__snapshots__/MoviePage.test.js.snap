@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MoviePage create snapshot 1`] = `
+<Fragment>
+  <MovieBanner />
+  <Navigation />
+  <ErrorBoundary>
+     
+    <MovieCardsContainer />
+  </ErrorBoundary>
+  <Footer />
+</Fragment>
+`;

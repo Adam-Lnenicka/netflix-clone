@@ -15,6 +15,8 @@ describe("load movies: ", () => {
   it("movies are loaded", () => {
     action.type = MOVIES_LOADED;
     const value = reducer(state, action);
-    expect(value).toEqual({ movies: "payload" });
+    expect(value).toEqual({
+      movies: ["payload"],
+    });
   });
 });

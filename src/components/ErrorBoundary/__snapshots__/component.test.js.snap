@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorComponent  Match Snapshot 1`] = `
+<div
+  className="error-boundary"
+>
+  <h2>
+    Sorry, something went wrong!
+  </h2>
+  <h3>
+    Here is some info:
+  </h3>
+  <div>
+    <p>
+      Error Type:
+    </p>
+    <span>
+      errorName
+    </span>
+  </div>
+  <article>
+    <p>
+      Stacktrace:
+    </p>
+    <p
+      key="0"
+    >
+      <span>
+        componentStack
+      </span>
+    </p>
+  </article>
+</div>
+`;

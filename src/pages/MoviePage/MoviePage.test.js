@@ -1,9 +1,11 @@
 import React from "react";
 import toJSON from "enzyme-to-json";
 import { shallow } from "enzyme";
-import FilterNavigation from "../../components/FilterNavigation/FilterNavigation";
+import MoviePage from "./MoviePage";
 
-test("snapshot", () => {
-  const wrapper = shallow(<FilterNavigation />);
-  expect(toJSON(wrapper)).toMatchSnapshot();
+describe("MoviePage", () => {
+  it("create snapshot", () => {
+    const wrapper = shallow(<MoviePage />);
+    expect(toJSON(wrapper)).toMatchSnapshot();
+  });
 });
