@@ -1,16 +1,19 @@
+import { shallow } from "enzyme";
+import MovieSortCriteria from "./MovieSortCriteria";
+import React from "react";
+
+const mockDispatch = jest.fn();
+
 describe("Actions Dispatched", () => {
-  it("Dispatch function", () => {
-    const dispatch = jest.mock("react-redux", () => ({
-      useDispatch: () => (fn) => fn(),
-    }));
-    expect(dispatch).toHaveBeenCalled();
-  });
-
-  it("Movie array", () => {
-    const movies = jest.mock("react-redux", () => ({
-      loadMoviesThunk: jest.fn(),
-    }));
-
-    expect(movies).toHaveBeenCalled();
+  it("should dispatch a loginToPlatform action", () => {
+    const wrapper = shallow(
+      <div>
+        <MovieSortCriteria />
+      </div>
+    );
+    wrapper.find("#select").simulate("change", {
+      target: { value: "title" },
+    });
+    expect(mockDispatch).toBeCalled();
   });
 });

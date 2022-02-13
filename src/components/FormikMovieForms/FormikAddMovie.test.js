@@ -1,8 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-
 import FormikAddMovie from "./FormikAddMovie";
-import { describe } from "jest-circus";
 import configureStore from "redux-mock-store";
 import { Provider } from "react-redux";
 import { Formik } from "formik";

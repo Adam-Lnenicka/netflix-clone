@@ -9,17 +9,8 @@ import {
 
 const MovieSortCriteria = () => {
   const dispatch = useDispatch();
-  // const [sortCriteria, setSortCriteria] = useState([]);
 
   const changeSortHandler = (sortValue) => {
-    // const sortCriteriaUpdated = sortCriteria.map((item) => {
-    //   if (item.name === sortValue) {
-    //     return { ...item };
-    //   } else {
-    //     return { ...item };
-    //   }
-    // });
-    // setSortCriteria(sortCriteriaUpdated);
     switch (sortValue) {
       case "title":
         dispatch(loadMoviesByTitleThunk());
@@ -38,6 +29,7 @@ const MovieSortCriteria = () => {
     <aside>
       <select
         className="sort-movies"
+        id="select"
         onChange={(e) => {
           changeSortHandler(e.target.value);
         }}
