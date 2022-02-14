@@ -17,7 +17,7 @@ describe("", () => {
         <FormikAddMovie onSubmit={onSubmitFn} />
       </Provider>
     );
-    wrapper.find(Formik).simulate("submit");
+    wrapper.find(".button-main").simulate("click");
     expect(onSubmitFn).toHaveBeenCalled();
   });
 });
