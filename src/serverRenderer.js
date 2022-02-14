@@ -1,9 +1,8 @@
 import React from "react";
 import { renderToString } from "react-dom/server";
-import { StaticRouter, matchPath } from "react-router-dom";
+import { StaticRouter } from "react-router-dom";
 import App from "./App";
-import routes from "./routes";
-import configureStore from "./store";
+import store from "./store";
 
 function renderHTML(html, preloadedState) {
   return `
@@ -36,49 +35,30 @@ function renderHTML(html, preloadedState) {
 
 export default function serverRenderer() {
   return (req, res) => {
-    const store = configureStore();
-    const promises = routes.reduce((acc, route) => {
-      if (
-        matchPath(req.url, route) &&
-        route.component &&
-        route.component.initialAction
-      ) {
-        acc.push(
-          Promise.resolve(store.dispatch(route.component.initialAction()))
-        );
-      }
-      return acc;
-    }, []);
-    Promise.all(promises)
-      .then(() => {
-        // This context object contains the results of the render
-        const context = {};
+    // const store = store();
+    const context = {};
+    const renderRoot = () => (
+      <App
+        context={context}
+        location={req.url}
+        Router={StaticRouter}
+        store={store}
+      />
+    );
 
-        const renderRoot = () => (
-          <App
-            context={context}
-            location={req.url}
-            Router={StaticRouter}
-            store={store}
-          />
-        );
+    renderToString(renderRoot());
 
-        renderToString(renderRoot());
+    if (context.url) {
+      res.writeHead(302, {
+        Location: context.url,
+      });
+      res.end();
+      return;
+    }
 
-        // context.url will contain the URL to redirect to if a <Redirect> was used
-        if (context.url) {
-          res.writeHead(302, {
-            Location: context.url,
-          });
-          res.end();
-          return;
-        }
+    const htmlString = renderToString(renderRoot());
+    const preloadedState = store.getState();
 
-        const htmlString = renderToString(renderRoot());
-        const preloadedState = store.getState();
-
-        res.send(renderHTML(htmlString, preloadedState));
-      })
-      .catch((e) => console.error(e));
+    res.send(renderHTML(htmlString, preloadedState));
   };
 }

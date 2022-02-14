@@ -16,13 +16,18 @@ const App = ({ location, context, store }) => {
   }, []);
   return (
     <Provider store={store}>
-      <Router location={location} context={context}>
+      <Router
+        location={location}
+        context={context}
+        basename={process.env.NODE_ENV === "production" ? "/Movie-app" : ""}
+      >
+        {" "}
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/add-movie" element={<FormikAddMovie />} />
-          {/* <Route path="/edit-movie" element={<EditMovie />} />
+          <Route path="/edit-movie" element={<EditMovie />} />
           <Route path="/movie/:movieId" element={<MoviePage />} />
-          <Route path="*" element={<Error404 />} /> */}
+          <Route path="*" element={<Error404 />} />
         </Routes>
       </Router>
     </Provider>
