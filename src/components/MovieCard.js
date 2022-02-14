@@ -41,9 +41,9 @@ const MovieCard = ({
 };
 
 MovieCard.propTypes = {
-  image: PropTypes.string.isRequired,
+  poster_path: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  year: PropTypes.string.isRequired,
+  release_date: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
 };
 

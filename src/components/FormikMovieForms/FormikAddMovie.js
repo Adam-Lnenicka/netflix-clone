@@ -83,7 +83,7 @@ const FormikAddMovie = () => {
               <button className="button-secondary" type="submit">
                 reset
               </button>{" "}
-              <button className="button-main" type="submit">
+              <button id="button" className="button-main" type="submit">
                 Submit
               </button>
             </div>
