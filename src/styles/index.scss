@@ -1,3 +1,16 @@
+<<<<<<< HEAD
 @import "./colors.scss";
 @import "./global.scss";
 @import "../components/Footer/Footer.scss";
+=======
+@import "global/colors.scss";
+@import "global/buttons.scss";
+@import "global/layout.scss";
+@import "../components/FormikMovieForms/MovieForms.scss";
+@import "../components/Footer/Footer.scss";
+@import "../components/404/Error404.scss";
+@import "../components/InnerBanner/InnerBanner.scss";
+@import "../components/FilterNavigation/Navigation.scss";
+@import "../components/MovieCardsContainer/MovieCards.scss";
+@import "../components/ErrorBoundary/ErrorBoundary.scss";
+>>>>>>> redux-before-merging

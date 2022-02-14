@@ -1,17 +1,23 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+// const isDevMod = process.env.NODE_ENV === "development";
 
 module.exports = {
   mode: process.env.NODE_ENV,
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 5dfb97092430b1ee5333740fc676832d8a32086c
+=======
+
+>>>>>>> redux-before-merging
   entry: "./src/index.js",
   output: {
     path: path.join(__dirname, "/dist"),
     filename: "index_bundle.js",
+    publicPath: "/",
   },
   resolve: {
     extensions: [".js", ".jsx", ".json"],
@@ -38,6 +44,9 @@ module.exports = {
         loader: "json-loader",
       },
     ],
+  },
+  devServer: {
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({ template: "./public/index.html" }),
