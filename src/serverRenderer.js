@@ -2,9 +2,14 @@ import React from "react";
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
 import App from "./App";
+<<<<<<< HEAD
 import store from "./store";
 
 function renderHTML(html, preloadedState) {
+=======
+
+function renderHTML(html) {
+>>>>>>> b308fe9084ba75edc85025ed3f74e3e1e60a2d3d
   return `
       <!doctype html>
       <html>
@@ -19,6 +24,7 @@ function renderHTML(html, preloadedState) {
         </head>
         <body>
           <div id="root">${html}</div>
+<<<<<<< HEAD
           <script>
             // WARNING: See the following for security issues around embedding JSON in HTML:
             // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
@@ -27,6 +33,8 @@ function renderHTML(html, preloadedState) {
               "\\u003c"
             )}
           </script>
+=======
+>>>>>>> b308fe9084ba75edc85025ed3f74e3e1e60a2d3d
           <script src="/js/main.js"></script>
         </body>
       </html>
@@ -35,6 +43,7 @@ function renderHTML(html, preloadedState) {
 
 export default function serverRenderer() {
   return (req, res) => {
+<<<<<<< HEAD
     // const store = store();
     const context = {};
     const renderRoot = () => (
@@ -48,6 +57,18 @@ export default function serverRenderer() {
 
     renderToString(renderRoot());
 
+=======
+    // This context object contains the results of the render
+    const context = {};
+
+    const root = (
+      <App context={context} location={req.url} Router={StaticRouter} />
+    );
+
+    const htmlString = renderToString(root);
+
+    // context.url will contain the URL to redirect to if a <Redirect> was used
+>>>>>>> b308fe9084ba75edc85025ed3f74e3e1e60a2d3d
     if (context.url) {
       res.writeHead(302, {
         Location: context.url,
@@ -56,9 +77,13 @@ export default function serverRenderer() {
       return;
     }
 
+<<<<<<< HEAD
     const htmlString = renderToString(renderRoot());
     const preloadedState = store.getState();
 
     res.send(renderHTML(htmlString, preloadedState));
+=======
+    res.send(renderHTML(htmlString));
+>>>>>>> b308fe9084ba75edc85025ed3f74e3e1e60a2d3d
   };
 }
