@@ -4,18 +4,36 @@ import {
   MOVIES_LOADED_BY_RATING,
   MOVIES_LOADED_BY_TITLE,
 } from "./actionTypes";
+import axios from "axios";
 
 const api = "http://localhost:4000/movies";
 
-export const loadMoviesThunk = () => async (dispatch) => {
-  const apiLink = `${api}?limit=100`;
-  const apiData = await fetch(apiLink);
-  const moviesData = await apiData.json();
-  dispatch({
-    type: MOVIES_LOADED,
-    payload: moviesData.data,
-  });
-};
+// export const loadMoviesThunk = () => async (dispatch) => {
+//   const apiLink = `${api}?limit=100`;
+//   const apiData = await fetch(apiLink);
+//   const moviesData = await apiData.json();
+//   dispatch({
+//     type: MOVIES_LOADED,
+//     payload: moviesData.data,
+//   });
+// };
+
+// export const loadMoviesThunk = (dispatch) => {
+//   return axios.get("http://localhost:4000/movies").then((moviesData) => {
+//     dispatch({
+//       type: MOVIES_LOADED,
+//       payload: moviesData.data,
+//     });
+//   });
+// };
+
+export const loadMoviesThunk = () => (dispatch) =>
+  axios.get("http://localhost:4000/movies").then((moviesData) =>
+    dispatch({
+      type: MOVIES_LOADED,
+      payload: moviesData.data,
+    })
+  );
 
 export const loadMoviesByTitleThunk = () => async (dispatch) => {
   const apiLink = `${api}?sortOrder=desc&sortBy=title`;

@@ -16,7 +16,6 @@ describe("MovieCard", () => {
       release_date: "2016",
       description: "Movie description",
       poster_path: "https://",
-      year: "2016",
     };
     const wrapper = shallow(
       <Provider store={store}>

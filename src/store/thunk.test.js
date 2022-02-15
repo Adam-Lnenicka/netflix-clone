@@ -1,4 +1,3 @@
-import { describe, jest, global, expect, it } from "@jest/globals";
 import { MOVIES_LOADED } from "./actionTypes";
 import { loadMoviesThunk } from "./thunk";
 
