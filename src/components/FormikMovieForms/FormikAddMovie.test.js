@@ -8,16 +8,24 @@ import toJson from "enzyme-to-json";
 describe("FormikAddMovie", () => {
   const initialState = {};
   const mockStore = configureStore();
+  const store = mockStore(initialState);
+  const onSubmitFn = jest.fn();
 
-  it("calls onSubmit when add formik form submitted", () => {
-    const store = mockStore(initialState);
-    const onSubmitFn = jest.fn();
-    const wrapper = shallow(
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(
       <Provider store={store}>
         <FormikAddMovie onSubmit={onSubmitFn} />
       </Provider>
     );
-    wrapper.find(".button-main").simulate("click");
+  });
+
+  it("FormikAddMovie creates snapshot", () => {
     expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it("calls onSubmit when add formik form submitted", () => {
+    wrapper.find(".button-main").simulate("click");
   });
 });

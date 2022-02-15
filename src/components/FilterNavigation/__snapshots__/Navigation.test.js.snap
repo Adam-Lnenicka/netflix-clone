@@ -1,5 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Navigation Matches navigation snapshot 1`] = `
+<div
+  className="flex navigation"
+>
+  <FilterNavigation />
+  <div
+    className="flex"
+  >
+    <p>
+      SELECT CRITERIA
+    </p>
+    <MovieSortCriteria />
+  </div>
+</div>
+`;
+
 exports[`snapshot 1`] = `
 <div
   className="flex navigation"
