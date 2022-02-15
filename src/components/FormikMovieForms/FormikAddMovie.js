@@ -28,7 +28,7 @@ const MovieSchema = Yup.object().shape({
 
 const FormikAddMovie = () => {
   const [submitted, setSubmitted] = useState(false);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const handleSubmit = (values) => {
     setSubmitted(true);
@@ -36,7 +36,7 @@ const FormikAddMovie = () => {
     values.id = Math.random().toString();
     console.log(values);
 
-    dispatch(addMovieActionCreator(values));
+    // dispatch(addMovieActionCreator(values));
   };
 
   const handleReset = (values) => {

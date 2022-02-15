@@ -1,6 +1,8 @@
+import "jsdom-global/register";
+
 import React from "react";
 import toJSON from "enzyme-to-json";
-import { shallow } from "enzyme";
+import { mount, shallow } from "enzyme";
 import InnerBanner from "./InnerBanner";
 import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
@@ -34,6 +36,32 @@ describe("Inner Banner", () => {
     wrapper.find("button").simulate("click");
     expect(wrapper.instance().dispatch).toHaveBeenCalled();
   });
+
+  test("submit button displays", () => {
+    const store = mockStore(initialState);
+
+    const wrapper = shallow(
+      <Provider store={store}>
+        <InnerBanner />
+      </Provider>
+    );
+
+    const findByTestAttr = (wrapper, val) => {
+      return wrapper.find(`[data-test="${val}"]`);
+    };
+    // test('submit button does not display', () => {
+    const submitButton = findByTestAttr(wrapper, "submit-button");
+    expect(submitButton.exists()).toBe(true);
+    // });
+  });
+
+  // test('state updates with value of input box upon change', () => {
+  //   const inputBox = findByTestAttr(wrapper, 'input-box');
+  //   const mockEvent = { target: { value: 'train' } };
+
+  //   inputBox.simulate("change", mockEvent);
+  //   expect(mockSetCurrentGuess).toHaveBeenCalledWith('train');
+  // });
 
   it("matches snapshot", () => {
     const store = mockStore(initialState);

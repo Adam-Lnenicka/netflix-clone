@@ -27,6 +27,7 @@ const InnerBanner = () => {
           />
           <button
             className="button-main"
+            id="bttn"
             onClick={() => {
               dispatch(searchMovieTitleCreator(searchTerm));
             }}
