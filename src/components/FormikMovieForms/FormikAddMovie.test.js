@@ -3,13 +3,13 @@ import { shallow } from "enzyme";
 import FormikAddMovie from "./FormikAddMovie";
 import configureStore from "redux-mock-store";
 import { Provider } from "react-redux";
-import { Formik } from "formik";
+import toJson from "enzyme-to-json";
 
-describe("", () => {
+describe("FormikAddMovie", () => {
   const initialState = {};
   const mockStore = configureStore();
 
-  it("calls onSubmit when form submitted", () => {
+  it("calls onSubmit when add formik form submitted", () => {
     const store = mockStore(initialState);
     const onSubmitFn = jest.fn();
     const wrapper = shallow(
@@ -18,6 +18,6 @@ describe("", () => {
       </Provider>
     );
     wrapper.find(".button-main").simulate("click");
-    expect(onSubmitFn).toHaveBeenCalled();
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

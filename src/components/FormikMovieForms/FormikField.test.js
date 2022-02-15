@@ -4,8 +4,8 @@ import toJSON from "enzyme-to-json";
 import React from "react";
 import FormikField from "./FormikField";
 
-describe("MoviePage", () => {
-  it("create snapshot", () => {
+describe("Formik Field", () => {
+  it("create snapshot for Formik Field", () => {
     const props = {
       title: "test-title",
       path: "test-path",

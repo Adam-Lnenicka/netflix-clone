@@ -47,3 +47,51 @@ exports[`404 Page Create snapshot 1`] = `
   </Router>
 </BrowserRouter>
 `;
+
+exports[`404 Page Create snapshot of 404 component with link 1`] = `
+<BrowserRouter
+  location="home"
+>
+  <Router
+    location={
+      Object {
+        "hash": "",
+        "key": "default",
+        "pathname": "blank",
+        "search": "",
+        "state": null,
+      }
+    }
+    navigationType="POP"
+    navigator={
+      Object {
+        "action": "POP",
+        "back": [Function],
+        "block": [Function],
+        "createHref": [Function],
+        "forward": [Function],
+        "go": [Function],
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "key": "default",
+          "pathname": "blank",
+          "search": "",
+          "state": null,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Link
+      to="/"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+      />
+    </Link>
+  </Router>
+</BrowserRouter>
+`;

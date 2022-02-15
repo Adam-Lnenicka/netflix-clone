@@ -4,7 +4,7 @@ import React from "react";
 
 const mockDispatch = jest.fn();
 
-describe("Actions Dispatched", () => {
+describe("Movie Sorting Actions Dispatched", () => {
   it("should dispatch a loginToPlatform action", () => {
     const wrapper = shallow(
       <div>

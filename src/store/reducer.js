@@ -46,6 +46,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         movies: [[...state.movies[0].unshift(payload)]],
       };
+
     case MOVIE_FILTER:
       return {
         ...state,

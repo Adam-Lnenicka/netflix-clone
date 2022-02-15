@@ -20,11 +20,7 @@ describe("404 Page", () => {
     );
   });
 
-  it("Linked to Home", () => {
-    expect(wrapper.find(Link).props().to).toBe("/");
-  });
-
-  it("Create snapshot", () => {
+  it("Create snapshot of 404 component with link", () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });
