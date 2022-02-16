@@ -1,5 +1,5 @@
 import "jsdom-global/register";
-import { mount } from "enzyme";
+import { mount, shallow } from "enzyme";
 import toJSON from "enzyme-to-json";
 import React from "react";
 import FormikField from "./FormikField";
@@ -13,7 +13,7 @@ describe("Formik Field", () => {
       myTouched: "test-touched",
     };
 
-    const wrapper = mount(<FormikField {...props} />);
+    const wrapper = shallow(<FormikField {...props} />);
     expect(toJSON(wrapper)).toMatchSnapshot();
   });
 });

@@ -1,5 +1,7 @@
+import "jsdom-global/register";
+
 import React from "react";
-import { shallow } from "enzyme";
+import { mount, shallow } from "enzyme";
 import toJSON from "enzyme-to-json";
 import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
@@ -21,15 +23,15 @@ describe("FilterNavigation", () => {
     expect(toJSON(wrapper)).toMatchSnapshot();
   });
 
-  it("dispatch triggered on click", () => {
+  it("Filter Navigation dispatch triggered on click", () => {
     const store = mockStore(initialState);
 
-    const wrapper = shallow(
+    const wrapper = mount(
       <Provider store={store}>
         <FilterNavigation onClick={dispatch} />{" "}
       </Provider>
     );
     wrapper.find("button").simulate("click");
-    expect(wrapper).toHaveBeenCalled();
+    expect(dispatch).toHaveBeenCalled();
   });
 });

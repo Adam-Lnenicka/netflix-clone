@@ -1,5 +1,7 @@
+import "jsdom-global/register";
+
 import React from "react";
-import { shallow } from "enzyme";
+import { mount, shallow } from "enzyme";
 import FormikAddMovie from "./FormikAddMovie";
 import configureStore from "redux-mock-store";
 import { Provider } from "react-redux";
@@ -14,7 +16,7 @@ describe("FormikAddMovie", () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(
+    wrapper = mount(
       <Provider store={store}>
         <FormikAddMovie onSubmit={onSubmitFn} />
       </Provider>

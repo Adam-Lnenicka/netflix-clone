@@ -10,7 +10,6 @@ import configureStore from "redux-mock-store";
 describe("Inner Banner", () => {
   const initialState = {};
   const mockStore = configureStore();
-  const onCountChange = jest.fn();
   const mockFunction = jest.fn();
 
   it("Simulates dispatch on search function", () => {
@@ -18,11 +17,11 @@ describe("Inner Banner", () => {
 
     const wrapper = mount(
       // <Provider store={store}>
-      <InnerBanner onCLick={onClick} />
+      <InnerBanner onCLick={mockFunction} />
       // </Provider>
     );
     wrapper.find("button").simulate("click");
-    expect(mockFunction).toBeCalledTimes(1);
+    expect(mockFunction).toBeCalle();
   });
 
   it("submit button displays", () => {

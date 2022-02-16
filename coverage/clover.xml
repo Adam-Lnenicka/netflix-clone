@@ -1,67 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1645015849539" clover="3.2.0">
-  <project timestamp="1645015849539" name="All files">
-    <metrics statements="50" coveredstatements="28" conditionals="13" coveredconditionals="6" methods="13" coveredmethods="4" elements="76" coveredelements="38" complexity="0" loc="50" ncloc="50" packages="4" files="5" classes="5"/>
+<coverage generated="1645022669823" clover="3.2.0">
+  <project timestamp="1645022669823" name="All files">
+    <metrics statements="50" coveredstatements="36" conditionals="13" coveredconditionals="7" methods="13" coveredmethods="9" elements="76" coveredelements="52" complexity="0" loc="50" ncloc="50" packages="4" files="5" classes="5"/>
     <package name="components">
       <metrics statements="5" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
       <file name="MovieCard.js" path="/Users/Adam_Lnenicka/react-netflix-clone/src/components/MovieCard.js">
         <metrics statements="5" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
-        <line num="8" count="2" type="stmt"/>
+        <line num="8" count="4" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
         <line num="33" count="0" type="stmt"/>
-        <line num="42" count="2" type="stmt"/>
+        <line num="42" count="4" type="stmt"/>
       </file>
     </package>
     <package name="components.FormikMovieForms">
-      <metrics statements="16" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="0"/>
+      <metrics statements="16" coveredstatements="9" conditionals="2" coveredconditionals="1" methods="5" coveredmethods="3"/>
       <file name="FormikAddMovie.js" path="/Users/Adam_Lnenicka/react-netflix-clone/src/components/FormikMovieForms/FormikAddMovie.js">
-        <metrics statements="16" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="0"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="29" count="1" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
+        <metrics statements="16" coveredstatements="9" conditionals="2" coveredconditionals="1" methods="5" coveredmethods="3"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
+        <line num="33" count="2" type="stmt"/>
         <line num="34" count="0" type="stmt"/>
         <line num="35" count="0" type="stmt"/>
         <line num="36" count="0" type="stmt"/>
         <line num="37" count="0" type="stmt"/>
         <line num="39" count="0" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
+        <line num="42" count="2" type="stmt"/>
         <line num="43" count="0" type="stmt"/>
         <line num="44" count="0" type="stmt"/>
-        <line num="47" count="0" type="stmt"/>
-        <line num="69" count="0" type="stmt"/>
-        <line num="72" count="0" type="stmt"/>
+        <line num="47" count="2" type="stmt"/>
+        <line num="69" count="2" type="stmt"/>
+        <line num="72" count="12" type="stmt"/>
       </file>
     </package>
     <package name="components.InnerBanner">
-      <metrics statements="7" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2"/>
+      <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
       <file name="InnerBanner.js" path="/Users/Adam_Lnenicka/react-netflix-clone/src/components/InnerBanner/InnerBanner.js">
-        <metrics statements="7" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="9" count="4" type="stmt"/>
-        <line num="10" count="4" type="stmt"/>
-        <line num="11" count="4" type="stmt"/>
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="9" count="5" type="stmt"/>
+        <line num="10" count="5" type="stmt"/>
+        <line num="11" count="5" type="stmt"/>
         <line num="25" count="1" type="stmt"/>
         <line num="26" count="1" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
       </file>
     </package>
     <package name="store">
       <metrics statements="22" coveredstatements="16" conditionals="11" coveredconditionals="6" methods="2" coveredmethods="1"/>
       <file name="actionTypes.js" path="/Users/Adam_Lnenicka/react-netflix-clone/src/store/actionTypes.js">
         <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="9" type="stmt"/>
-        <line num="2" count="9" type="stmt"/>
-        <line num="3" count="9" type="stmt"/>
-        <line num="4" count="9" type="stmt"/>
-        <line num="5" count="9" type="stmt"/>
-        <line num="6" count="9" type="stmt"/>
-        <line num="7" count="9" type="stmt"/>
-        <line num="8" count="9" type="stmt"/>
-        <line num="9" count="9" type="stmt"/>
-        <line num="10" count="9" type="stmt"/>
+        <line num="1" count="11" type="stmt"/>
+        <line num="2" count="11" type="stmt"/>
+        <line num="3" count="11" type="stmt"/>
+        <line num="4" count="11" type="stmt"/>
+        <line num="5" count="11" type="stmt"/>
+        <line num="6" count="11" type="stmt"/>
+        <line num="7" count="11" type="stmt"/>
+        <line num="8" count="11" type="stmt"/>
+        <line num="9" count="11" type="stmt"/>
+        <line num="10" count="11" type="stmt"/>
       </file>
       <file name="reducer.js" path="/Users/Adam_Lnenicka/react-netflix-clone/src/store/reducer.js">
         <metrics statements="12" coveredstatements="6" conditionals="11" coveredconditionals="6" methods="2" coveredmethods="1"/>

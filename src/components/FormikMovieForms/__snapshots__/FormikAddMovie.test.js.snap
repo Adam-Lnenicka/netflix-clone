@@ -1,32 +1,529 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FormikAddMovie calls onSubmit when add formik form submitted 1`] = `
-<ContextProvider
-  value={
+<Provider
+  store={
     Object {
-      "store": Object {
-        "clearActions": [Function],
-        "dispatch": [Function],
-        "getActions": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-      },
-      "subscription": Object {
-        "addNestedSub": [Function],
-        "getListeners": [Function],
-        "handleChangeWrapper": [Function],
-        "isSubscribed": [Function],
-        "notifyNestedSubs": [Function],
-        "onStateChange": [Function],
-        "trySubscribe": [Function],
-        "tryUnsubscribe": [Function],
-      },
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
     }
   }
 >
   <FormikAddMovie
     onSubmit={[MockFunction]}
-  />
-</ContextProvider>
+  >
+    <div
+      className="form"
+    >
+      <div
+        className="exit"
+      />
+      <h1>
+        Add Movie
+      </h1>
+      <Formik
+        initialValues={
+          Object {
+            "genres": Array [],
+            "overview": "",
+            "poster_path": "",
+            "release_date": "",
+            "runtime": "",
+            "title": "",
+          }
+        }
+        onSubmit={[Function]}
+        validationSchema={
+          ObjectSchema {
+            "_blacklist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_blacklistError": undefined,
+            "_excludedEdges": Array [],
+            "_nodes": Array [
+              "runtime",
+              "genres",
+              "release_date",
+              "overview",
+              "poster_path",
+              "title",
+            ],
+            "_sortErrors": [Function],
+            "_typeError": [Function],
+            "_whitelist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_whitelistError": undefined,
+            "conditions": Array [],
+            "deps": Array [],
+            "exclusiveTests": Object {},
+            "fields": Object {
+              "genres": StringSchema {
+                "_blacklist": ReferenceSet {
+                  "list": Set {},
+                  "refs": Map {},
+                },
+                "_blacklistError": undefined,
+                "_mutate": undefined,
+                "_typeError": [Function],
+                "_whitelist": ReferenceSet {
+                  "list": Set {},
+                  "refs": Map {},
+                },
+                "_whitelistError": undefined,
+                "conditions": Array [],
+                "deps": Array [],
+                "exclusiveTests": Object {
+                  "required": true,
+                },
+                "spec": Object {
+                  "abortEarly": true,
+                  "nullable": false,
+                  "presence": "required",
+                  "recursive": true,
+                  "strict": false,
+                  "strip": false,
+                },
+                "tests": Array [
+                  [Function],
+                ],
+                "transforms": Array [
+                  [Function],
+                ],
+                "type": "string",
+              },
+              "overview": StringSchema {
+                "_blacklist": ReferenceSet {
+                  "list": Set {},
+                  "refs": Map {},
+                },
+                "_blacklistError": undefined,
+                "_mutate": undefined,
+                "_typeError": [Function],
+                "_whitelist": ReferenceSet {
+                  "list": Set {},
+                  "refs": Map {},
+                },
+                "_whitelistError": undefined,
+                "conditions": Array [],
+                "deps": Array [],
+                "exclusiveTests": Object {
+                  "min": true,
+                  "required": true,
+                },
+                "spec": Object {
+                  "abortEarly": true,
+                  "nullable": false,
+                  "presence": "required",
+                  "recursive": true,
+                  "strict": false,
+                  "strip": false,
+                },
+                "tests": Array [
+                  [Function],
+                  [Function],
+                ],
+                "transforms": Array [
+                  [Function],
+                ],
+                "type": "string",
+              },
+              "poster_path": StringSchema {
+                "_blacklist": ReferenceSet {
+                  "list": Set {},
+                  "refs": Map {},
+                },
+                "_blacklistError": undefined,
+                "_mutate": undefined,
+                "_typeError": [Function],
+                "_whitelist": ReferenceSet {
+                  "list": Set {},
+                  "refs": Map {},
+                },
+                "_whitelistError": undefined,
+                "conditions": Array [],
+                "deps": Array [],
+                "exclusiveTests": Object {
+                  "required": true,
+                },
+                "spec": Object {
+                  "abortEarly": true,
+                  "nullable": false,
+                  "presence": "required",
+                  "recursive": true,
+                  "strict": false,
+                  "strip": false,
+                },
+                "tests": Array [
+                  [Function],
+                ],
+                "transforms": Array [
+                  [Function],
+                ],
+                "type": "string",
+              },
+              "release_date": StringSchema {
+                "_blacklist": ReferenceSet {
+                  "list": Set {},
+                  "refs": Map {},
+                },
+                "_blacklistError": undefined,
+                "_mutate": undefined,
+                "_typeError": [Function],
+                "_whitelist": ReferenceSet {
+                  "list": Set {},
+                  "refs": Map {},
+                },
+                "_whitelistError": undefined,
+                "conditions": Array [],
+                "deps": Array [],
+                "exclusiveTests": Object {
+                  "required": true,
+                },
+                "spec": Object {
+                  "abortEarly": true,
+                  "nullable": false,
+                  "presence": "required",
+                  "recursive": true,
+                  "strict": false,
+                  "strip": false,
+                },
+                "tests": Array [
+                  [Function],
+                ],
+                "transforms": Array [
+                  [Function],
+                ],
+                "type": "string",
+              },
+              "runtime": NumberSchema {
+                "_blacklist": ReferenceSet {
+                  "list": Set {},
+                  "refs": Map {},
+                },
+                "_blacklistError": undefined,
+                "_mutate": undefined,
+                "_typeError": [Function],
+                "_whitelist": ReferenceSet {
+                  "list": Set {},
+                  "refs": Map {},
+                },
+                "_whitelistError": undefined,
+                "conditions": Array [],
+                "deps": Array [],
+                "exclusiveTests": Object {
+                  "required": true,
+                },
+                "spec": Object {
+                  "abortEarly": true,
+                  "nullable": false,
+                  "presence": "required",
+                  "recursive": true,
+                  "strict": false,
+                  "strip": false,
+                },
+                "tests": Array [
+                  [Function],
+                ],
+                "transforms": Array [
+                  [Function],
+                ],
+                "type": "number",
+              },
+              "title": StringSchema {
+                "_blacklist": ReferenceSet {
+                  "list": Set {},
+                  "refs": Map {},
+                },
+                "_blacklistError": undefined,
+                "_mutate": undefined,
+                "_typeError": [Function],
+                "_whitelist": ReferenceSet {
+                  "list": Set {},
+                  "refs": Map {},
+                },
+                "_whitelistError": undefined,
+                "conditions": Array [],
+                "deps": Array [],
+                "exclusiveTests": Object {
+                  "max": true,
+                  "required": true,
+                },
+                "spec": Object {
+                  "abortEarly": true,
+                  "nullable": false,
+                  "presence": "required",
+                  "recursive": true,
+                  "strict": false,
+                  "strip": false,
+                },
+                "tests": Array [
+                  [Function],
+                  [Function],
+                ],
+                "transforms": Array [
+                  [Function],
+                ],
+                "type": "string",
+              },
+            },
+            "spec": Object {
+              "abortEarly": true,
+              "nullable": false,
+              "presence": "optional",
+              "recursive": true,
+              "strict": false,
+              "strip": false,
+            },
+            "tests": Array [],
+            "transforms": Array [
+              [Function],
+            ],
+            "type": "object",
+          }
+        }
+      >
+        <Form
+          className="form__content"
+        >
+          <form
+            action="#"
+            className="form__content"
+            onReset={[Function]}
+            onSubmit={[Function]}
+          >
+            <div
+              className="form__contact-field-box"
+            >
+              <FormikField
+                id="title"
+                key="Title"
+                myErrors={Object {}}
+                myTouched={Object {}}
+                path="title"
+                title="Title"
+              >
+                <div>
+                  <div
+                    className="form__label"
+                  >
+                    Title
+                  </div>
+                  <Field
+                    className="form__input"
+                    id="title"
+                    name="title"
+                    placeholder="Title"
+                    type="text"
+                  >
+                    <input
+                      className="form__input"
+                      id="title"
+                      name="title"
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      placeholder="Title"
+                      type="text"
+                      value=""
+                    />
+                  </Field>
+                </div>
+              </FormikField>
+              <FormikField
+                id="release_date"
+                key="Release Date"
+                myErrors={Object {}}
+                myTouched={Object {}}
+                path="release_date"
+                title="Release Date"
+              >
+                <div>
+                  <div
+                    className="form__label"
+                  >
+                    Release Date
+                  </div>
+                  <Field
+                    className="form__input"
+                    id="release_date"
+                    name="release_date"
+                    placeholder="Release Date"
+                    type="text"
+                  >
+                    <input
+                      className="form__input"
+                      id="release_date"
+                      name="release_date"
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      placeholder="Release Date"
+                      type="text"
+                      value=""
+                    />
+                  </Field>
+                </div>
+              </FormikField>
+              <FormikField
+                id="poster_path"
+                key="Poster Path"
+                myErrors={Object {}}
+                myTouched={Object {}}
+                path="poster_path"
+                title="Poster Path"
+              >
+                <div>
+                  <div
+                    className="form__label"
+                  >
+                    Poster Path
+                  </div>
+                  <Field
+                    className="form__input"
+                    id="poster_path"
+                    name="poster_path"
+                    placeholder="Poster Path"
+                    type="text"
+                  >
+                    <input
+                      className="form__input"
+                      id="poster_path"
+                      name="poster_path"
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      placeholder="Poster Path"
+                      type="text"
+                      value=""
+                    />
+                  </Field>
+                </div>
+              </FormikField>
+              <FormikField
+                id="genres"
+                key="Genre"
+                myErrors={Object {}}
+                myTouched={Object {}}
+                path="genres"
+                title="Genre"
+              >
+                <div>
+                  <div
+                    className="form__label"
+                  >
+                    Genre
+                  </div>
+                  <Field
+                    className="form__input"
+                    id="genres"
+                    name="genres"
+                    placeholder="Genre"
+                    type="text"
+                  >
+                    <input
+                      className="form__input"
+                      id="genres"
+                      name="genres"
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      placeholder="Genre"
+                      type="text"
+                      value={Array []}
+                    />
+                  </Field>
+                </div>
+              </FormikField>
+              <FormikField
+                id="overview"
+                key="Overview"
+                myErrors={Object {}}
+                myTouched={Object {}}
+                path="overview"
+                title="Overview"
+              >
+                <div>
+                  <div
+                    className="form__label"
+                  >
+                    Overview
+                  </div>
+                  <Field
+                    className="form__input"
+                    id="overview"
+                    name="overview"
+                    placeholder="Overview"
+                    type="text"
+                  >
+                    <input
+                      className="form__input"
+                      id="overview"
+                      name="overview"
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      placeholder="Overview"
+                      type="text"
+                      value=""
+                    />
+                  </Field>
+                </div>
+              </FormikField>
+              <FormikField
+                id="runtime"
+                key="Runtime"
+                myErrors={Object {}}
+                myTouched={Object {}}
+                path="runtime"
+                title="Runtime"
+              >
+                <div>
+                  <div
+                    className="form__label"
+                  >
+                    Runtime
+                  </div>
+                  <Field
+                    className="form__input"
+                    id="runtime"
+                    name="runtime"
+                    placeholder="Runtime"
+                    type="text"
+                  >
+                    <input
+                      className="form__input"
+                      id="runtime"
+                      name="runtime"
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      placeholder="Runtime"
+                      type="text"
+                      value=""
+                    />
+                  </Field>
+                </div>
+              </FormikField>
+              <button
+                className="button-secondary"
+                type="submit"
+              >
+                reset
+              </button>
+               
+              <button
+                className="button-main"
+                type="submit"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </Form>
+      </Formik>
+      <p />
+    </div>
+  </FormikAddMovie>
+</Provider>
 `;

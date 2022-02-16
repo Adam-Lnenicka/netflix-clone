@@ -47,9 +47,9 @@ const FormikAddMovie = () => {
   return (
     <div className="form">
       <div className="exit">
-        <Link to="/">
+        {/* <Link to="/">
           <button className="exit-button">X</button>
-        </Link>
+        </Link> */}
       </div>
       <h1>Add Movie</h1>
 
