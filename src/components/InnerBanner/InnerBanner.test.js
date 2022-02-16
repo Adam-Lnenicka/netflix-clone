@@ -21,7 +21,7 @@ describe("Inner Banner", () => {
       // </Provider>
     );
     wrapper.find("button").simulate("click");
-    expect(mockFunction).toBeCalle();
+    expect(mockFunction).toBeCalled();
   });
 
   it("submit button displays", () => {
@@ -33,11 +33,7 @@ describe("Inner Banner", () => {
       // </Provider>
     );
 
-    const findByTestAttr = (wrapper, val) => {
-      return wrapper.find(`[data-test="${val}"]`);
-    };
-    // test('submit button does not display', () => {
-    const submitButton = findByTestAttr(wrapper, "submit-button");
+    const submitButton = wrapper.find(".button-main");
     expect(submitButton.exists()).toBe(true);
     // });
   });
@@ -48,14 +44,11 @@ describe("Inner Banner", () => {
       <InnerBanner />
       // </Provider>
     );
-    const findByTestAttr = (wrapper, val) => {
-      return wrapper.find(`[data-test="${val}"]`);
-    };
-    const inputBox = findByTestAttr(wrapper, "input-box");
+
+    const inputBox = wrapper.find(".input-box");
     const mockEvent = { target: { value: "input" } };
 
     inputBox.simulate("change", mockEvent);
-    // expect(mockSetCurrentGuess).toHaveBeenCalledWith("input");
   });
 
   it("matches snapshot", () => {

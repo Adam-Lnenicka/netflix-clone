@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1645022669823" clover="3.2.0">
-  <project timestamp="1645022669823" name="All files">
-    <metrics statements="50" coveredstatements="36" conditionals="13" coveredconditionals="7" methods="13" coveredmethods="9" elements="76" coveredelements="52" complexity="0" loc="50" ncloc="50" packages="4" files="5" classes="5"/>
+<coverage generated="1645024241514" clover="3.2.0">
+  <project timestamp="1645024241514" name="All files">
+    <metrics statements="49" coveredstatements="35" conditionals="13" coveredconditionals="7" methods="13" coveredmethods="8" elements="75" coveredelements="50" complexity="0" loc="49" ncloc="49" packages="4" files="5" classes="5"/>
     <package name="components">
       <metrics statements="5" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
       <file name="MovieCard.js" path="/Users/Adam_Lnenicka/react-netflix-clone/src/components/MovieCard.js">
@@ -36,16 +36,15 @@
       </file>
     </package>
     <package name="components.InnerBanner">
-      <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
       <file name="InnerBanner.js" path="/Users/Adam_Lnenicka/react-netflix-clone/src/components/InnerBanner/InnerBanner.js">
-        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
         <line num="7" count="2" type="stmt"/>
         <line num="9" count="5" type="stmt"/>
         <line num="10" count="5" type="stmt"/>
         <line num="11" count="5" type="stmt"/>
         <line num="25" count="1" type="stmt"/>
         <line num="26" count="1" type="stmt"/>
-        <line num="34" count="1" type="stmt"/>
       </file>
     </package>
     <package name="store">

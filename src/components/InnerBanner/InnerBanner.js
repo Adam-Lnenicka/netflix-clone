@@ -19,7 +19,7 @@ const InnerBanner = () => {
         <div className="inner-banner__form">
           <input
             type="text"
-            data-test="input-box"
+            className="input-box"
             placeholder="What do you want to watch"
             onChange={(e) => {
               setSearchTerm(e.target.value);
@@ -31,7 +31,6 @@ const InnerBanner = () => {
             className="button-main"
             data-test="submit-button"
             onClick={() => {
-              onClick();
               // dispatch(searchMovieTitleCreator(searchTerm));
             }}
           >
