@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 const InnerBanner = () => {
   // const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
+  const onClick = () => {};
   return (
     <div className="banner">
       <div className="inner-banner">
@@ -30,6 +31,7 @@ const InnerBanner = () => {
             className="button-main"
             data-test="submit-button"
             onClick={() => {
+              onClick();
               // dispatch(searchMovieTitleCreator(searchTerm));
             }}
           >

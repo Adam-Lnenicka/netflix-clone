@@ -11,33 +11,21 @@ describe("Inner Banner", () => {
   const initialState = {};
   const mockStore = configureStore();
   const onCountChange = jest.fn();
-  const dispatch = jest.fn();
-
-  it("Simulates search function called", () => {
-    const store = mockStore(initialState);
-
-    const wrapper = shallow(
-      <Provider store={store}>
-        <InnerBanner onCountChange={onCountChange} />
-      </Provider>
-    );
-    wrapper.find("input").simulate("change");
-    expect(wrapper.instance().onCountChange).toHaveBeenCalled();
-  });
+  const mockFunction = jest.fn();
 
   it("Simulates dispatch on search function", () => {
     const store = mockStore(initialState);
 
-    const wrapper = shallow(
+    const wrapper = mount(
       // <Provider store={store}>
-      <InnerBanner />
+      <InnerBanner onCLick={onClick} />
       // </Provider>
     );
-    // wrapper.find("button").simulate("click");
-    expect(wrapper.find("button").simulate("click")).toHaveBeenCalled();
+    wrapper.find("button").simulate("click");
+    expect(mockFunction).toBeCalledTimes(1);
   });
 
-  test("submit button displays", () => {
+  it("submit button displays", () => {
     // const store = mockStore(initialState);
 
     const wrapper = mount(
