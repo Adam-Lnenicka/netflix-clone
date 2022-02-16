@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import {
   loadMoviesThunk,
   loadMoviesByDateThunk,
   loadMoviesByRatingThunk,
   loadMoviesByTitleThunk,
-} from "../store/thunk";
+} from "../../store/thunk";
 
 const MovieSortCriteria = () => {
   const dispatch = useDispatch();

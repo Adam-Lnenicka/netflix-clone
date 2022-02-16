@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import Shorten from "./Shorten";
-import { removeMovieActionCreator } from "../store/actionCreators";
 import { Link } from "react-router-dom";
+import { removeMovieActionCreator } from "../../store/actionCreators";
+import Shorten from "../CompoundFunctions/Shorten";
 
 const MovieCard = ({
   id,

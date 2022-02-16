@@ -4,7 +4,7 @@ import {
   useMovieArraySearchSelector,
   useMovieGenreFilterSelector,
 } from "../../store/selectors";
-import MovieCard from "../MovieCard";
+import MovieCard from "../MovieCard/MovieCard";
 
 const MovieCardsContainer = () => {
   const apiMoviesArray = useApiMoviesArraySelector();

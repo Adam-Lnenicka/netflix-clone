@@ -1,7 +1,7 @@
 import "jsdom-global/register";
 
 import React from "react";
-import { mount, shallow } from "enzyme";
+import { mount } from "enzyme";
 import MovieCard from "./MovieCard";
 import toJSON from "enzyme-to-json";
 import { Provider } from "react-redux";

@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { useApiMoviesArraySelector } from "../../store/selectors";
-import Shorten from "../Shorten";
+import Shorten from "../CompoundFunctions/Shorten";
 
 const MovieBanner = () => {
   const { movieId } = useParams();

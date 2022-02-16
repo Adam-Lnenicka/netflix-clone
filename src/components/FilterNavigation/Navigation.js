@@ -1,5 +1,5 @@
 import React from "react";
-import MovieSortCriteria from "../MovieSortCriteria";
+import MovieSortCriteria from "../MovieSorting/MovieSortCriteria";
 import FilterNavigation from "./FilterNavigation";
 
 const Navigation = () => {

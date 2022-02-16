@@ -1,13 +1,10 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { searchMovieTitleCreator } from "../../store/actionCreators";
-import { Link } from "react-router-dom";
+
 // import NewMovie from "../NewMovie/NewMovie";
 
 const InnerBanner = () => {
   // const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
-  const onClick = () => {};
   return (
     <div className="banner">
       <div className="inner-banner">
