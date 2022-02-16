@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 // import NewMovie from "../NewMovie/NewMovie";
 
 const InnerBanner = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
   return (
     <div className="banner">
@@ -27,9 +27,10 @@ const InnerBanner = () => {
           />
           <button
             className="button-main"
-            id="bttn"
+            id="data-test"
+            data-test="component-congrats"
             onClick={() => {
-              dispatch(searchMovieTitleCreator(searchTerm));
+              // dispatch(searchMovieTitleCreator(searchTerm));
             }}
           >
             search

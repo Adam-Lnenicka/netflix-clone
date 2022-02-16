@@ -1,21 +1,64 @@
+import configureMockStore from "redux-mock-store";
+import thunk from "redux-thunk";
+import moxios from "moxios";
+
 import { MOVIES_LOADED } from "./actionTypes";
 import { loadMoviesThunk } from "./thunk";
 
-global.fetch = jest.fn(() =>
-  Promise.resolve({
-    json: () => Promise.resolve({ data: { test: "123" } }),
-  })
-);
+describe("SearchMovie actions", () => {
+  const middlewares = [thunk];
+  const mockStore = configureMockStore(middlewares);
+  let store;
 
-describe("Given loadMoviesThunk", () => {
-  it("should call dispatch with correct atr", () => {
-    const mockedDispatch = jest.fn();
+  beforeEach(function () {
+    moxios.install();
 
-    loadMoviesThunk({})(mockedDispatch);
+    store = mockStore({
+      movies: [],
+    });
 
-    expect(mockedDispatch).toHaveBeenCalledWith({
-      type: MOVIES_LOADED,
-      payload: { test: "1" },
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: {},
+      });
+    });
+  });
+
+  afterEach(function () {
+    moxios.uninstall();
+  });
+
+  it("Display loaded movies", () => {
+    const loaded = [{ type: MOVIES_LOADED, payload: {} }];
+
+    return store.dispatch(loadMoviesThunk()).then(() => {
+      expect(store.getActions()).toEqual(loaded);
+    });
+  });
+
+  it("Display loaded movies by title", () => {
+    const loaded = [{ type: MOVIES_LOADED, payload: {} }];
+
+    return store.dispatch(loadMoviesThunk()).then(() => {
+      expect(store.getActions()).toEqual(loaded);
+    });
+  });
+
+  it("Display loaded movies by date", () => {
+    const loaded = [{ type: MOVIES_LOADED, payload: {} }];
+
+    return store.dispatch(loadMoviesThunk()).then(() => {
+      expect(store.getActions()).toEqual(loaded);
+    });
+  });
+
+  it("Display loaded movies by rating", () => {
+    const loaded = [{ type: MOVIES_LOADED, payload: {} }];
+
+    return store.dispatch(loadMoviesThunk()).then(() => {
+      expect(store.getActions()).toEqual(loaded);
     });
   });
 });

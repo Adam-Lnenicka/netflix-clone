@@ -61,7 +61,7 @@ export const loadMoviesByDateThunk = () => async (dispatch) => {
   const moviesData = await apiData.json();
   dispatch({
     type: MOVIES_LOADED_BY_DATE,
-    payload: moviesData.data,
+    payload: moviesData.data.data,
   });
 };
 
