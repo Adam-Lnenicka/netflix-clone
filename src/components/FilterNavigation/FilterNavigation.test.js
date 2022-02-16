@@ -31,7 +31,7 @@ describe("FilterNavigation", () => {
         <FilterNavigation onClick={dispatch} />{" "}
       </Provider>
     );
-    wrapper.find("button").simulate("click");
+    wrapper.find("#test-button").simulate("click");
     expect(dispatch).toHaveBeenCalled();
   });
 });

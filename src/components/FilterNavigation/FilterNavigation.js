@@ -6,7 +6,9 @@ const FilterNavigation = () => {
   const dispatch = useDispatch();
   return (
     <div className="filter-navigation">
-      <button onClick={() => dispatch(filterMovie("All"))}>All</button>
+      <button id="test-button" onClick={() => dispatch(filterMovie("All"))}>
+        All
+      </button>
       <button onClick={() => dispatch(filterMovie("Drama"))}>Drama</button>
       <button onClick={() => dispatch(filterMovie("Fantasy"))}>Fantasy</button>
       <button onClick={() => dispatch(filterMovie("Comedy"))}>Comedy</button>
