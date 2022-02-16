@@ -11,15 +11,3 @@ exports[`MoviePage Create snapshot of Movie Page 1`] = `
   <Footer />
 </Fragment>
 `;
-
-exports[`MoviePage create snapshot 1`] = `
-<Fragment>
-  <MovieBanner />
-  <Navigation />
-  <ErrorBoundary>
-     
-    <MovieCardsContainer />
-  </ErrorBoundary>
-  <Footer />
-</Fragment>
-`;

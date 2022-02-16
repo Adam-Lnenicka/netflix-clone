@@ -35,7 +35,6 @@ exports[`MovieCard matches snapshot 1`] = `
     poster_path="https://"
     release_date="2016"
     title="Captain Marvel"
-    year="2016"
   />
    
 </ContextProvider>
