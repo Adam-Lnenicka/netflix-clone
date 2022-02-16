@@ -30,3 +30,65 @@ exports[`Inner Banner matches snapshot 1`] = `
   </div>
 </div>
 `;
+
+exports[`Inner Bannner shallow wrapper Inner Banner matches snapshot 1`] = `
+<div
+  className="banner"
+>
+  <div
+    className="inner-banner"
+  >
+    <h1>
+      FIND YOUR MOVIE
+    </h1>
+    <div
+      className="inner-banner__form"
+    >
+      <input
+        className="input-box"
+        onChange={[Function]}
+        placeholder="What do you want to watch"
+        type="text"
+      />
+      <button
+        className="button-main"
+        data-test="submit-button"
+        onClick={[Function]}
+      >
+        search
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Inner Bannner shallow wrapper matches snapshot 1`] = `
+<div
+  className="banner"
+>
+  <div
+    className="inner-banner"
+  >
+    <h1>
+      FIND YOUR MOVIE
+    </h1>
+    <div
+      className="inner-banner__form"
+    >
+      <input
+        className="input-box"
+        onChange={[Function]}
+        placeholder="What do you want to watch"
+        type="text"
+      />
+      <button
+        className="button-main"
+        data-test="submit-button"
+        onClick={[Function]}
+      >
+        search
+      </button>
+    </div>
+  </div>
+</div>
+`;
