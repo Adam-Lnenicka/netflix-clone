@@ -29,21 +29,21 @@ describe("Inner Banner", () => {
     const store = mockStore(initialState);
 
     const wrapper = shallow(
-      <Provider store={store}>
-        <InnerBanner dispatch={dispatch} />
-      </Provider>
+      // <Provider store={store}>
+      <InnerBanner />
+      // </Provider>
     );
-    wrapper.find("button").simulate("click");
-    expect(wrapper.instance().dispatch).toHaveBeenCalled();
+    // wrapper.find("button").simulate("click");
+    expect(wrapper.find("button").simulate("click")).toHaveBeenCalled();
   });
 
   test("submit button displays", () => {
-    const store = mockStore(initialState);
+    // const store = mockStore(initialState);
 
-    const wrapper = shallow(
-      <Provider store={store}>
-        <InnerBanner />
-      </Provider>
+    const wrapper = mount(
+      // <Provider store={store}>
+      <InnerBanner />
+      // </Provider>
     );
 
     const findByTestAttr = (wrapper, val) => {
@@ -55,21 +55,29 @@ describe("Inner Banner", () => {
     // });
   });
 
-  // test('state updates with value of input box upon change', () => {
-  //   const inputBox = findByTestAttr(wrapper, 'input-box');
-  //   const mockEvent = { target: { value: 'train' } };
+  it("state updates with value of input box upon change", () => {
+    const wrapper = mount(
+      // <Provider store={store}>
+      <InnerBanner />
+      // </Provider>
+    );
+    const findByTestAttr = (wrapper, val) => {
+      return wrapper.find(`[data-test="${val}"]`);
+    };
+    const inputBox = findByTestAttr(wrapper, "input-box");
+    const mockEvent = { target: { value: "input" } };
 
-  //   inputBox.simulate("change", mockEvent);
-  //   expect(mockSetCurrentGuess).toHaveBeenCalledWith('train');
-  // });
+    inputBox.simulate("change", mockEvent);
+    // expect(mockSetCurrentGuess).toHaveBeenCalledWith("input");
+  });
 
   it("matches snapshot", () => {
-    const store = mockStore(initialState);
+    // const store = mockStore(initialState);
 
     const wrapper = shallow(
-      <Provider store={store}>
-        <InnerBanner />
-      </Provider>
+      // <Provider store={store}>u
+      <InnerBanner />
+      // </Provider>
     );
     expect(toJSON(wrapper)).toMatchSnapshot();
   });

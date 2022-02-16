@@ -1,27 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MovieCard matches snapshot 1`] = `
-<ContextProvider
-  value={
+exports[`MovieCard Movie Card matches snapshot 1`] = `
+<Provider
+  store={
     Object {
-      "store": Object {
-        "clearActions": [Function],
-        "dispatch": [Function],
-        "getActions": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-      },
-      "subscription": Object {
-        "addNestedSub": [Function],
-        "getListeners": [Function],
-        "handleChangeWrapper": [Function],
-        "isSubscribed": [Function],
-        "notifyNestedSubs": [Function],
-        "onStateChange": [Function],
-        "trySubscribe": [Function],
-        "tryUnsubscribe": [Function],
-      },
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
     }
   }
 >
@@ -35,7 +23,39 @@ exports[`MovieCard matches snapshot 1`] = `
     poster_path="https://"
     release_date="2016"
     title="Captain Marvel"
-  />
+  >
+    <div
+      className="card"
+    >
+      <img
+        alt="Captain Marvel"
+        className="card-image"
+        src="https://"
+      />
+      <div
+        className="card-details"
+      >
+        <div>
+          <h4>
+            Captain Marvel
+          </h4>
+          <p>
+             
+            Animation
+          </p>
+        </div>
+        <button>
+          2016
+        </button>
+        <button
+          onClick={[Function]}
+        >
+          remove movie
+        </button>
+         
+      </div>
+    </div>
+  </MovieCard>
    
-</ContextProvider>
+</Provider>
 `;

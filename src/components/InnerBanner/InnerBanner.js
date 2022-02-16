@@ -10,14 +10,15 @@ const InnerBanner = () => {
   return (
     <div className="banner">
       <div className="inner-banner">
-        <Link to="/add-movie">
+        {/* <Link to="/add-movie">
           <div className="button-main add-button">Add Movie</div>
-        </Link>
+        </Link> */}
 
         <h1>FIND YOUR MOVIE</h1>
         <div className="inner-banner__form">
           <input
             type="text"
+            data-test="input-box"
             placeholder="What do you want to watch"
             onChange={(e) => {
               setSearchTerm(e.target.value);
@@ -27,8 +28,7 @@ const InnerBanner = () => {
           />
           <button
             className="button-main"
-            id="data-test"
-            data-test="component-congrats"
+            data-test="submit-button"
             onClick={() => {
               // dispatch(searchMovieTitleCreator(searchTerm));
             }}

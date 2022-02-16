@@ -6,6 +6,7 @@ import {
   MOVIES_LOADED_BY_TITLE,
   MOVIE_ADDED,
   MOVIE_FILTER,
+  MOVIE_REMOVED,
   SEARCH,
 } from "./actionTypes";
 
@@ -69,16 +70,6 @@ describe("load movies: ", () => {
     const value = reducer(state, action);
     expect(value).toEqual({
       movies: ["payload"],
-    });
-  });
-
-  it("movies are added", () => {
-    state.movies = {};
-    action.type = MOVIE_ADDED;
-    const value = reducer(state, action);
-    expect(value).toEqual({
-      ...state,
-      movies: [[...state.movies[0].unshift("payload")]],
     });
   });
 });

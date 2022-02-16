@@ -11,7 +11,7 @@
     "prepare": "husky install",
     "code:check": "./node_modules/.bin/eslint '**/*.js'",
     "code:fix": "./node_modules/.bin/eslint '**/*.js' --fix",
-    "test": "jest --watch"
+    "test": "jest --watch --coverage"
   },
   "author": "Adam Lnenicka",
   "license": "ISC",
@@ -32,6 +32,7 @@
     "@testing-library/dom": "^8.1.0",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.2.1",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
     "axios": "^0.26.0",
     "babel-core": "^6.26.3",
     "babel-jest": "^27.4.6",
@@ -49,10 +50,10 @@
     "formik": "^2.2.9",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^7.0.4",
+    "jest": "^27.5.1",
     "jsdom": "19.0.0",
     "jsdom-global": "3.0.2",
     "json-loader": "^0.5.7",
-    "jest": "^27.5.1",
     "lint-staged": "^12.1.2",
     "mini-css-extract-plugin": "^2.4.5",
     "moxios": "^0.4.0",

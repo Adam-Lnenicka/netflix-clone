@@ -1,5 +1,7 @@
+import "jsdom-global/register";
+
 import React from "react";
-import { shallow } from "enzyme";
+import { mount, shallow } from "enzyme";
 import MovieCard from "./MovieCard";
 import toJSON from "enzyme-to-json";
 import { Provider } from "react-redux";
@@ -8,7 +10,7 @@ import configureStore from "redux-mock-store";
 describe("MovieCard", () => {
   const initialState = {};
   const mockStore = configureStore();
-  it("matches snapshot", () => {
+  it("Movie Card matches snapshot", () => {
     const store = mockStore(initialState);
     const props = {
       title: "Captain Marvel",
@@ -17,7 +19,7 @@ describe("MovieCard", () => {
       description: "Movie description",
       poster_path: "https://",
     };
-    const wrapper = shallow(
+    const wrapper = mount(
       <Provider store={store}>
         <MovieCard {...props} />{" "}
       </Provider>

@@ -28,7 +28,7 @@ const MovieSchema = Yup.object().shape({
 
 const FormikAddMovie = () => {
   const [submitted, setSubmitted] = useState(false);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const handleSubmit = (values) => {
     setSubmitted(true);
@@ -36,7 +36,7 @@ const FormikAddMovie = () => {
     values.id = Math.random().toString();
     console.log(values);
 
-    // dispatch(addMovieActionCreator(values));
+    dispatch(addMovieActionCreator(values));
   };
 
   const handleReset = (values) => {
@@ -83,7 +83,7 @@ const FormikAddMovie = () => {
               <button className="button-secondary" type="submit">
                 reset
               </button>{" "}
-              <button id="button" className="button-main" type="submit">
+              <button className="button-main" type="submit">
                 Submit
               </button>
             </div>
