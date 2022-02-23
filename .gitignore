@@ -3,6 +3,8 @@
 /coverage.data
 /coverage/
 /coverage
+/coverage/lcov-report
+
 
 
 /node_modules
