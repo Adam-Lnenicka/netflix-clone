@@ -3,6 +3,7 @@
 /coverage.data
 /coverage/lcov-report/
 /coverage/
+/coverage
 
 node_modules
 .nyc_output

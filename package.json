@@ -11,13 +11,13 @@
     "prepare": "husky install",
     "code:check": "./node_modules/.bin/eslint '**/*.js'",
     "code:fix": "./node_modules/.bin/eslint '**/*.js' --fix",
-    "test": "jest --watch --coverage",
-    "coverage": "jest --collect-coverage"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:ci": "jest --ci --coverage"
   },
   "author": "Adam Lnenicka",
   "license": "ISC",
   "dependencies": {
-    "coverage": "^0.4.1",
     "jest-cli": "^27.5.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -72,19 +72,6 @@
     "webpack": "^5.64.1",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.5.0"
-  },
-  "jest": {
-    "setupFilesAfterEnv": [
-      "<rootDir>src/setupTests.js"
-    ],
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
-    "collectCoverage": true,
-    "coverageReporters": [
-      "json",
-      "html"
-    ]
   },
   "husky": {
     "hooks": {
