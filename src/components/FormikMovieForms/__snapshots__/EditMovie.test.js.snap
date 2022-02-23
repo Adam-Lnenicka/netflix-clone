@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FormikAddMovie calls onSubmit when add formik form submitted 1`] = `
+exports[`FormikEditMovie Formik EditMovie matches snapshot 1`] = `
 <Provider
   store={
     Object {
@@ -17,9 +17,11 @@ exports[`FormikAddMovie calls onSubmit when add formik form submitted 1`] = `
     id="my-id"
     myErrors="test-errors"
     myTouched="test-touched"
-    onSubmit={[MockFunction]}
+    onClick={[MockFunction]}
+    onSubmit={[Function]}
     path="test-path"
     title="test-title"
+    validationSchema={[Function]}
   >
     <div
       className="form"

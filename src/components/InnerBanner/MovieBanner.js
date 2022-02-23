@@ -17,6 +17,7 @@ const MovieBanner = () => {
         className="movie-details__image"
         src={thisMovie.map((m) => m.poster_path)}
         alt={thisMovie.map((m) => m.title)}
+        id="banner-selected-image"
         onError={(e) =>
           (e.target.src =
             "https://images.unsplash.com/photo-1560109947-543149eceb16?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80")
@@ -24,9 +25,9 @@ const MovieBanner = () => {
       />
       <div>
         <div className="flex">
-          <Link to="/" className="exit-button">
+          {/* <Link to="/" className="exit-button">
             X
-          </Link>
+          </Link> */}
           <h2> {thisMovie.map((m) => m.title)}</h2>
           <span className="movie-details__rating">
             {" "}

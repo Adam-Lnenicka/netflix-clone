@@ -22,8 +22,9 @@ describe("Inner Banner mount wrapper", () => {
   });
 
   it("Simulates dispatch on search function", () => {
+    const instance = wrapper.instance();
     wrapper.find("button").simulate("click");
-    expect(mockFunction).toBeCalled();
+    expect(instance.dispatch).toHaveBeenCalled();
   });
 
   it("submit button displays", () => {

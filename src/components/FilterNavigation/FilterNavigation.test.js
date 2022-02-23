@@ -28,10 +28,13 @@ describe("FilterNavigation", () => {
 
     const wrapper = mount(
       <Provider store={store}>
-        <FilterNavigation onClick={dispatch} />{" "}
+        <FilterNavigation dispatch={dispatch} />{" "}
       </Provider>
     );
+    const instance = wrapper.instance();
+
     wrapper.find("#test-button").simulate("click");
-    expect(dispatch).toHaveBeenCalled();
+
+    expect(instance.dispatch).toHaveBeenCalled();
   });
 });
