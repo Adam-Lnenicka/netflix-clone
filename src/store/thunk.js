@@ -31,7 +31,7 @@ export const loadMoviesThunk = () => (dispatch) =>
   axios.get("http://localhost:4000/movies").then((moviesData) =>
     dispatch({
       type: MOVIES_LOADED,
-      payload: moviesData.data,
+      payload: moviesData.data.data,
     })
   );
 
@@ -39,7 +39,7 @@ export const loadMoviesByTitleThunk = () => (dispatch) =>
   axios.get(`${api}?sortOrder=desc&sortBy=title`).then((moviesData) =>
     dispatch({
       type: MOVIES_LOADED_BY_TITLE,
-      payload: moviesData.data,
+      payload: moviesData.data.data,
     })
   );
 
@@ -47,14 +47,14 @@ export const loadMoviesByRatingThunk = () => (dispatch) =>
   axios.get(`${api}?sortOrder=desc&sortBy=vote_average`).then((moviesData) =>
     dispatch({
       type: MOVIES_LOADED_BY_RATING,
-      payload: moviesData.data,
+      payload: moviesData.data.data,
     })
   );
 export const loadMoviesByDateThunk = () => (dispatch) =>
   axios.get(`${api}?sortOrder=desc&sortBy=release_date`).then((moviesData) =>
     dispatch({
       type: MOVIES_LOADED_BY_DATE,
-      payload: moviesData.data,
+      payload: moviesData.data.data,
     })
   );
 
