@@ -27,13 +27,23 @@ const api = "http://localhost:4000/movies";
 //   });
 // };
 
-export const loadMoviesThunk = () => (dispatch) =>
-  axios.get("http://localhost:4000/movies").then((moviesData) =>
-    dispatch({
-      type: MOVIES_LOADED,
-      payload: moviesData.data.data,
+export const loadMoviesThunk = (id) => (dispatch) =>
+  axios
+    .get("http://localhost:4000/movies", {
+      params: {
+        // search: "black",
+        searchBy: "title",
+        // filter: "horror",
+        sortBy: "title",
+        sortOrder: "desc",
+      },
     })
-  );
+    .then((moviesData) =>
+      dispatch({
+        type: MOVIES_LOADED,
+        payload: moviesData.data.data,
+      })
+    );
 
 export const loadMoviesByTitleThunk = () => (dispatch) =>
   axios.get(`${api}?sortOrder=desc&sortBy=title`).then((moviesData) =>
