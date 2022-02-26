@@ -11,12 +11,15 @@ describe("FilterNavigation", () => {
   const dispatch = jest.fn();
   const initialState = {};
   const mockStore = configureStore();
+  const props = {
+    filterMovie: () => {},
+  };
   it("matches snapshot", () => {
     const store = mockStore(initialState);
 
-    const wrapper = shallow(
+    const wrapper = mount(
       <Provider store={store}>
-        <FilterNavigation />{" "}
+        <FilterNavigation {...props} />{" "}
       </Provider>
     );
 
@@ -28,7 +31,7 @@ describe("FilterNavigation", () => {
 
     const wrapper = mount(
       <Provider store={store}>
-        <FilterNavigation dispatch={dispatch} />{" "}
+        <FilterNavigation dispatch={dispatch} {...props} />{" "}
       </Provider>
     );
     const instance = wrapper.instance();

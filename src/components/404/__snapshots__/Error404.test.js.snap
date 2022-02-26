@@ -36,14 +36,34 @@ exports[`404 Page Create snapshot of 404 component with link 1`] = `
       }
     }
   >
-    <Link
-      to="/"
-    >
-      <a
-        href="/"
-        onClick={[Function]}
-      />
-    </Link>
+    <Error404>
+      <div
+        className="error404"
+      >
+        <p>
+          Page Not Found
+        </p>
+        <p
+          className="sign404"
+        >
+          404
+        </p>
+        <Link
+          to="/"
+        >
+          <a
+            href="/"
+            onClick={[Function]}
+          >
+            <button
+              className="button-secondary"
+            >
+              back to home
+            </button>
+          </a>
+        </Link>
+      </div>
+    </Error404>
   </Router>
 </BrowserRouter>
 `;

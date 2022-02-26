@@ -1,31 +1,52 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FilterNavigation matches snapshot 1`] = `
-<ContextProvider
-  value={
+<Provider
+  store={
     Object {
-      "store": Object {
-        "clearActions": [Function],
-        "dispatch": [Function],
-        "getActions": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-      },
-      "subscription": Object {
-        "addNestedSub": [Function],
-        "getListeners": [Function],
-        "handleChangeWrapper": [Function],
-        "isSubscribed": [Function],
-        "notifyNestedSubs": [Function],
-        "onStateChange": [Function],
-        "trySubscribe": [Function],
-        "tryUnsubscribe": [Function],
-      },
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
     }
   }
 >
-  <FilterNavigation />
+  <FilterNavigation
+    filterMovie={[Function]}
+  >
+    <div
+      className="filter-navigation"
+    >
+      <button
+        id="test-button"
+        onClick={[Function]}
+      >
+        All
+      </button>
+      <button
+        onClick={[Function]}
+      >
+        Drama
+      </button>
+      <button
+        onClick={[Function]}
+      >
+        Fantasy
+      </button>
+      <button
+        onClick={[Function]}
+      >
+        Comedy
+      </button>
+      <button
+        onClick={[Function]}
+      >
+        Action
+      </button>
+    </div>
+  </FilterNavigation>
    
-</ContextProvider>
+</Provider>
 `;

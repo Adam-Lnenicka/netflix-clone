@@ -14,12 +14,17 @@ exports[`FormikEditMovie Formik EditMovie matches snapshot 1`] = `
   }
 >
   <FormikAddMovie
+    fieldArray={Array []}
+    genres="genres"
     id="my-id"
     myErrors="test-errors"
     myTouched="test-touched"
     onClick={[MockFunction]}
     onSubmit={[Function]}
-    path="test-path"
+    overview="test overview"
+    poster_path="test poster path"
+    release_date="test-date"
+    runtime="test runtime"
     title="test-title"
     validationSchema={[Function]}
   >

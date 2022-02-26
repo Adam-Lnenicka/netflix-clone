@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MovieBanner snapshot 1`] = `
+exports[`MovieBanner MovieBanner to match snapshot 1`] = `
 <ContextProvider
   value={
     Object {
@@ -26,6 +26,11 @@ exports[`MovieBanner snapshot 1`] = `
   }
 >
   <MovieBanner
+    apiMoviesArray={
+      Array [
+        "test, test2, test3",
+      ]
+    }
     genres={
       Array [
         "Animation",
@@ -35,6 +40,8 @@ exports[`MovieBanner snapshot 1`] = `
     poster_path="https://"
     release_date="2016"
     runtime={108}
+    tagline="short description"
+    thisMovie={[Function]}
     title="Captain Marvel"
     vote_average={7.7}
   />

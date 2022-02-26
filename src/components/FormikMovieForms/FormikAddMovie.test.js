@@ -6,6 +6,7 @@ import FormikAddMovie from "./FormikAddMovie";
 import configureStore from "redux-mock-store";
 import { Provider } from "react-redux";
 import toJson from "enzyme-to-json";
+import { BrowserRouter as Router } from "react-router-dom";
 
 describe("FormikAddMovie", () => {
   const initialState = {};

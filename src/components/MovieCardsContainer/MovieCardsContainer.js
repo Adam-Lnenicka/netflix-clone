@@ -1,39 +1,14 @@
 import React from "react";
-import {
-  useApiMoviesArraySelector,
-  useMovieArraySearchSelector,
-  useMovieGenreFilterSelector,
-} from "../../store/selectors";
+import { useApiMoviesArraySelector } from "../../store/selectors";
 import MovieCard from "../MovieCard/MovieCard";
 
 const MovieCardsContainer = () => {
   const apiMoviesArray = useApiMoviesArraySelector();
-  const movieGenreFilter = useMovieGenreFilterSelector();
-  const movieArraySearch = useMovieArraySearchSelector();
 
   return (
     <div className="card-layout">
       {apiMoviesArray.map((movie) =>
         movie
-          .filter((data) => {
-            if (movieArraySearch === "") {
-              return data;
-            } else if (
-              data.title.toLowerCase().includes(movieArraySearch.toLowerCase())
-            ) {
-              return data;
-            }
-            return null;
-          })
-          .filter((data) => {
-            if (movieGenreFilter === "") {
-              return data;
-            } else if (data.genres.includes(movieGenreFilter)) {
-              return data;
-            }
-            return null;
-          })
-
           .map((m) => (
             <MovieCard
               key={m.id}

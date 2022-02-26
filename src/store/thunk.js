@@ -5,8 +5,13 @@ import {
   MOVIES_LOADED_BY_TITLE,
 } from "./actionTypes";
 import axios from "axios";
+import {
+  useMovieGenreFilterSelector,
+  usesMovieGenreFilterSelector,
+} from "./selectors";
 
 const api = "http://localhost:4000/movies";
+// const movieGenreFilter = useMovieGenreFilterSelector();
 
 // export const loadMoviesThunk = () => async (dispatch) => {
 //   const apiLink = `${api}?limit=100`;
@@ -27,21 +32,19 @@ const api = "http://localhost:4000/movies";
 //   });
 // };
 
-export const loadMoviesThunk = (id) => (dispatch) =>
+export const loadMoviesThunk = () => (dispatch, getState) =>
   axios
     .get("http://localhost:4000/movies", {
       params: {
-        // search: "black",
+        search: usesMovieGenreFilterSelector(getState()),
         searchBy: "title",
-        // filter: "horror",
-        sortBy: "title",
-        sortOrder: "desc",
+        filter: usesMovieGenreFilterSelector(getState()),
       },
     })
     .then((moviesData) =>
       dispatch({
         type: MOVIES_LOADED,
-        payload: moviesData.data.data,
+        payload: moviesData.data,
       })
     );
 
@@ -49,7 +52,7 @@ export const loadMoviesByTitleThunk = () => (dispatch) =>
   axios.get(`${api}?sortOrder=desc&sortBy=title`).then((moviesData) =>
     dispatch({
       type: MOVIES_LOADED_BY_TITLE,
-      payload: moviesData.data.data,
+      payload: moviesData.data,
     })
   );
 
@@ -57,14 +60,14 @@ export const loadMoviesByRatingThunk = () => (dispatch) =>
   axios.get(`${api}?sortOrder=desc&sortBy=vote_average`).then((moviesData) =>
     dispatch({
       type: MOVIES_LOADED_BY_RATING,
-      payload: moviesData.data.data,
+      payload: moviesData.data,
     })
   );
 export const loadMoviesByDateThunk = () => (dispatch) =>
   axios.get(`${api}?sortOrder=desc&sortBy=release_date`).then((moviesData) =>
     dispatch({
       type: MOVIES_LOADED_BY_DATE,
-      payload: moviesData.data.data,
+      payload: moviesData.data,
     })
   );
 

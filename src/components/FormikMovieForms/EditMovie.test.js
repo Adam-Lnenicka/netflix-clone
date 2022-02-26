@@ -6,6 +6,7 @@ import FormikAddMovie from "./FormikAddMovie";
 import configureStore from "redux-mock-store";
 import { Provider } from "react-redux";
 import toJson from "enzyme-to-json";
+import { Formik } from "formik";
 
 describe("FormikEditMovie", () => {
   const initialState = {};
@@ -15,8 +16,13 @@ describe("FormikEditMovie", () => {
   const props = {
     validationSchema: () => {},
     onSubmit: () => {},
+    fieldArray: [],
     title: "test-title",
-    path: "test-path",
+    release_date: "test-date",
+    genres: "genres",
+    overview: "test overview",
+    runtime: "test runtime",
+    poster_path: "test poster path",
     id: "my-id",
     myErrors: "test-errors",
     myTouched: "test-touched",
@@ -39,6 +45,11 @@ describe("FormikEditMovie", () => {
   it("Submit Button exists", () => {
     const submitButton = wrapper.find(".button-main");
     expect(submitButton.exists()).toBe(true);
+  });
+
+  it("Contains Formik", () => {
+    const formikForm = wrapper.find(Formik);
+    expect(formikForm.exists()).toBe(true);
   });
 
   it("Submit button does not exist", () => {

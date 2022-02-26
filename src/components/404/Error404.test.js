@@ -4,6 +4,7 @@ import toJson from "enzyme-to-json";
 import React from "react";
 import { Link } from "react-router-dom";
 import { mount } from "enzyme";
+import Error404 from "./Error404";
 
 describe("404 Page", () => {
   let props;
@@ -15,7 +16,9 @@ describe("404 Page", () => {
     };
     wrapper = mount(
       <Router location="home">
-        <Link {...props} />
+        <Error404>
+          <Link {...props} />
+        </Error404>
       </Router>
     );
   });
