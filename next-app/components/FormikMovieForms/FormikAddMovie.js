@@ -7,7 +7,7 @@ import {
   addMovieActionCreator,
   resetMovieActionCreator,
 } from "../../store/actionCreators";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import FormikField from "./FormikField";
 import { fieldArray } from "./fieldArray";
 
@@ -48,9 +48,9 @@ const FormikAddMovie = () => {
   return (
     <div className="form">
       <div className="exit">
-        {/* <Link to="/">
+        <Link href="/">
           <button className="exit-button">X</button>
-        </Link> */}
+        </Link>
       </div>
       <h1>Add Movie</h1>
 

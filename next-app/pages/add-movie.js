@@ -1,9 +1,8 @@
 import FormikAddMovie from "../components/FormikMovieForms/FormikAddMovie";
 
-export default function home() {
+export default function addMovie() {
   return (
     <>
-      This is home
       <FormikAddMovie />
     </>
   );

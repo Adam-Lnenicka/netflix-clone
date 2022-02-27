@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import Link from "next/link";
+
 import { searchMovieTitleCreator } from "../../store/actionCreators";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 // import NewMovie from "../NewMovie/NewMovie";
 
 const InnerBanner = () => {
@@ -10,7 +12,7 @@ const InnerBanner = () => {
   return (
     <div className="banner">
       <div className="inner-banner">
-        <Link to="/add-movie">
+        <Link href="/">
           <div className="button-main add-button">Add Movie</div>
         </Link>
 
