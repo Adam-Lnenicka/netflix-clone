@@ -10,7 +10,8 @@
     "lint": "eslint \"**/*.{js,jsx}\"",
     "prepare": "husky install",
     "code:check": "./node_modules/.bin/eslint '**/*.js'",
-    "code:fix": "./node_modules/.bin/eslint '**/*.js' --fix"
+    "code:fix": "./node_modules/.bin/eslint '**/*.js' --fix",
+    "test": "jest"
   },
   "author": "Adam Lnenicka",
   "license": "ISC",
@@ -53,7 +54,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint"
+      "pre-commit": "npm tesy"
     }
   }
 }
