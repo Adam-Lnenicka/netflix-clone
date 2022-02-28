@@ -4,3 +4,18 @@
 /coverage.data
 coverage/
 /coverage
+
+coverage.data
+coverage/
+/coverage
+# coverage
+# coverage/lcov-report
+# coverage/lcov-report/
+
+
+
+
+/node_modules
+/test-coverage.data
+/test-coverage/
+/test-coverage
