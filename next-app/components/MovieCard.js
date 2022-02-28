@@ -4,7 +4,8 @@ import { useDispatch } from "react-redux";
 import Shorten from "./Shorten";
 
 import { removeMovieActionCreator } from "../store/actionCreators";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const MovieCard = ({
   id,
@@ -18,23 +19,25 @@ const MovieCard = ({
 
   return (
     <div className="card">
-      <Link to={`/movie/${id}`}>
-        <img
-          className="card-image"
-          src={poster_path}
-          alt={title}
-          onError={broken}
-        />
-        <div className="card-details">
-          <div>
-            <h4>{title}</h4>
-            <p> {genres}</p>
+      <Link href={`/movie/${id}`}>
+        <a>
+          <img
+            className="card-image"
+            src={poster_path}
+            alt={title}
+            onError={broken}
+          />
+          <div className="card-details">
+            <div>
+              <h4>{title}</h4>
+              <p> {genres}</p>
+            </div>
+            <button>{Shorten(release_date)}</button>
+            <button onClick={() => dispatch(removeMovieActionCreator(id))}>
+              remove movie
+            </button>{" "}
           </div>
-          <button>{Shorten(release_date)}</button>
-          <button onClick={() => dispatch(removeMovieActionCreator(id))}>
-            remove movie
-          </button>{" "}
-        </div>
+        </a>
       </Link>
     </div>
   );

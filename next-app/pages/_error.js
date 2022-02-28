@@ -7,7 +7,9 @@ const Error404 = () => {
       <p className="sign404">404</p>
 
       <Link href="/">
-        <button className="button-secondary">back to home</button>
+        <a>
+          <button className="button-secondary">back to home</button>
+        </a>
       </Link>
     </div>
   );

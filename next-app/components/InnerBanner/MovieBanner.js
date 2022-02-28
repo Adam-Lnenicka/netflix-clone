@@ -1,8 +1,8 @@
 import React from "react";
 import { useParams } from "react-router";
-import { Link } from "react-router-dom";
 import { useApiMoviesArraySelector } from "../../store/selectors";
 import Shorten from "../Shorten";
+import Link from "next/link";
 
 const MovieBanner = () => {
   const { movieId } = useParams();
@@ -24,8 +24,8 @@ const MovieBanner = () => {
       />
       <div>
         <div className="flex">
-          <Link to="/" className="exit-button">
-            X
+          <Link href="/" className="exit-button">
+            <a>X</a>
           </Link>
           <h2> {thisMovie.map((m) => m.title)}</h2>
           <span className="movie-details__rating">
