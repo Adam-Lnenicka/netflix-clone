@@ -13,12 +13,12 @@ module.exports = {
     publicPath: "/",
   },
   resolve: {
-    extensions: [".js", ".jsx", ".json"],
+    extensions: [".js", ".jsx", ".ts", ".tsx", ".json"],
   },
   module: {
     rules: [
       {
-        test: /\.js$|json/,
+        test: /\.js$|json|ts|tsx/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
