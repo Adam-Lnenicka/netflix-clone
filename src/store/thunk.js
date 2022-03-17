@@ -1,9 +1,4 @@
-import {
-  MOVIES_LOADED,
-  MOVIES_LOADED_BY_DATE,
-  MOVIES_LOADED_BY_RATING,
-  MOVIES_LOADED_BY_TITLE,
-} from "./actionTypes";
+import { ActionType } from "./actionTypes";
 
 const api = "http://localhost:4000/movies";
 
@@ -12,7 +7,7 @@ export const loadMoviesThunk = () => async (dispatch) => {
   const apiData = await fetch(apiLink);
   const moviesData = await apiData.json();
   dispatch({
-    type: MOVIES_LOADED,
+    type: ActionType.MOVIES_LOADED,
     payload: moviesData.data,
   });
 };
@@ -22,7 +17,7 @@ export const loadMoviesByTitleThunk = () => async (dispatch) => {
   const apiData = await fetch(apiLink);
   const moviesData = await apiData.json();
   dispatch({
-    type: MOVIES_LOADED_BY_TITLE,
+    type: ActionType.MOVIES_LOADED_BY_TITLE,
     payload: moviesData.data,
   });
 };
@@ -32,7 +27,7 @@ export const loadMoviesByRatingThunk = () => async (dispatch) => {
   const apiData = await fetch(apiLink);
   const moviesData = await apiData.json();
   dispatch({
-    type: MOVIES_LOADED_BY_RATING,
+    type: ActionType.MOVIES_LOADED_BY_RATING,
     payload: moviesData.data,
   });
 };
@@ -42,7 +37,7 @@ export const loadMoviesByDateThunk = () => async (dispatch) => {
   const apiData = await fetch(apiLink);
   const moviesData = await apiData.json();
   dispatch({
-    type: MOVIES_LOADED_BY_DATE,
+    type: ActionType.MOVIES_LOADED_BY_DATE,
     payload: moviesData.data,
   });
 };

@@ -1,42 +1,36 @@
-import {
-  SEARCH,
-  MOVIE_FILTER,
-  MOVIE_REMOVED,
-  MOVIE_ADDED,
-  RESET,
-} from "./actionTypes";
+import { ActionType } from "./actionTypes";
 
 export const resetMovieActionCreator = (movie: string) => {
   return {
-    type: RESET,
+    type: ActionType.RESET,
     payload: movie,
   };
 };
 
 export const removeMovieActionCreator = (movieId: number) => {
   return {
-    type: MOVIE_REMOVED,
+    type: ActionType.MOVIE_REMOVED,
     payload: movieId,
   };
 };
 
 export const addMovieActionCreator = (movie: string) => {
   return {
-    type: MOVIE_ADDED,
+    type: ActionType.MOVIE_ADDED,
     payload: movie,
   };
 };
 
 export const searchMovieTitleCreator = (filter: string) => {
   return {
-    type: SEARCH,
+    type: ActionType.SEARCH,
     payload: filter,
   };
 };
 
 export const filterMovie = (filter: string) => {
   return {
-    type: MOVIE_FILTER,
+    type: ActionType.MOVIE_FILTER,
     payload: filter,
   };
 };

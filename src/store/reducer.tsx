@@ -1,14 +1,4 @@
-import {
-  SEARCH,
-  MOVIE_FILTER,
-  MOVIES_LOADED,
-  MOVIE_REMOVED,
-  MOVIE_ADDED,
-  RESET,
-  MOVIES_LOADED_BY_TITLE,
-  MOVIES_LOADED_BY_DATE,
-  MOVIES_LOADED_BY_RATING,
-} from "./actionTypes";
+import { ActionType } from "./actionTypes";
 
 interface StateInterface {
   movies: any;
@@ -29,40 +19,40 @@ const rootReducer = (
   { type, payload }
 ): StateInterface => {
   switch (type) {
-    case MOVIES_LOADED:
-    case MOVIES_LOADED_BY_TITLE:
-    case MOVIES_LOADED_BY_DATE:
-    case MOVIES_LOADED_BY_RATING:
+    case ActionType.MOVIES_LOADED:
+    case ActionType.MOVIES_LOADED_BY_TITLE:
+    case ActionType.MOVIES_LOADED_BY_DATE:
+    case ActionType.MOVIES_LOADED_BY_RATING:
       return {
         ...state,
         movies: [payload],
       };
 
-    case RESET:
+    case ActionType.RESET:
       return {
         ...state,
         movies: [[...state.movies[0], (payload = {})]],
       };
 
-    case MOVIE_REMOVED:
+    case ActionType.MOVIE_REMOVED:
       const moviesUpdated = state.movies[0].filter((movie) => {
         return movie.id !== payload;
       });
 
       return { ...state, movies: [moviesUpdated] };
 
-    case MOVIE_ADDED:
+    case ActionType.MOVIE_ADDED:
       return {
         ...state,
         movies: [[...state.movies[0].unshift(payload)]],
       };
-    case MOVIE_FILTER:
+    case ActionType.MOVIE_FILTER:
       return {
         ...state,
         filterMovie: payload,
       };
 
-    case SEARCH:
+    case ActionType.SEARCH:
       return {
         ...state,
         searchFilter: payload,
