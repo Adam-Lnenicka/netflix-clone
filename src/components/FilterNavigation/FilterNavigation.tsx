@@ -1,9 +1,9 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 import { filterMovie } from "../../store/actionCreators";
+import { useAppDispatch } from "../../store/selectors";
 
 const FilterNavigation = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   return (
     <div className="filter-navigation">
       <button onClick={() => dispatch(filterMovie("All"))}>All</button>

@@ -4,13 +4,13 @@ import Home from "./pages/Home";
 import { Route, Routes, BrowserRouter as Router, Link } from "react-router-dom";
 import EditMovie from "./components/FormikMovieForms/EditMovie";
 import FormikAddMovie from "./components/FormikMovieForms/FormikAddMovie";
-import { useDispatch } from "react-redux";
 import { loadMoviesThunk } from "./store/thunk";
 import Error404 from "./components/404/Error404";
 import MoviePage from "./pages/MoviePage/MoviePage";
+import { useAppDispatch } from "./store/selectors";
 
 const App = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(loadMoviesThunk());
   }, []);

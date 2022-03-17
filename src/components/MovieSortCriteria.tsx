@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../store/selectors";
 import {
   loadMoviesThunk,
   loadMoviesByDateThunk,
@@ -8,7 +8,7 @@ import {
 } from "../store/thunk";
 
 const MovieSortCriteria = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const changeSortHandler = (sortValue) => {
     switch (sortValue) {

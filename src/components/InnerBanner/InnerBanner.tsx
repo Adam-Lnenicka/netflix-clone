@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
 import { searchMovieTitleCreator } from "../../store/actionCreators";
 import { Link } from "react-router-dom";
+import { useAppDispatch } from "../../store/selectors";
 // import NewMovie from "../NewMovie/NewMovie";
 
 const InnerBanner: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [searchTerm, setSearchTerm] = useState("");
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
@@ -24,7 +24,6 @@ const InnerBanner: React.FC = () => {
             type="text"
             placeholder="What do you want to watch"
             onChange={handleChange}
-            // onChange={(e) => dispatch(searchMovieTitleCreator(e.target.value))}
           />
           <button
             className="button-main"

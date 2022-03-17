@@ -1,9 +1,9 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 import Shorten from "./Shorten";
 
 import { removeMovieActionCreator } from "../store/actionCreators";
 import { Link } from "react-router-dom";
+import { useAppDispatch } from "../store/selectors";
 
 interface MovieInterface {
   id: number;
@@ -22,7 +22,7 @@ const MovieCard = ({
   release_date,
   genres,
 }: MovieInterface) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   return (
     <div className="card">
