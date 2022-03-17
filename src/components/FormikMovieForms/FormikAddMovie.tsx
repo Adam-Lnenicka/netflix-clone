@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { useDispatch } from "react-redux";
 import {
   addMovieActionCreator,
   resetMovieActionCreator,
@@ -9,6 +8,7 @@ import {
 import { Link } from "react-router-dom";
 import FormikField from "./FormikField";
 import { fieldArray } from "./fieldArray";
+import { useAppDispatch } from "../../store/selectors";
 
 const MovieSchema = Yup.object().shape({
   title: Yup.string()
@@ -28,7 +28,7 @@ const MovieSchema = Yup.object().shape({
 
 const FormikAddMovie: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleSubmit = (values) => {
     setSubmitted(true);
@@ -44,6 +44,24 @@ const FormikAddMovie: React.FC = () => {
     values.title = "";
   };
 
+  interface AddMovieInterface {
+    title: string;
+    release_date: string;
+    poster_path: string;
+    genres: string[];
+    overview: string;
+    runtime: string;
+  }
+
+  const initialValues: AddMovieInterface = {
+    title: "",
+    release_date: "",
+    poster_path: "",
+    genres: [],
+    overview: "",
+    runtime: "",
+  };
+
   return (
     <div className="form">
       <div className="exit">
@@ -54,14 +72,7 @@ const FormikAddMovie: React.FC = () => {
       <h1>Add Movie</h1>
 
       <Formik
-        initialValues={{
-          title: "",
-          release_date: "",
-          poster_path: "",
-          genres: [],
-          overview: "",
-          runtime: "",
-        }}
+        initialValues={initialValues}
         validationSchema={MovieSchema}
         onSubmit={handleSubmit}
       >

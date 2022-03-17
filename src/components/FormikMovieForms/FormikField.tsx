@@ -1,7 +1,14 @@
 import React from "react";
 import { Field } from "formik";
 
-const FormikField = ({ title, path, myErrors, myTouched }) => {
+interface FieldInterface {
+  title: string;
+  path: string;
+  myErrors: any;
+  myTouched: any;
+}
+
+const FormikField = ({ title, path, myErrors, myTouched }: FieldInterface) => {
   return (
     <div>
       <div className="form__label">{title}</div>
