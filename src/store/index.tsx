@@ -6,4 +6,6 @@ import rootReducer from "./reducer";
 const store = createStore(rootReducer, applyMiddleware(thunk));
 store.subscribe(() => console.log(store.getState()));
 
+export type RootState = ReturnType<typeof store.getState>;
+
 export default store;
