@@ -26,7 +26,7 @@ const MovieSchema = Yup.object().shape({
   runtime: Yup.number().required("This field is required"),
 });
 
-const FormikAddMovie = () => {
+const FormikAddMovie: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
   const dispatch = useDispatch();
 

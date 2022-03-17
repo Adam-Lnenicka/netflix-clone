@@ -10,6 +10,13 @@ import {
   MOVIES_LOADED_BY_RATING,
 } from "./actionTypes";
 
+interface StateInterface {
+  movies: any;
+  searchFilter: string;
+  filterMovie: string;
+  movieArray: string[];
+}
+
 const initialState = {
   movies: [],
   searchFilter: "",
@@ -17,7 +24,10 @@ const initialState = {
   movieArray: [],
 };
 
-const rootReducer = (state = initialState, { type, payload }) => {
+const rootReducer = (
+  state: StateInterface = initialState,
+  { type, payload }
+): StateInterface => {
   switch (type) {
     case MOVIES_LOADED:
     case MOVIES_LOADED_BY_TITLE:

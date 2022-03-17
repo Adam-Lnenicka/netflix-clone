@@ -16,7 +16,7 @@ const MovieSchema = Yup.object().shape({
     .required("This field is required"),
 });
 
-const EditMovie = () => {
+const EditMovie: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = () => {

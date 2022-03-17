@@ -4,9 +4,13 @@ import { searchMovieTitleCreator } from "../../store/actionCreators";
 import { Link } from "react-router-dom";
 // import NewMovie from "../NewMovie/NewMovie";
 
-const InnerBanner = () => {
+const InnerBanner: React.FC = () => {
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+    console.log(searchTerm);
+  };
   return (
     <div className="banner">
       <div className="inner-banner">
@@ -19,10 +23,7 @@ const InnerBanner = () => {
           <input
             type="text"
             placeholder="What do you want to watch"
-            onChange={(e) => {
-              setSearchTerm(e.target.value);
-              console.log(searchTerm);
-            }}
+            onChange={handleChange}
             // onChange={(e) => dispatch(searchMovieTitleCreator(e.target.value))}
           />
           <button
