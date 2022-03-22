@@ -91,6 +91,7 @@ const FormikAddMovie: React.FC = () => {
                   />
                 );
               })}
+              <input type="reset" value="Reset" />
               <button className="button-secondary" type="submit">
                 reset
               </button>{" "}
