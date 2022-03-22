@@ -9,6 +9,7 @@ import {
 import { Link } from "react-router-dom";
 import FormikField from "./FormikField";
 import { fieldArray } from "./fieldArray";
+import { FormikForm } from "./styles/FormsStyles";
 
 const MovieSchema = Yup.object().shape({
   title: Yup.string()
@@ -39,13 +40,8 @@ const FormikAddMovie = () => {
     dispatch(addMovieActionCreator(values));
   };
 
-  const handleReset = (values) => {
-    values.genres = [values.genres];
-    values.title = "";
-  };
-
   return (
-    <div className="form">
+    <FormikForm>
       <div className="exit">
         <Link to="/">
           <button className="exit-button">X</button>
@@ -66,8 +62,8 @@ const FormikAddMovie = () => {
         onSubmit={handleSubmit}
       >
         {({ errors, touched }) => (
-          <Form className="form__content">
-            <div className="form__contact-field-box">
+          <Form>
+            <div>
               {fieldArray.map((array) => {
                 return (
                   <FormikField
@@ -95,7 +91,7 @@ const FormikAddMovie = () => {
           <div className="form__submit-message">Movie will be added</div>
         ) : null}
       </p>
-    </div>
+    </FormikForm>
   );
 };
 

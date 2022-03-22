@@ -1,4 +1,6 @@
-.error-boundary {
+import styled from "styled-components";
+
+export const ErrorBoundaryContainer = styled.section`
   padding: 5rem;
   max-width: 1300px;
   h2 {
@@ -16,4 +18,4 @@
   article {
     padding: 1.5rem 0;
   }
-}
+`;

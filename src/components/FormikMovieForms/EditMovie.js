@@ -3,6 +3,7 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import FormikField from "./FormikField";
 import { fieldArray } from "./fieldArray";
+import { Buttons, FormikForm } from "./styles/FormsStyles";
 
 const MovieSchema = Yup.object().shape({
   title: Yup.string()
@@ -24,7 +25,7 @@ const EditMovie = () => {
   };
 
   return (
-    <div className="form">
+    <FormikForm>
       <h1>Edit Movie</h1>
       <Formik
         initialValues={{
@@ -39,7 +40,7 @@ const EditMovie = () => {
         onSubmit={handleSubmit}
       >
         {({ errors, touched }) => (
-          <Form className="form__content">
+          <Form>
             {fieldArray.map((array) => {
               return (
                 <FormikField
@@ -52,21 +53,17 @@ const EditMovie = () => {
                 />
               );
             })}
-            <div className="button-area">
+            <Buttons>
               <button className="button-secondary">reset</button>
               <button className="button-main" type="submit">
                 Submit
               </button>
-            </div>
+            </Buttons>
           </Form>
         )}
       </Formik>
-      <p>
-        {submitted ? (
-          <div className="form__submit-message">Moview will be added</div>
-        ) : null}
-      </p>
-    </div>
+      <p>{submitted ? <div>Moview will be added</div> : null}</p>
+    </FormikForm>
   );
 };
 

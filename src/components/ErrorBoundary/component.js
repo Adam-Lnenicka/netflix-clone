@@ -1,8 +1,9 @@
 import React from "react";
+import { ErrorBoundaryContainer } from "./styles/ErrorBoundaryStyles";
 
 const ErrorBoundaryComponent = ({ errorName, componentStack }) => {
   return (
-    <div className="error-boundary">
+    <ErrorBoundaryContainer>
       <h2>Sorry, something went wrong!</h2>
       <h3>Here is some info:</h3>
       <div>
@@ -21,7 +22,7 @@ const ErrorBoundaryComponent = ({ errorName, componentStack }) => {
             </p>
           ))}
       </article>
-    </div>
+    </ErrorBoundaryContainer>
   );
 };
 
