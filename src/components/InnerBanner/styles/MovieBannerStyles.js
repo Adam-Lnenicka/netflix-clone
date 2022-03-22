@@ -8,4 +8,25 @@ export const MovieBanner = styled.section`
   background-position: bottom;
   position: relative;
   padding: 8em 0;
+
+  input {
+    background-color: $medium-grey;
+    padding: 0.9em 0.9em;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+    margin-right: 5px;
+  }
+`;
+
+export const InnerBanner = styled.section`
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1300px;
+  padding: 6em 4em;
+
+  &__form {
+    display: flex;
+    margin-top: 2em;
+  }
 `;
