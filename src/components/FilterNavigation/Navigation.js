@@ -4,13 +4,13 @@ import FilterNavigation from "./FilterNavigation";
 
 const Navigation = () => {
   return (
-    <div className="flex navigation">
+    <Navigation className="flex">
       <FilterNavigation />
       <div className="flex">
         <p>SELECT CRITERIA</p>
         <MovieSortCriteria />
       </div>
-    </div>
+    </Navigation>
   );
 };
 

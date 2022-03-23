@@ -6,6 +6,7 @@ import {
   loadMoviesByRatingThunk,
   loadMoviesByTitleThunk,
 } from "../store/thunk";
+import { SortNavigation } from "./FilterNavigation/styles/FilterNavigation";
 
 const MovieSortCriteria = () => {
   const dispatch = useDispatch();
@@ -27,8 +28,7 @@ const MovieSortCriteria = () => {
   };
   return (
     <aside>
-      <select
-        className="sort-movies"
+      <SortNavigation
         onChange={(e) => {
           changeSortHandler(e.target.value);
         }}
@@ -37,7 +37,7 @@ const MovieSortCriteria = () => {
         <option value="title">title</option>
         <option value="date">newest</option>
         <option value="rating">rating</option>
-      </select>
+      </SortNavigation>
     </aside>
   );
 };
