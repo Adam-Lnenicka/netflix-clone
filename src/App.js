@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
-import "./styles/index.scss";
 import Home from "./pages/Home";
-import { Route, Routes, BrowserRouter as Router, Link } from "react-router-dom";
+import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import EditMovie from "./components/FormikMovieForms/EditMovie";
 import FormikAddMovie from "./components/FormikMovieForms/FormikAddMovie";
 import { useDispatch } from "react-redux";
