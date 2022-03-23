@@ -1,0 +1,15 @@
+import styled from "styled-components";
+
+export const StyledFooter = styled.section`
+  background-color: $medium-grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2em 0;
+  color: $red;
+  font-weight: 700;
+
+  span {
+    font-weight: 300;
+  }
+`;

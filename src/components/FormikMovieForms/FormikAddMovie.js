@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import FormikField from "./FormikField";
 import { fieldArray } from "./fieldArray";
 import { FormikForm } from "./styles/FormsStyles";
+import { ButtonMain, ButtonSecondary } from "../../styles/global/Buttons";
 
 const MovieSchema = Yup.object().shape({
   title: Yup.string()
@@ -76,12 +77,8 @@ const FormikAddMovie = () => {
                   />
                 );
               })}
-              <button className="button-secondary" type="submit">
-                reset
-              </button>{" "}
-              <button className="button-main" type="submit">
-                Submit
-              </button>
+              <ButtonSecondary type="submit">reset</ButtonSecondary>{" "}
+              <ButtonMain type="submit">Submit</ButtonMain>
             </div>
           </Form>
         )}

@@ -19,14 +19,14 @@ export const MovieBanner = styled.section`
   }
 `;
 
-export const InnerBanner = styled.section`
+export const InnerBanner = styled.div`
   margin: 0 auto;
   width: 100%;
   max-width: 1300px;
   padding: 6em 4em;
+`;
 
-  &__form {
-    display: flex;
-    margin-top: 2em;
-  }
+export const InnerBannerForm = styled.div`
+  display: flex;
+  margin-top: 2em;
 `;

@@ -1,10 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import Shorten from "./Shorten";
+import Shorten from "../Shorten";
 
-import { removeMovieActionCreator } from "../store/actionCreators";
+import { removeMovieActionCreator } from "../../store/actionCreators";
 import { Link } from "react-router-dom";
+import { Card, CardDetails, Image } from "./styles/MovieCardStyles";
 
 const MovieCard = ({
   id,
@@ -17,15 +18,10 @@ const MovieCard = ({
   const dispatch = useDispatch();
 
   return (
-    <div className="card">
+    <Card>
       <Link to={`/movie/${id}`}>
-        <img
-          className="card-image"
-          src={poster_path}
-          alt={title}
-          onError={broken}
-        />
-        <div className="card-details">
+        <Image src={poster_path} alt={title} onError={broken} />
+        <CardDetails>
           <div>
             <h4>{title}</h4>
             <p> {genres}</p>
@@ -34,9 +30,9 @@ const MovieCard = ({
           <button onClick={() => dispatch(removeMovieActionCreator(id))}>
             remove movie
           </button>{" "}
-        </div>
+        </CardDetails>
       </Link>
-    </div>
+    </Card>
   );
 };
 

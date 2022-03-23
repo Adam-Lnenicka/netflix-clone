@@ -2,20 +2,22 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchMovieTitleCreator } from "../../store/actionCreators";
 import { Link } from "react-router-dom";
+import { InnerBannerForm, MovieBanner } from "./styles/MovieBannerStyles";
+import { ButtonMain } from "../../styles/global/Buttons";
 // import NewMovie from "../NewMovie/NewMovie";
 
 const InnerBanner = () => {
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
   return (
-    <div className="banner">
-      <div className="inner-banner">
+    <MovieBanner>
+      <InnerBanner>
         <Link to="/add-movie">
           <div className="button-main add-button">Add Movie</div>
         </Link>
 
         <h1>FIND YOUR MOVIE</h1>
-        <div className="inner-banner__form">
+        <InnerBannerForm>
           <input
             type="text"
             placeholder="What do you want to watch"
@@ -25,17 +27,16 @@ const InnerBanner = () => {
             }}
             // onChange={(e) => dispatch(searchMovieTitleCreator(e.target.value))}
           />
-          <button
-            className="button-main"
+          <ButtonMain
             onClick={() => {
               dispatch(searchMovieTitleCreator(searchTerm));
             }}
           >
             search
-          </button>
-        </div>
-      </div>
-    </div>
+          </ButtonMain>
+        </InnerBannerForm>
+      </InnerBanner>
+    </MovieBanner>
   );
 };
 export default InnerBanner;

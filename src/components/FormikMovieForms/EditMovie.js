@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import FormikField from "./FormikField";
 import { fieldArray } from "./fieldArray";
 import { Buttons, FormikForm } from "./styles/FormsStyles";
+import { ButtonMain, ButtonSecondary } from "../../styles/global/Buttons";
 
 const MovieSchema = Yup.object().shape({
   title: Yup.string()
@@ -54,10 +55,8 @@ const EditMovie = () => {
               );
             })}
             <Buttons>
-              <button className="button-secondary">reset</button>
-              <button className="button-main" type="submit">
-                Submit
-              </button>
+              <ButtonSecondary>reset</ButtonSecondary>
+              <ButtonMain type="submit">Submit</ButtonMain>
             </Buttons>
           </Form>
         )}
