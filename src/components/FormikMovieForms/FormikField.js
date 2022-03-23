@@ -1,11 +1,12 @@
 import React from "react";
 import { Field } from "formik";
+import { FormInput, Label } from "./styles/FormsStyles";
 
 const FormikField = ({ title, path, myErrors, myTouched }) => {
   return (
     <div>
-      <div className="form__label">{title}</div>
-      <Field
+      <Label>{title}</Label>
+      <FormInput
         placeholder={title}
         name={path}
         type="text"
@@ -13,9 +14,7 @@ const FormikField = ({ title, path, myErrors, myTouched }) => {
         className="form__input"
       />
 
-      {myErrors[path] && myTouched[path] ? (
-        <div className="form__error-message">{myErrors[path]}</div>
-      ) : null}
+      {myErrors[path] && myTouched[path] ? <div>{myErrors[path]}</div> : null}
     </div>
   );
 };

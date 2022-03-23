@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
 export const Filter = styled.div`
-  border-bottom: 2px $medium-grey solid;
+  border-bottom: 2px #555555 solid;
   button {
     color: white;
-    background-color: $light-black;
+    background-color: #232323;
     text-transform: uppercase;
-    border: 3px solid $light-black;
+    border: 3px solid #232323;
     cursor: pointer;
     &:hover {
-      border-bottom: 3px solid $red;
+      border-bottom: 3px solid #f65261;
     }
   }
 `;
@@ -23,13 +23,12 @@ export const Navigation = styled.div`
 `;
 
 export const SortNavigation = styled.div`
-  background-color: $light-black;
+  background-color: #232323;
   color: white;
-  border: 3px $light-black solid;
   padding: 1rem;
   text-transform: uppercase;
   option {
-    background-color: $light-black;
+    background-color: #232323;
     text-transform: uppercase;
   }
 `;

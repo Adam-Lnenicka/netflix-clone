@@ -10,7 +10,11 @@ import { Link } from "react-router-dom";
 import FormikField from "./FormikField";
 import { fieldArray } from "./fieldArray";
 import { FormikForm } from "./styles/FormsStyles";
-import { ButtonMain, ButtonSecondary } from "../../styles/global/Buttons";
+import {
+  ButtonExit,
+  ButtonMain,
+  ButtonSecondary,
+} from "../../styles/global/Buttons";
 
 const MovieSchema = Yup.object().shape({
   title: Yup.string()
@@ -45,7 +49,7 @@ const FormikAddMovie = () => {
     <FormikForm>
       <div className="exit">
         <Link to="/">
-          <button className="exit-button">X</button>
+          <ButtonExit> X</ButtonExit>
         </Link>
       </div>
       <h1>Add Movie</h1>
@@ -83,11 +87,7 @@ const FormikAddMovie = () => {
           </Form>
         )}
       </Formik>
-      <p>
-        {submitted ? (
-          <div className="form__submit-message">Movie will be added</div>
-        ) : null}
-      </p>
+      <p>{submitted ? <div>Movie will be added</div> : null}</p>
     </FormikForm>
   );
 };

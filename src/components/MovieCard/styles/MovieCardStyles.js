@@ -18,7 +18,7 @@ export const CardDetails = styled.div`
 
   button {
     color: white;
-    background-color: $light-black;
+    background-color: #232323;
     border-radius: 4px;
     border: 0.1px solid white;
     margin-left: 3em;

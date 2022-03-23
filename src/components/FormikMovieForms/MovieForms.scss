@@ -7,7 +7,7 @@
 }
 
 .form {
-  background-color: $light-black;
+  background-color: #232323;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.8);
   max-width: 700px;
   margin: 4rem auto;
@@ -20,7 +20,7 @@
   }
 
   &__label {
-    color: $red;
+    color: #f65261;
     text-transform: uppercase;
     font-size: 0.8rem;
     letter-spacing: 0.8px;
@@ -28,9 +28,9 @@
 
   &__input {
     width: 100%;
-    background-color: $dark-grey;
+    background-color: #424242;
     border: none;
-    color: $light-white;
+    color: white;
     border-radius: 4px;
     padding: 1em;
     margin-top: 0.4rem;
@@ -57,7 +57,7 @@
   justify-content: flex-end;
 }
 .exit-button {
-  background-color: $red;
+  background-color: #f65261;
   color: white;
   padding: 0.6rem 1rem;
   border-radius: 4px;

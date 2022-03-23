@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { searchMovieTitleCreator } from "../../store/actionCreators";
 import { Link } from "react-router-dom";
 import { InnerBannerForm, MovieBanner } from "./styles/MovieBannerStyles";
-import { ButtonMain } from "../../styles/global/Buttons";
+import { ButtonAdd, ButtonMain } from "../../styles/global/Buttons";
 // import NewMovie from "../NewMovie/NewMovie";
 
 const InnerBanner = () => {
@@ -13,7 +13,7 @@ const InnerBanner = () => {
     <MovieBanner>
       <InnerBanner>
         <Link to="/add-movie">
-          <div className="button-main add-button">Add Movie</div>
+          <ButtonAdd>Add Movie</ButtonAdd>
         </Link>
 
         <h1>FIND YOUR MOVIE</h1>

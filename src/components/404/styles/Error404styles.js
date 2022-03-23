@@ -9,7 +9,7 @@ export const Error404Container = styled.div`
 `;
 
 export const Sign404 = styled.p`
-  color: $red;
+  color: #f65261;
   font-size: 300px;
   padding: 3rem;
 `;
