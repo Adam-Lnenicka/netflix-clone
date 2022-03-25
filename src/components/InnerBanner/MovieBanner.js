@@ -1,6 +1,5 @@
 import React from "react";
 import { useParams } from "react-router";
-import { Link } from "react-router-dom";
 import { useApiMoviesArraySelector } from "../../store/selectors";
 import { ButtonExit } from "../../styles/global/Buttons";
 import Shorten from "../Shorten";

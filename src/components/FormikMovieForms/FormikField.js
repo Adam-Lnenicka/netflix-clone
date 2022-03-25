@@ -1,5 +1,4 @@
 import React from "react";
-import { Field } from "formik";
 import { FormInput, Label } from "./styles/FormsStyles";
 
 const FormikField = ({ title, path, myErrors, myTouched }) => {
@@ -11,7 +10,6 @@ const FormikField = ({ title, path, myErrors, myTouched }) => {
         name={path}
         type="text"
         id={path}
-        className="form__input"
       />
 
       {myErrors[path] && myTouched[path] ? <div>{myErrors[path]}</div> : null}

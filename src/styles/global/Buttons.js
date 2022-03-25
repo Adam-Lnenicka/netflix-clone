@@ -41,7 +41,7 @@ export const ButtonExit = styled(Link)`
   cursor: pointer;
 `;
 
-export const ButtonAdd = styled(Link)`
+export const ButtonAdd = styled.button`
   background-color: #f65261;
   color: white;
   border: none;
