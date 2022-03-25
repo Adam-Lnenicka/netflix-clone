@@ -1,8 +1,14 @@
 import React from "react";
 import { useParams } from "react-router";
-import { Link } from "react-router-dom";
 import { useApiMoviesArraySelector } from "../../store/selectors";
+import { ButtonExit } from "../../styles/global/Buttons";
 import Shorten from "../Shorten";
+import {
+  MovieContainer,
+  MovieDetailsImage,
+  MovieRating,
+  Runtime,
+} from "./styles/MovieBannerStyles";
 
 const MovieBanner = () => {
   const { movieId } = useParams();
@@ -12,9 +18,8 @@ const MovieBanner = () => {
   );
 
   return (
-    <div className="movie-details__container">
-      <img
-        className="movie-details__image"
+    <MovieContainer>
+      <MovieDetailsImage
         src={thisMovie.map((m) => m.poster_path)}
         alt={thisMovie.map((m) => m.title)}
         onError={(e) =>
@@ -24,23 +29,18 @@ const MovieBanner = () => {
       />
       <div>
         <div className="flex">
-          <Link to="/" className="exit-button">
-            X
-          </Link>
+          <ButtonExit to="/">X</ButtonExit>
           <h2> {thisMovie.map((m) => m.title)}</h2>
-          <span className="movie-details__rating">
-            {" "}
-            {thisMovie.map((m) => m.vote_average)}
-          </span>
+          <MovieRating> {thisMovie.map((m) => m.vote_average)}</MovieRating>
         </div>
         <p>{thisMovie.map((m) => m.tagline)}</p>
-        <div className="flex movie-details__date-runtime">
+        <Runtime>
           <p> {Shorten(thisMovie.map((m) => m.release_date))} </p>
           <p> {thisMovie.map((m) => m.runtime)} min</p>
-        </div>
+        </Runtime>
         <p>{thisMovie.map((m) => m.overview)}</p>
       </div>
-    </div>
+    </MovieContainer>
   );
 };
 

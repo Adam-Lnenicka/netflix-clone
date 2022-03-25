@@ -4,9 +4,11 @@ import { applyMiddleware } from "redux";
 import App from "./App.js";
 import { Provider } from "react-redux";
 import store from "./store";
+import { GlobalStyles } from "./styles/global/Global.Styles.js";
 
 ReactDOM.render(
   <Provider store={store}>
+    <GlobalStyles />
     <App />
   </Provider>,
   document.getElementById("app")

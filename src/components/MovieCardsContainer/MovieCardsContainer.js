@@ -4,7 +4,8 @@ import {
   useMovieArraySearchSelector,
   useMovieGenreFilterSelector,
 } from "../../store/selectors";
-import MovieCard from "../MovieCard";
+import MovieCard from "../MovieCard/MovieCard";
+import { CardLayout } from "./styles/MovieCardsStyles";
 
 const MovieCardsContainer = () => {
   const apiMoviesArray = useApiMoviesArraySelector();
@@ -12,7 +13,7 @@ const MovieCardsContainer = () => {
   const movieArraySearch = useMovieArraySearchSelector();
 
   return (
-    <div className="card-layout">
+    <CardLayout>
       {apiMoviesArray.map((movie) =>
         movie
           .filter((data) => {
@@ -56,7 +57,7 @@ const MovieCardsContainer = () => {
           ))
           .slice(0, 10)
       )}
-    </div>
+    </CardLayout>
   );
 };
 

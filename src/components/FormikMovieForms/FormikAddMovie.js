@@ -9,6 +9,12 @@ import {
 import { Link } from "react-router-dom";
 import FormikField from "./FormikField";
 import { fieldArray } from "./fieldArray";
+import { FormikForm } from "./styles/FormsStyles";
+import {
+  ButtonExit,
+  ButtonMain,
+  ButtonSecondary,
+} from "../../styles/global/Buttons";
 
 const MovieSchema = Yup.object().shape({
   title: Yup.string()
@@ -39,16 +45,11 @@ const FormikAddMovie = () => {
     dispatch(addMovieActionCreator(values));
   };
 
-  const handleReset = (values) => {
-    values.genres = [values.genres];
-    values.title = "";
-  };
-
   return (
-    <div className="form">
+    <FormikForm>
       <div className="exit">
         <Link to="/">
-          <button className="exit-button">X</button>
+          <ButtonExit> X</ButtonExit>
         </Link>
       </div>
       <h1>Add Movie</h1>
@@ -66,8 +67,8 @@ const FormikAddMovie = () => {
         onSubmit={handleSubmit}
       >
         {({ errors, touched }) => (
-          <Form className="form__content">
-            <div className="form__contact-field-box">
+          <Form>
+            <div>
               {fieldArray.map((array) => {
                 return (
                   <FormikField
@@ -80,22 +81,14 @@ const FormikAddMovie = () => {
                   />
                 );
               })}
-              <button className="button-secondary" type="submit">
-                reset
-              </button>{" "}
-              <button className="button-main" type="submit">
-                Submit
-              </button>
+              <ButtonSecondary type="submit">reset</ButtonSecondary>{" "}
+              <ButtonMain type="submit">Submit</ButtonMain>
             </div>
           </Form>
         )}
       </Formik>
-      <p>
-        {submitted ? (
-          <div className="form__submit-message">Movie will be added</div>
-        ) : null}
-      </p>
-    </div>
+      <p>{submitted ? <div>Movie will be added</div> : null}</p>
+    </FormikForm>
   );
 };
 
