@@ -4,6 +4,15 @@ import { Link } from "react-router-dom";
 import { useApiMoviesArraySelector } from "../../store/selectors";
 import Shorten from "../Shorten";
 
+// interface MovieBannerInterface {
+//   id: number;
+//   poster_path: string;
+//   title: string;
+//   broken: any;
+//   release_date: string;
+//   genres: string[];
+// }
+
 const MovieBanner = () => {
   const { movieId } = useParams();
   const apiMoviesArray = useApiMoviesArraySelector();

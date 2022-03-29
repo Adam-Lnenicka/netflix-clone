@@ -1,8 +1,11 @@
-import React from "react";
+import React, { Component } from "react";
 import ErrorBoundaryComponent from "./component";
 
-class ErrorBoundary extends React.Component {
-  state = { hasError: false };
+interface State {
+  hasError: boolean;
+}
+class ErrorBoundary extends Component<State> {
+  state: State = { hasError: false };
 
   componentDidCatch(error, errorInfo) {
     this.setState({

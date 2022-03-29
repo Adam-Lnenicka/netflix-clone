@@ -1,10 +1,18 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
 import Shorten from "./Shorten";
 
 import { removeMovieActionCreator } from "../store/actionCreators";
 import { Link } from "react-router-dom";
+import { useAppDispatch } from "../store/selectors";
+
+interface MovieInterface {
+  id: number;
+  poster_path: string;
+  title: string;
+  broken: any;
+  release_date: string;
+  genres: string[];
+}
 
 const MovieCard = ({
   id,
@@ -13,8 +21,8 @@ const MovieCard = ({
   broken,
   release_date,
   genres,
-}) => {
-  const dispatch = useDispatch();
+}: MovieInterface) => {
+  const dispatch = useAppDispatch();
 
   return (
     <div className="card">
@@ -38,13 +46,6 @@ const MovieCard = ({
       </Link>
     </div>
   );
-};
-
-MovieCard.propTypes = {
-  image: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  year: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
 };
 
 export default MovieCard;

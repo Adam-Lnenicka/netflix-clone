@@ -22,12 +22,15 @@
     "react-router-dom": "^6.0.2",
     "redux": "^4.1.2",
     "redux-thunk": "^2.4.1",
+    "ts-loader": "^9.2.6",
     "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.16.4",
     "@babel/preset-env": "^7.16.4",
     "@babel/preset-react": "^7.16.0",
+    "@babel/preset-typescript": "^7.16.7",
+    "awesome-typescript-loader": "^5.2.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.2.3",
     "babel-preset-env": "^1.7.0",
@@ -48,16 +51,36 @@
     "prettier": "2.4.1",
     "prop-types": "^15.7.2",
     "sass-loader": "^12.3.0",
+    "typescript": "^3.0.1",
     "webpack": "^5.64.1",
     "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.5.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "node-sass": "^6.0.1",
-    "prop-types": "^15.7.2"
+    "webpack-dev-server": "^4.5.0"
   },
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint"
     }
-  }
+  },
+  "compilerOptions": {
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true
+  },
+  "files": [
+    "core.ts",
+    "sys.ts",
+    "types.ts",
+    "scanner.ts",
+    "parser.ts",
+    "utilities.ts",
+    "binder.ts",
+    "checker.ts",
+    "emitter.ts",
+    "program.ts",
+    "commandLineParser.ts",
+    "tsc.ts",
+    "diagnosticInformationMap.generated.ts"
+  ]
 }

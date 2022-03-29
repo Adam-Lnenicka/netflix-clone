@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { applyMiddleware } from "redux";
-import App from "./App.js";
+import App from "./App.tsx";
 import { Provider } from "react-redux";
 import store from "./store";
 
